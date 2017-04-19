@@ -3,6 +3,7 @@ package com.example.tonto.zees;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -31,7 +32,7 @@ public class MainActivity extends AppCompatActivity
     private TextView page;
     private TabLayout tabDots;
     private ImageView background;
-    private ActionBar actionBar;
+    private Toolbar toolbar;
 
     private int[] images = {
             R.drawable.top_rain,
@@ -60,16 +61,16 @@ public class MainActivity extends AppCompatActivity
     };
 
     private ColorDrawable[] actionBarColorCodes = {
-            new ColorDrawable(Color.parseColor("#ff6a594a")),
-            new ColorDrawable(Color.parseColor("#ff437b92")),
-            new ColorDrawable(Color.parseColor("#ff6680a8")),
-            new ColorDrawable(Color.parseColor("#ff0d1f37")),
-            new ColorDrawable(Color.parseColor("#ff194c23")),
-            new ColorDrawable(Color.parseColor("#ff573636")),
-            new ColorDrawable(Color.parseColor("#ff6a594a")),
-            new ColorDrawable(Color.parseColor("#ff3a3589")),
-            new ColorDrawable(Color.parseColor("#ff263238")),
-            new ColorDrawable(Color.parseColor("#ff7e7362"))
+            new ColorDrawable(Color.parseColor("#ff597f9c")),
+            new ColorDrawable(Color.parseColor("#ff749daf")),
+            new ColorDrawable(Color.parseColor("#ff899bbf")),
+            new ColorDrawable(Color.parseColor("#ff1d3856")),
+            new ColorDrawable(Color.parseColor("#ff357829")),
+            new ColorDrawable(Color.parseColor("#ffc7b098")),
+            new ColorDrawable(Color.parseColor("#ffdc8686")),
+            new ColorDrawable(Color.parseColor("#ff8e91d4")),
+            new ColorDrawable(Color.parseColor("#ff01579b")),
+            new ColorDrawable(Color.parseColor("#ffaca08e"))
     };
 
     private String[] title = {
@@ -95,7 +96,8 @@ public class MainActivity extends AppCompatActivity
         top = (ImageView) findViewById(R.id.top);
         background = (ImageView) findViewById(R.id.background);
 
-        actionBar = getSupportActionBar();
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setBackground(0);
 
 
         mPager = (ViewPager) findViewById(R.id.view_pager);
@@ -200,7 +202,7 @@ public class MainActivity extends AppCompatActivity
 
     public void setBackground(int position){
         background.setImageResource(backgrounds[position]);
-        if (actionBar != null)
-            actionBar.setBackgroundDrawable(actionBarColorCodes[position]);
+        if (toolbar != null)
+            toolbar.setBackground(actionBarColorCodes[position]);
     }
 }
