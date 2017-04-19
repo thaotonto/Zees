@@ -16,8 +16,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.example.tonto.zees.sounds.SoundManager;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -103,7 +106,7 @@ public class MainActivity extends AppCompatActivity
         mPager = (ViewPager) findViewById(R.id.view_pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), this);
         mPager.setAdapter(mPagerAdapter);
-        mPager.setPageTransformer(true,new PageTransformer());
+        mPager.setPageTransformer(true, new PageTransformer());
         mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -200,9 +203,13 @@ public class MainActivity extends AppCompatActivity
         top.setImageResource(images[position]);
     }
 
-    public void setBackground(int position){
+    public void setBackground(int position) {
         background.setImageResource(backgrounds[position]);
         if (toolbar != null)
             toolbar.setBackground(actionBarColorCodes[position]);
+    }
+
+    public void viewClicked(View v) {
+        SoundManager.playSound(v.getTag().toString());
     }
 }
