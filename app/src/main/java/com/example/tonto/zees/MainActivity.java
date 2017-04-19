@@ -1,13 +1,15 @@
 package com.example.tonto.zees;
 
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
+import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -27,6 +29,10 @@ public class MainActivity extends AppCompatActivity
 
     private ImageView top;
     private TextView page;
+    private TabLayout tabDots;
+    private ImageView background;
+    private ActionBar actionBar;
+
     private int[] images = {
             R.drawable.top_rain,
             R.drawable.top_ocean,
@@ -40,18 +46,62 @@ public class MainActivity extends AppCompatActivity
             R.drawable.top_home
     };
 
+    private int[] backgrounds = {
+            R.drawable.background_rain,
+            R.drawable.background_ocean,
+            R.drawable.background_water,
+            R.drawable.background_nature_night,
+            R.drawable.background_nature_day,
+            R.drawable.background_air_fire,
+            R.drawable.background_music,
+            R.drawable.background_oriental,
+            R.drawable.background_city,
+            R.drawable.background_home
+    };
+
+    private ColorDrawable[] actionBarColorCodes = {
+            new ColorDrawable(Color.parseColor("#ff6a594a")),
+            new ColorDrawable(Color.parseColor("#ff437b92")),
+            new ColorDrawable(Color.parseColor("#ff6680a8")),
+            new ColorDrawable(Color.parseColor("#ff0d1f37")),
+            new ColorDrawable(Color.parseColor("#ff194c23")),
+            new ColorDrawable(Color.parseColor("#ff573636")),
+            new ColorDrawable(Color.parseColor("#ff6a594a")),
+            new ColorDrawable(Color.parseColor("#ff3a3589")),
+            new ColorDrawable(Color.parseColor("#ff263238")),
+            new ColorDrawable(Color.parseColor("#ff7e7362"))
+    };
+
+    private String[] title = {
+            "Rain sounds",
+            "Ocean sounds",
+            "River sounds",
+            "Night sounds",
+            "Countryside sounds",
+            "Wind and fire sounds",
+            "Relaxing music",
+            "Oriental sounds",
+            "City sounds",
+            "Home sounds"
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        page = (TextView) findViewById(R.id.page_number);
-        page.setText(1 + "");
+        page = (TextView) findViewById(R.id.page_title);
+        page.setText(title[0]);
         top = (ImageView) findViewById(R.id.top);
+        background = (ImageView) findViewById(R.id.background);
+
+        actionBar = getSupportActionBar();
+
 
         mPager = (ViewPager) findViewById(R.id.view_pager);
         mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), this);
         mPager.setAdapter(mPagerAdapter);
+        mPager.setPageTransformer(true,new PageTransformer());
         mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
@@ -61,6 +111,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onPageSelected(int position) {
                 setTop(position);
+                setBackground(position);
             }
 
             @Override
@@ -68,6 +119,9 @@ public class MainActivity extends AppCompatActivity
 
             }
         });
+
+        tabDots = (TabLayout) findViewById(R.id.tabDots);
+        tabDots.setupWithViewPager(mPager);
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -140,7 +194,13 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void setTop(int position) {
-        page.setText(position + 1 + "");
+        page.setText(title[position]);
         top.setImageResource(images[position]);
+    }
+
+    public void setBackground(int position){
+        background.setImageResource(backgrounds[position]);
+        if (actionBar != null)
+            actionBar.setBackgroundDrawable(actionBarColorCodes[position]);
     }
 }
