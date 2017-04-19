@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.ViewPager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,8 +36,6 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        System.out.println(position);
-        activity.setTop(position);
         return fragmentList.get(position);
     }
 
@@ -44,4 +43,5 @@ public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return MainActivity.NUM_PAGES;
     }
+
 }

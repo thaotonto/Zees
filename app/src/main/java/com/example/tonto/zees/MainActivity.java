@@ -1,6 +1,8 @@
 package com.example.tonto.zees;
 
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.design.widget.NavigationView;
@@ -12,6 +14,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
@@ -23,8 +26,8 @@ public class MainActivity extends AppCompatActivity
     private PagerAdapter mPagerAdapter;
 
     private ImageView top;
-
-    private static int[] images = {
+    private TextView page;
+    private int[] images = {
             R.drawable.top_rain,
             R.drawable.top_ocean,
             R.drawable.top_water,
@@ -42,11 +45,29 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        page = (TextView) findViewById(R.id.page_number);
+        page.setText(1 + "");
         top = (ImageView) findViewById(R.id.top);
 
         mPager = (ViewPager) findViewById(R.id.view_pager);
-        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(),this);
+        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), this);
         mPager.setAdapter(mPagerAdapter);
+        mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
+
+            }
+
+            @Override
+            public void onPageSelected(int position) {
+                setTop(position);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int state) {
+
+            }
+        });
 
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -119,7 +140,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void setTop(int position) {
-        System.out.println(position);
+        page.setText(position + 1 + "");
         top.setImageResource(images[position]);
     }
 }
