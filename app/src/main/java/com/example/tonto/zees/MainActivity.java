@@ -18,6 +18,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.tonto.zees.sounds.SoundManager;
@@ -210,7 +211,9 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void viewClicked(View v) {
-
+        int resID = getResources().getIdentifier("sb_"+v.getTag(),"id",getPackageName());
+        SeekBar seekBar = (SeekBar) findViewById(resID);
+        seekBar.setVisibility(View.VISIBLE);
         SoundManager.playSound(v.getTag().toString());
     }
 }
