@@ -23,8 +23,7 @@ import android.widget.TextView;
 
 import com.example.tonto.zees.sounds.SoundManager;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final int NUM_PAGES = 10;
 
