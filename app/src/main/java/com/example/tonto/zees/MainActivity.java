@@ -1,9 +1,8 @@
 package com.example.tonto.zees;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.view.View;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -12,25 +11,45 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public static final int NUM_PAGES = 10;
+
+    private ViewPager mPager;
+
+    private PagerAdapter mPagerAdapter;
+
+    private ImageView top;
+
+    private static int[] images = {
+            R.drawable.top_rain,
+            R.drawable.top_ocean,
+            R.drawable.top_water,
+            R.drawable.top_nature_night,
+            R.drawable.top_nature_day,
+            R.drawable.top_air_fire,
+            R.drawable.top_music,
+            R.drawable.top_oriental,
+            R.drawable.top_city,
+            R.drawable.top_home
+    };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        top = (ImageView) findViewById(R.id.top);
+
+        mPager = (ViewPager) findViewById(R.id.view_pager);
+        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(),this);
+        mPager.setAdapter(mPagerAdapter);
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -97,5 +116,10 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void setTop(int position) {
+        System.out.println(position);
+        top.setImageResource(images[position]);
     }
 }
