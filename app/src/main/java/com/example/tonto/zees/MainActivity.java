@@ -210,6 +210,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     public void viewClicked(View v) {
+
         SoundManager.playSound(v.getTag().toString());
     }
 }
