@@ -51,9 +51,13 @@ public class SoundManager {
             }
         }
         if (!playing) {
-            streamID = soundPool.play(soundIDList.get(listSoundID.get(string)), 1.f, 1.f, 1, -1, 1.0f);
-            streamIDs.add(streamID);
-            playingSounds.add(string);
+            try {
+                streamID = soundPool.play(soundIDList.get(listSoundID.get(string)), 1.f, 1.f, 1, -1, 1.0f);
+                streamIDs.add(streamID);
+                playingSounds.add(string);
+            } catch (NullPointerException e){
+
+            }
         }
     }
 
