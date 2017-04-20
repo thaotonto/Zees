@@ -55,7 +55,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
@@ -88,7 +90,9 @@
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Brook"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
                 <SeekBar
                     android:id="@+id/sb_water_brook"
@@ -133,7 +137,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
@@ -190,7 +196,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
