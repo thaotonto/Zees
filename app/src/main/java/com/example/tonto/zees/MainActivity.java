@@ -1,10 +1,14 @@
 package com.example.tonto.zees;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.RequiresApi;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.design.widget.NavigationView;
@@ -17,26 +21,31 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.example.tonto.zees.sounds.SoundManager;
 
-public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final int NUM_PAGES = 10;
 
     private ViewPager mPager;
 
     private PagerAdapter mPagerAdapter;
-
+    private ArrayList fragmentList;
     private ImageView top;
     private TextView page;
     private TabLayout tabDots;
     private ImageView background;
     private Toolbar toolbar;
+    private Window window;
 
     private int[] images = {
             R.drawable.top_rain,
@@ -77,6 +86,19 @@ public class MainActivity extends AppCompatActivity
             new ColorDrawable(Color.parseColor("#ffaca08e"))
     };
 
+    private String[] statusBarColorCodes = {
+            "#ff233a5a",
+            "#ff437b92",
+            "#ff6680a8",
+            "#ff0d1f37",
+            "#ff194c23",
+            "#ff6a594a",
+            "#ff573636",
+            "#ff3a3589",
+            "#ff263238",
+            "#ff7e7362"
+    };
+
     private String[] title = {
             "Rain sounds",
             "Ocean sounds",
@@ -90,22 +112,32 @@ public class MainActivity extends AppCompatActivity
             "Home sounds"
     };
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Intent intent = getIntent();
+        fragmentList = (ArrayList) intent.getSerializableExtra("FragmentList");
         page = (TextView) findViewById(R.id.page_title);
         page.setText(title[0]);
         top = (ImageView) findViewById(R.id.top);
         background = (ImageView) findViewById(R.id.background);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        window = this.getWindow();
+
         setBackground(0);
+
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
 
         mPager = (ViewPager) findViewById(R.id.view_pager);
-        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), this);
+        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), this, fragmentList);
         mPager.setAdapter(mPagerAdapter);
         mPager.setPageTransformer(true, new PageTransformer());
         mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -204,14 +236,17 @@ public class MainActivity extends AppCompatActivity
         top.setImageResource(images[position]);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void setBackground(int position) {
         background.setImageResource(backgrounds[position]);
         if (toolbar != null)
             toolbar.setBackground(actionBarColorCodes[position]);
+            window.setStatusBarColor(Color.parseColor(statusBarColorCodes[position]));
     }
 
     public void viewClicked(View v) {
-        int resID = getResources().getIdentifier("sb_"+v.getTag(),"id",getPackageName());
+        int resID = getResources().getIdentifier("sb_" + v.getTag(), "id", getPackageName());
+        v.setBackgroundColor(Color.WHITE);
         SeekBar seekBar = (SeekBar) findViewById(resID);
         seekBar.setVisibility(View.VISIBLE);
         SoundManager.playSound(v.getTag().toString());

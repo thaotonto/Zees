@@ -7,29 +7,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tonto.zees.sounds.SoundManager;
+import java.io.Serializable;
 
 /**
  * Created by Hoang on 4/18/2017.
  */
 
-public class CitySounds extends Fragment {
-    private String name = "city";
-    private String[] listSounds = {
-            "musician",
-            "coffe_shop",
-            "fountain",
-            "children",
-            "traffic",
-            "subway",
-            "works",
-            "train_station"
-    };
-
+public class CitySounds extends Fragment implements Serializable {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SoundManager.loadSoundIntoList(getContext(), name, listSounds);
     }
 
     @Nullable

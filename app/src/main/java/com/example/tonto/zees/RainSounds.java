@@ -11,14 +11,15 @@ import android.widget.ImageView;
 
 import com.example.tonto.zees.sounds.SoundManager;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Hoang on 4/18/2017.
  */
 
-public class RainSounds extends Fragment {
-    private String name = "rain";
+public class RainSounds extends Fragment implements Serializable {
+//    private List<PressedKeyInfo> pressedKeyInfoList;
     private String[] listSounds = {
             "morning_rain",
             "umbrella",
@@ -34,7 +35,7 @@ public class RainSounds extends Fragment {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SoundManager.loadSoundIntoList(getContext(), name, listSounds);
+        SoundManager.loadSoundIntoList(getContext(), "rain", listSounds);
     }
 
     @Nullable

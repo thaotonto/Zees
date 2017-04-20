@@ -61,26 +61,71 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"></View>
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/waves"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:src="@drawable/ic_ocean_waves" />
+                    android:src="@drawable/ic_ocean_waves"
+                    android:tag="ocean_waves"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Waves"
+                        android:textColor="@android:color/white" />
+
+                    <SeekBar
+                        android:id="@+id/sb_waves"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:visibility="invisible" />
+
+                    </LinearLayout>
+
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"></View>
 
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/seagulls"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:src="@drawable/ic_ocean_seagulls" />
+                    android:src="@drawable/ic_ocean_seagulls"
+                    android:tag="ocean_seagulls"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Seagulls"
+                        android:textColor="@android:color/white" />
+
+                    <SeekBar
+                        android:id="@+id/sb_seagulls"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:visibility="invisible" />
+
+                    </LinearLayout>
 
                 <View
                     android:layout_width="0dp"
@@ -106,37 +151,105 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"></View>
 
-
-                <ImageView
-                    android:id="@+id/scuba_diver"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:src="@drawable/ic_ocean_scuba_diver" />
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/scuba_diver"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_weight="4"
+                        android:src="@drawable/ic_ocean_scuba_diver"
+                        android:tag="ocean_scuba_diver" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Scubadiver"
+                        android:textColor="@android:color/white" />
+
+                    <SeekBar
+                        android:id="@+id/sb_scuba_diver"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:visibility="invisible" />
+                    </LinearLayout>
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"></View>
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
 
                 <ImageView
                     android:id="@+id/dolphins"
-                    android:layout_width="0dp"
+                    android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:src="@drawable/ic_ocean_dolphin" />
+                    android:src="@drawable/ic_ocean_dolphin"
+                    android:tag="ocean_dolphin"/>
+
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Dolphins"
+                    android:textColor="@android:color/white" />
+
+                <SeekBar
+                    android:id="@+id/sb_dolphins"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="fill"
+                    android:visibility="invisible" />
+
+                </LinearLayout>
 
                 <View
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="1"></View>
 
-                <ImageView
-                    android:id="@+id/sailboat"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:src="@drawable/ic_ocean_sailboat" />
+                    android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/sailboat"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:src="@drawable/ic_ocean_sailboat"
+                    android:tag="ocean_sailboat" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Sailboat"
+                        android:textColor="@android:color/white" />
+
+                    <SeekBar
+                        android:id="@+id/sb_sailboat"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:visibility="invisible" />
+
+                    </LinearLayout>
 
                 <View
                     android:layout_width="0dp"
@@ -161,12 +274,35 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"></View>
 
-                <ImageView
-                    android:id="@+id/whale"
+                <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:src="@drawable/ic_ocean_whale" />
+                    android:orientation="vertical">
+
+                <ImageView
+                    android:id="@+id/whale"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:src="@drawable/ic_ocean_whale"
+                    android:tag="ocean_whale"/>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Whale"
+                        android:textColor="@android:color/white" />
+
+                    <SeekBar
+                        android:id="@+id/sb_whale"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:visibility="invisible" />
+
+                    </LinearLayout>
 
                 <View
                     android:layout_width="0dp"

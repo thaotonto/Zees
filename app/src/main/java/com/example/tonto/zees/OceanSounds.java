@@ -10,26 +10,21 @@ import android.view.ViewGroup;
 
 import com.example.tonto.zees.sounds.SoundManager;
 
+import java.io.Serializable;
+
 /**
  * Created by Hoang on 4/18/2017.
  */
 
-public class OceanSounds extends Fragment {
-    private String name = "ocean";
+public class OceanSounds extends Fragment implements Serializable {
     private String[] listSounds = {
-            "calm_waves",
-            "waves",
-            "seagulls",
-            "scuba_driver",
-            "dolphins",
-            "sailboat",
-            "whale"
+            "calm_waves"
     };
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SoundManager.loadSoundIntoList(getContext(), name, listSounds);
+        SoundManager.loadSoundIntoList(getContext(), "ocean", listSounds);
     }
 
     @Nullable
