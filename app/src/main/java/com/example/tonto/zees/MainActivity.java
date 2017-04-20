@@ -1,7 +1,9 @@
 package com.example.tonto.zees;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
@@ -45,6 +47,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ImageView background;
     private Toolbar toolbar;
     private Window window;
+    private int currentButtonTint;
 
     private int[] images = {
             R.drawable.top_rain,
@@ -128,6 +131,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         setBackground(0);
 
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+            setStatusbarColor(0);
+        }
+
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
@@ -147,6 +154,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onPageSelected(int position) {
                 setTop(position);
                 setBackground(position);
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+                    setStatusbarColor(position);
+                }
+                currentButtonTint = Color.parseColor(statusBarColorCodes[position]);
             }
 
             @Override
@@ -233,19 +244,30 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         top.setImageResource(images[position]);
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void setBackground(int position) {
         background.setImageResource(backgrounds[position]);
-        if (toolbar != null)
-            toolbar.setBackground(actionBarColorCodes[position]);
-            window.setStatusBarColor(Color.parseColor(statusBarColorCodes[position]));
+        toolbar.setBackground(actionBarColorCodes[position]);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void setStatusbarColor(int position){
+        window.setStatusBarColor(Color.parseColor(statusBarColorCodes[position]));
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     public void viewClicked(View v) {
         int resID = getResources().getIdentifier("sb_" + v.getTag(), "id", getPackageName());
-        v.setBackgroundColor(Color.WHITE);
         SeekBar seekBar = (SeekBar) findViewById(resID);
-        seekBar.setVisibility(View.VISIBLE);
+        if (v.isSelected()) {
+            v.setSelected(false);
+            ((ImageView)v).setColorFilter(Color.WHITE);
+            seekBar.setVisibility(View.INVISIBLE);
+        }
+        else{
+            v.setSelected(true);
+            seekBar.setVisibility(View.VISIBLE);
+            ((ImageView)v).setColorFilter(currentButtonTint);
+        }
         SoundManager.playSound(v.getTag().toString());
     }
 }

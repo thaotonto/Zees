@@ -38,7 +38,9 @@
                     android:layout_weight="3"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_rain_morning"
-                    android:tag="rain_morning_rain" />
+                    android:tag="rain_morning_rain"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -76,7 +78,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_rain_umbrella"
-                    android:tag="rain_umbrella" />
+                    android:tag="rain_umbrella"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -112,7 +116,9 @@
                     android:layout_weight="4"
                     android:src="@drawable/ic_rain_thunders"
                     android:tag="rain_thunders"
-                    android:onClick="viewClicked" />
+                    android:onClick="viewClicked"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -167,7 +173,9 @@
                     android:layout_weight="4"
                     android:src="@drawable/ic_rain_light"
                     android:tag="rain_light"
-                    android:onClick="viewClicked"/>
+                    android:onClick="viewClicked"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -203,7 +211,9 @@
                     android:layout_weight="4"
                     android:src="@drawable/ic_rain_heavy"
                     android:tag="rain_heavy"
-                    android:onClick="viewClicked"></ImageView>
+                    android:onClick="viewClicked"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"></ImageView>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -239,7 +249,9 @@
                     android:layout_weight="4"
                     android:src="@drawable/ic_rain_distant_thunder"
                     android:tag="rain_distant_thunder"
-                    android:onClick="viewClicked"/>
+                    android:onClick="viewClicked"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -293,7 +305,9 @@
                     android:layout_weight="4"
                     android:src="@drawable/ic_rain_tent"
                     android:tag="rain_tent"
-                    android:onClick="viewClicked"/>
+                    android:onClick="viewClicked"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -328,7 +342,9 @@
                     android:layout_weight="4"
                     android:src="@drawable/ic_rain_window"
                     android:tag="rain_window"
-                    android:onClick="viewClicked"/>
+                    android:onClick="viewClicked"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -363,7 +379,9 @@
                     android:layout_weight="4"
                     android:src="@drawable/ic_rain_roof"
                     android:tag="rain_roof"
-                    android:onClick="viewClicked"/>
+                    android:onClick="viewClicked"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"

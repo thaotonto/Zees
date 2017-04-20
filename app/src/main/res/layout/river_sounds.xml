@@ -38,14 +38,17 @@
                     android:layout_weight="3"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_water_river"
-                    android:tag="water_river" />
+                    android:tag="water_river"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="River"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    />
 
                 <SeekBar
                     android:id="@+id/sb_water_river"
@@ -76,7 +79,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_water_brook"
-                    android:tag="water_brook" />
+                    android:tag="water_brook"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -112,7 +117,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_water_creek"
-                    android:tag="water_creek" />
+                    android:tag="water_creek"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -167,7 +174,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_water_waterfall"
-                    android:tag="water_waterfall" />
+                    android:tag="water_waterfall"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"

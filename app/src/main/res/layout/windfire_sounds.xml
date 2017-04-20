@@ -38,7 +38,9 @@
                     android:layout_weight="3"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_air_light_wind"
-                    android:tag="air_light_wind" />
+                    android:tag="air_light_wind"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -76,7 +78,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_air_strong_wind"
-                    android:tag="air_strong_wind" />
+                    android:tag="air_strong_wind"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -112,7 +116,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_air_wind_mountain"
-                    android:tag="air_wind_mountain" />
+                    android:tag="air_wind_mountain"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -167,7 +173,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_air_wind_door"
-                    android:tag="air_wind_door" />
+                    android:tag="air_wind_door"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -203,7 +211,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_fire_campfire"
-                    android:tag="fire_campfire" />
+                    android:tag="fire_campfire"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -239,7 +249,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_fire_fireplace"
-                    android:tag="fire_fireplace" />
+                    android:tag="fire_fireplace"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"

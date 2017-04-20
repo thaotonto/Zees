@@ -38,7 +38,9 @@
                     android:layout_weight="3"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_cricket"
-                    android:tag="nature_night_crickets" />
+                    android:tag="nature_night_crickets"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -76,7 +78,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_grasshoppers"
-                    android:tag="nature_night_grasshoppers" />
+                    android:tag="nature_night_grasshoppers"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -112,7 +116,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_owl"
-                    android:tag="nature_night_owls" />
+                    android:tag="nature_night_owls"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -167,7 +173,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_wolf"
-                    android:tag="nature_night_wolves" />
+                    android:tag="nature_night_wolves"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -203,7 +211,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_loons"
-                    android:tag="nature_night_loons" />
+                    android:tag="nature_night_loons"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -239,7 +249,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_frog"
-                    android:tag="nature_night_frogs" />
+                    android:tag="nature_night_frogs"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -293,7 +305,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_coyote"
-                    android:tag="nature_night_coyote" />
+                    android:tag="nature_night_coyote"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"
@@ -328,7 +342,9 @@
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_coqui"
-                    android:tag="nature_night_coqui" />
+                    android:tag="nature_night_coqui"
+                    android:background="@drawable/button_bg_selector"
+                    android:tint="@android:color/white"/>
 
                 <TextView
                     android:layout_width="match_parent"

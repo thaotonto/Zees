@@ -37,9 +37,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="4"
+                    android:background="@drawable/button_bg_selector"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_ocean_gentle_waves"
-                    android:tag="ocean_calm_waves" />
+                    android:tag="ocean_calm_waves"
+                    android:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -72,10 +74,12 @@
                     android:id="@+id/ocean_waves"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="viewClicked"
                     android:layout_weight="4"
+                    android:background="@drawable/button_bg_selector"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_ocean_waves"
-                    android:tag="ocean_waves" />
+                    android:tag="ocean_waves"
+                    android:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -109,10 +113,12 @@
                     android:id="@+id/ocean_seagulls"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="viewClicked"
                     android:layout_weight="4"
+                    android:background="@drawable/button_bg_selector"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_ocean_seagulls"
-                    android:tag="ocean_seagulls" />
+                    android:tag="ocean_seagulls"
+                    android:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -163,11 +169,13 @@
                 <ImageView
                     android:id="@+id/ocean_diver"
                     android:layout_width="match_parent"
-                    android:onClick="viewClicked"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:background="@drawable/button_bg_selector"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_ocean_scuba_diver"
-                    android:tag="ocean_diver" />
+                    android:tag="ocean_diver"
+                    android:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -199,10 +207,12 @@
                     android:id="@+id/ocean_dolphins"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="viewClicked"
                     android:layout_weight="4"
+                    android:background="@drawable/button_bg_selector"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_ocean_dolphin"
-                    android:tag="ocean_dolphins" />
+                    android:tag="ocean_dolphins"
+                    android:tint="@android:color/white" />
 
 
                 <TextView
@@ -236,10 +246,12 @@
                     android:id="@+id/ocean_sailboat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="viewClicked"
                     android:layout_weight="4"
+                    android:background="@drawable/button_bg_selector"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_ocean_sailboat"
-                    android:tag="ocean_sailboat" />
+                    android:tag="ocean_sailboat"
+                    android:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -290,10 +302,12 @@
                     android:id="@+id/ocean_whale"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:onClick="viewClicked"
                     android:layout_weight="4"
+                    android:background="@drawable/button_bg_selector"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_ocean_whale"
-                    android:tag="ocean_whale" />
+                    android:tag="ocean_whale"
+                    android:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="match_parent"

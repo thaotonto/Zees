@@ -1,11 +1,16 @@
 package com.example.tonto.zees;
 
 import android.content.Intent;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Window;
+import android.widget.TextView;
 
 import com.example.tonto.zees.sounds.SoundManager;
 
@@ -18,6 +23,10 @@ import java.util.List;
 
 public class SplashScreenActivity extends AppCompatActivity {
     private boolean doneLoad = false;
+    private Window window;
+    private TextView loadingText;
+    private int count = 0;
+
     private String[] listSounds = {
             "rain_morning_rain",
             "rain_umbrella",
@@ -30,7 +39,7 @@ public class SplashScreenActivity extends AppCompatActivity {
             "rain_roof"
     };
 
-    private String[] listSounds2= {
+    private String[] listSounds2 = {
             "ocean_calm_waves",
             "ocean_waves",
             "ocean_seagulls",
@@ -98,12 +107,18 @@ public class SplashScreenActivity extends AppCompatActivity {
     };
 
 
-
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         SoundManager.loadSoundIntoList(this, listSounds);
+
+        loadingText = (TextView) findViewById(R.id.loading_text);
+
+        window = getWindow();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP)
+            window.setStatusBarColor(Color.BLACK);
 
         Runnable runnable = new Runnable() {
             @Override
@@ -117,12 +132,36 @@ public class SplashScreenActivity extends AppCompatActivity {
         Thread thread = new Thread(runnable);
         thread.start();
         CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
+
             @Override
             public void onTick(long millisUntilFinished) {
+                switch (count) {
+                    case 0: {
+                        loadingText.setText("Loading");
+                        count++;
+                    }
+                    break;
+                    case 1: {
+                        loadingText.setText("Loading.");
+                        count++;
+                    }
+                    break;
+                    case 2: {
+                        loadingText.setText("Loading..");
+                        count++;
+                    }
+                    break;
+                    case 3: {
+                        loadingText.setText("Loading...");
+                        count = 0;
+                    }
+                    break;
+                }
             }
 
             @Override
             public void onFinish() {
+                loadingText.setText("Finished");
                 Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
