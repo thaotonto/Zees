@@ -10,11 +10,13 @@ import android.view.ViewGroup;
 
 import com.example.tonto.zees.sounds.SoundManager;
 
+import java.io.Serializable;
+
 /**
  * Created by Hoang on 4/18/2017.
  */
 
-public class OceanSounds extends Fragment {
+public class OceanSounds extends Fragment implements Serializable {
     private String[] listSounds = {
             "calm_waves"
     };

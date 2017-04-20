@@ -11,24 +11,25 @@ import android.widget.ImageView;
 
 import com.example.tonto.zees.sounds.SoundManager;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
  * Created by Hoang on 4/18/2017.
  */
 
-public class RainSounds extends Fragment {
+public class RainSounds extends Fragment implements Serializable {
 //    private List<PressedKeyInfo> pressedKeyInfoList;
     private String[] listSounds = {
             "morning_rain",
-            "umbrella"
-//            "thunders",
-//            "light",
-//            "heavy",
-//            "distant_thunder",
-//            "tent",
-//            "window",
-//            "roof"
+            "umbrella",
+            "thunders",
+            "light",
+            "heavy",
+            "distant_thunder",
+            "tent",
+            "window",
+            "roof"
     };
 
     @Override
