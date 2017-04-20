@@ -55,7 +55,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
@@ -93,7 +95,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
@@ -132,7 +136,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
@@ -189,7 +195,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
             </LinearLayout>
 
             <View
@@ -227,7 +235,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
@@ -265,7 +275,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
@@ -321,7 +333,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 

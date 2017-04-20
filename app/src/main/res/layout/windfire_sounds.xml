@@ -36,11 +36,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3"
+                    android:background="@drawable/button_bg_selector"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_air_light_wind"
                     android:tag="air_light_wind"
-                    android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -54,7 +54,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
@@ -76,11 +78,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="4"
+                    android:background="@drawable/button_bg_selector"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_air_strong_wind"
                     android:tag="air_strong_wind"
-                    android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -94,7 +96,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
@@ -114,11 +118,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:background="@drawable/button_bg_selector"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_air_wind_mountain"
                     android:tag="air_wind_mountain"
-                    android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -132,7 +136,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
@@ -171,11 +177,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:background="@drawable/button_bg_selector"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_air_wind_door"
                     android:tag="air_wind_door"
-                    android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -189,7 +195,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
@@ -209,11 +217,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:background="@drawable/button_bg_selector"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_fire_campfire"
                     android:tag="fire_campfire"
-                    android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -227,7 +235,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
@@ -247,11 +257,11 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:background="@drawable/button_bg_selector"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_fire_fireplace"
                     android:tag="fire_fireplace"
-                    android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -265,7 +275,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:thumbTint="@android:color/white"
+                    android:progressTint="@android:color/white"/>
 
             </LinearLayout>
 
