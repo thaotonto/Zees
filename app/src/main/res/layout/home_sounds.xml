@@ -110,8 +110,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_home_hairdryer"
-                    android:tag="home_hair_dryer" />
+                    android:tag="home_hairdryer" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -164,6 +165,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_home_vacuum_cleaner"
                     android:tag="home_vacuum_cleaner" />
 
@@ -199,6 +201,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_home_cat_purring"
                     android:tag="home_cat_purring" />
 
@@ -234,6 +237,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_home_shower"
                     android:tag="home_shower" />
 
@@ -287,6 +291,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_home_washing_machine"
                     android:tag="home_washing_machine" />
 
@@ -321,6 +326,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_home_jacuzzi"
                     android:tag="home_jacuzzi" />
 
@@ -355,6 +361,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_home_fridge"
                     android:tag="home_fridge" />
 

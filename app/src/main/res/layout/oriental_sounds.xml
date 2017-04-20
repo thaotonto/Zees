@@ -110,6 +110,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_bell"
                     android:tag="oriental_bells" />
 
@@ -164,6 +165,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_om"
                     android:tag="oriental_om" />
 
@@ -199,6 +201,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_flute"
                     android:tag="oriental_flute" />
 
@@ -234,6 +237,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_didgeridoo"
                     android:tag="oriental_didgeridoo" />
 
@@ -287,6 +291,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_chimes"
                     android:tag="oriental_chimes" />
 
@@ -321,6 +326,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_string"
                     android:tag="oriental_string" />
 

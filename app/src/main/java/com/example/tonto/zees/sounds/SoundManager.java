@@ -2,6 +2,7 @@ package com.example.tonto.zees.sounds;
 
 import android.content.Context;
 import android.media.SoundPool;
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -29,6 +30,7 @@ public class SoundManager {
             listSoundID.put(soundPack[i - 1], STREAM_COUNT);
             STREAM_COUNT++;
             int soundPoolID = soundPool.load(context, resIDSound, 1);
+            Log.d("Load sound:",soundPack[i - 1]);
             soundIDList.add(soundPoolID);
         }
     }

@@ -110,6 +110,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_owl"
                     android:tag="nature_night_owls" />
 
@@ -164,6 +165,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_wolf"
                     android:tag="nature_night_wolves" />
 
@@ -199,6 +201,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_loons"
                     android:tag="nature_night_loons" />
 
@@ -234,6 +237,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_frog"
                     android:tag="nature_night_frogs" />
 
@@ -287,6 +291,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_coyote"
                     android:tag="nature_night_coyote" />
 
@@ -321,6 +326,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_coqui"
                     android:tag="nature_night_coqui" />
 

@@ -110,6 +110,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_day_farm"
                     android:tag="nature_day_farm" />
 
@@ -164,6 +165,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_day_cowbells"
                     android:tag="nature_day_cowbells" />
 
@@ -199,6 +201,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_day_sheep"
                     android:tag="nature_day_sheep" />
 
@@ -234,6 +237,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_day_horse"
                     android:tag="nature_day_horse" />
 
@@ -287,6 +291,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_day_eagle"
                     android:tag="nature_day_eagle" />
 
@@ -321,6 +326,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
+                    android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_day_turtledove"
                     android:tag="nature_day_turtledove" />
 
@@ -355,6 +361,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="4"
+                        android:onClick="viewClicked"
                         android:src="@drawable/ic_nature_day_cicadas"
                         android:tag="nature_day_cicadas" />
 

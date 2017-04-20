@@ -16,7 +16,8 @@ import java.util.List;
  * Created by Hoang on 4/19/2017.
  */
 
-public class SplashScreenActivity extends AppCompatActivity{
+public class SplashScreenActivity extends AppCompatActivity {
+    private boolean doneLoad = false;
     private String[] listSounds = {
             "rain_morning_rain",
             "rain_umbrella",
@@ -26,7 +27,10 @@ public class SplashScreenActivity extends AppCompatActivity{
             "rain_distant_thunder",
             "rain_tent",
             "rain_window",
-            "rain_roof",
+            "rain_roof"
+    };
+
+    private String[] listSounds2= {
             "ocean_calm_waves",
             "ocean_waves",
             "ocean_seagulls",
@@ -38,60 +42,62 @@ public class SplashScreenActivity extends AppCompatActivity{
             "water_brook",
             "water_creek",
             "water_waterfall",
-//            "nature_night_crickets",
-//            "nature_night_grasshoppers",
-//            "nature_night_owls",
-//            "nature_night_wolves",
-//            "nature_night_loons",
-//            "nature_night_frogs",
-//            "nature_night_coyote",
-//            "nature_night_coqui",
-//            "nature_day_blackbirds",
-//            "nature_day_crows",
-//            "nature_day_farm",
-//            "nature_day_cowbells",
-//            "nature_day_sheep",
-//            "nature_day_horse",
-//            "nature_day_eagle",
-//            "nature_day_turtledove",
-//            "nature_day_cicadas",
-//            "air_light_wind",
-//            "air_strong_wind",
-//            "air_wind_mountain",
-//            "air_wind_door",
-//            "fire_campfire",
-//            "fire_fireplace",
-//            "music_piano",
-//            "music_guitar",
-//            "music_violin",
-//            "music_harp",
-//            "music_flute",
-//            "oriental_bowls",
-//            "oriental_gong",
-//            "oriental_bells",
-//            "oriental_om",
-//            "oriental_flute",
-//            "oriental_didgeridoo",
-//            "oriental_chimes",
-//            "oriental_string",
-//            "city_musician",
-//            "city_coffee_shop",
-//            "city_fountain",
-//            "city_children",
-//            "city_traffic",
-//            "city_subway",
-//            "city_works",
-//            "city_train_station",
-//            "home_fan",
-//            "home_air_conditioner",
-//            "home_hair_dryer",
-//            "home_vacuum_cleaner",
-//            "home_cat_purring",
-//            "home_shower",
-//            "home_washing_machine",
-//            "home_jacuzzi",
-//            "home_fridge"
+            "nature_night_crickets",
+            "nature_night_grasshoppers",
+            "nature_night_owls",
+            "nature_night_wolves",
+            "nature_night_loons",
+            "nature_night_frogs",
+            "nature_night_coyote",
+            "nature_night_coqui",
+            "nature_day_blackbirds",
+            "nature_day_crows",
+            "nature_day_farm",
+            "nature_day_cowbells",
+            "nature_day_sheep",
+            "nature_day_horse",
+            "nature_day_eagle",
+            "nature_day_turtledove",
+            "nature_day_cicadas",
+            "air_light_wind",
+            "air_strong_wind",
+            "air_wind_mountain",
+            "air_wind_door",
+            "fire_campfire",
+            "fire_fireplace",
+            "music_piano",
+            "music_guitar",
+            "music_violin",
+            "music_harp",
+            "music_flute",
+            "oriental_bowls",
+            "oriental_gong",
+            "oriental_bells",
+            "oriental_om",
+            "oriental_flute",
+            "oriental_didgeridoo",
+            "oriental_chimes",
+            "oriental_string",
+            "city_musician",
+            "city_coffee_shop",
+            "city_fountain",
+            "city_children",
+            "city_traffic",
+            "city_subway",
+            "city_works",
+            "city_train_station",
+            "home_fan",
+            "home_air_conditioner",
+            "home_hairdryer",
+            "home_vacuum_cleaner",
+            "home_cat_purring",
+            "home_shower",
+            "home_washing_machine",
+            "home_jacuzzi",
+            "home_fridge"
     };
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,8 +105,18 @@ public class SplashScreenActivity extends AppCompatActivity{
         setContentView(R.layout.activity_splash);
         SoundManager.loadSoundIntoList(this, listSounds);
 
-
-        CountDownTimer countDownTimer = new CountDownTimer(6000, 1000) {
+        Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                if (!doneLoad) {
+                    SoundManager.loadSoundIntoList(SplashScreenActivity.this, listSounds2);
+                    doneLoad = true;
+                }
+            }
+        };
+        Thread thread = new Thread(runnable);
+        thread.start();
+        CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
             @Override
             public void onTick(long millisUntilFinished) {
             }
@@ -114,5 +130,6 @@ public class SplashScreenActivity extends AppCompatActivity{
         };
 
         countDownTimer.start();
+
     }
 }

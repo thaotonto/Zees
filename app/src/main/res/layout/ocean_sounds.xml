@@ -72,6 +72,7 @@
                     android:id="@+id/ocean_waves"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:onClick="viewClicked"
                     android:layout_weight="4"
                     android:src="@drawable/ic_ocean_waves"
                     android:tag="ocean_waves" />
@@ -108,6 +109,7 @@
                     android:id="@+id/ocean_seagulls"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:onClick="viewClicked"
                     android:layout_weight="4"
                     android:src="@drawable/ic_ocean_seagulls"
                     android:tag="ocean_seagulls" />
@@ -161,6 +163,7 @@
                 <ImageView
                     android:id="@+id/ocean_diver"
                     android:layout_width="match_parent"
+                    android:onClick="viewClicked"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:src="@drawable/ic_ocean_scuba_diver"
@@ -196,6 +199,7 @@
                     android:id="@+id/ocean_dolphins"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:onClick="viewClicked"
                     android:layout_weight="4"
                     android:src="@drawable/ic_ocean_dolphin"
                     android:tag="ocean_dolphins" />
@@ -232,6 +236,7 @@
                     android:id="@+id/ocean_sailboat"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:onClick="viewClicked"
                     android:layout_weight="4"
                     android:src="@drawable/ic_ocean_sailboat"
                     android:tag="ocean_sailboat" />
@@ -285,6 +290,7 @@
                     android:id="@+id/ocean_whale"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:onClick="viewClicked"
                     android:layout_weight="4"
                     android:src="@drawable/ic_ocean_whale"
                     android:tag="ocean_whale" />
