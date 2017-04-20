@@ -18,23 +18,23 @@ import java.util.List;
  */
 
 public class RainSounds extends Fragment {
-//    private List<PressedKeyInfo> pressedKeyInfoList;
+    private String name = "rain";
     private String[] listSounds = {
             "morning_rain",
-            "umbrella"
-//            "thunders",
-//            "light",
-//            "heavy",
-//            "distant_thunder",
-//            "tent",
-//            "window",
-//            "roof"
+            "umbrella",
+            "thunders",
+            "light",
+            "heavy",
+            "distant_thunder",
+            "tent",
+            "window",
+            "roof"
     };
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SoundManager.loadSoundIntoList(getContext(), "rain", listSounds);
+        SoundManager.loadSoundIntoList(getContext(), name, listSounds);
     }
 
     @Nullable

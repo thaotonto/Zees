@@ -15,14 +15,21 @@ import com.example.tonto.zees.sounds.SoundManager;
  */
 
 public class OceanSounds extends Fragment {
+    private String name = "ocean";
     private String[] listSounds = {
-            "calm_waves"
+            "calm_waves",
+            "waves",
+            "seagulls",
+            "scuba_driver",
+            "dolphins",
+            "sailboat",
+            "whale"
     };
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SoundManager.loadSoundIntoList(getContext(), "ocean", listSounds);
+        SoundManager.loadSoundIntoList(getContext(), name, listSounds);
     }
 
     @Nullable
