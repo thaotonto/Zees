@@ -32,7 +32,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/river"
+                    android:id="@+id/water_river"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3"
@@ -48,7 +48,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_river"
+                    android:id="@+id/sb_water_river"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -70,7 +70,7 @@
 
                 <ImageView
 
-                    android:id="@+id/brook"
+                    android:id="@+id/water_brook"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="4"
@@ -86,7 +86,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_brook"
+                    android:id="@+id/sb_water_brook"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -106,7 +106,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/creek"
+                    android:id="@+id/water_creek"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -121,7 +121,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_creek"
+                    android:id="@+id/sb_water_creek"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -160,7 +160,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/waterfall"
+                    android:id="@+id/water_waterfall"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -175,7 +175,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_waterfall"
+                    android:id="@+id/sb_water_waterfall"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -207,7 +207,6 @@
                 android:layout_height="match_parent"
                 android:layout_weight="4"
                 android:orientation="vertical">
-
 
 
             </LinearLayout>

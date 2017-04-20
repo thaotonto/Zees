@@ -14,7 +14,7 @@ import static android.media.AudioManager.STREAM_MUSIC;
  */
 
 public class SoundManager {
-    private static int MAX_STREAMS = 90;
+    private static int MAX_STREAMS = 10;
     public static SoundPool soundPool = new SoundPool(MAX_STREAMS, STREAM_MUSIC, 0);
     public static ArrayList<Integer> soundIDList = new ArrayList<>();
     private static int STREAM_COUNT;
@@ -23,9 +23,9 @@ public class SoundManager {
     private static int streamID;
     private static ArrayList<String> playingSounds = new ArrayList<>();
 
-    public static void loadSoundIntoList(Context context, String soundPacket, String[] soundPack) {
+    public static void loadSoundIntoList(Context context, String[] soundPack) {
         for (int i = 1; i <= soundPack.length; i++) {
-            int resIDSound = context.getResources().getIdentifier(soundPacket + "_" + soundPack[i - 1], "raw", context.getPackageName());
+            int resIDSound = context.getResources().getIdentifier(soundPack[i - 1], "raw", context.getPackageName());
             listSoundID.put(soundPack[i - 1], STREAM_COUNT);
             STREAM_COUNT++;
             int soundPoolID = soundPool.load(context, resIDSound, 1);

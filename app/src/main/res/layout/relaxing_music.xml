@@ -32,7 +32,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/piano"
+                    android:id="@+id/music_piano"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3"
@@ -48,7 +48,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_piano"
+                    android:id="@+id/sb_music_piano"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -70,7 +70,7 @@
 
                 <ImageView
 
-                    android:id="@+id/guitar"
+                    android:id="@+id/music_guitar"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="4"
@@ -86,7 +86,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_guitar"
+                    android:id="@+id/sb_music_guitar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -106,7 +106,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/violin"
+                    android:id="@+id/music_violin"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -121,7 +121,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_violin"
+                    android:id="@+id/sb_music_violin"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -160,7 +160,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/harp"
+                    android:id="@+id/music_harp"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -175,7 +175,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_harp"
+                    android:id="@+id/sb_music_harp"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -195,7 +195,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/flute"
+                    android:id="@+id/music_flute"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -210,7 +210,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_flute"
+                    android:id="@+id/sb_music_flute"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"

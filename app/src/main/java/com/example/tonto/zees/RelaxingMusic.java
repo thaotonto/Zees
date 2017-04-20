@@ -7,16 +7,26 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.tonto.zees.sounds.SoundManager;
+
 import java.io.Serializable;
 
 /**
  * Created by Hoang on 4/18/2017.
  */
 
-public class RelaxingMusic extends Fragment implements Serializable {
+public class RelaxingMusic extends Fragment {
+    private String[] listSounds = {
+            "music_piano",
+            "music_guitar",
+            "music_violin",
+            "music_harp",
+            "music_flute"
+    };
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        SoundManager.loadSoundIntoList(getContext(), listSounds);
     }
 
     @Nullable

@@ -32,7 +32,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/fan"
+                    android:id="@+id/home_fan"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3"
@@ -48,7 +48,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_fan"
+                    android:id="@+id/sb_home_fan"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -70,7 +70,7 @@
 
                 <ImageView
 
-                    android:id="@+id/air_conditioner"
+                    android:id="@+id/home_air_conditioner"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="4"
@@ -86,7 +86,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_air_conditioner"
+                    android:id="@+id/sb_home_air_conditioner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -106,7 +106,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/hairdryer"
+                    android:id="@+id/home_hairdryer"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -121,7 +121,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_hairdryer"
+                    android:id="@+id/sb_home_hairdryer"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -160,7 +160,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/vacuum_cleaner"
+                    android:id="@+id/home_vacuum_cleaner"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -175,7 +175,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_vacuum_cleaner"
+                    android:id="@+id/sb_home_vacuum_cleaner"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -195,7 +195,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/cat_purring"
+                    android:id="@+id/home_cat_purring"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -210,7 +210,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_cat_purring"
+                    android:id="@+id/sb_home_cat_purring"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -230,7 +230,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/shower"
+                    android:id="@+id/home_shower"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -245,7 +245,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_shower"
+                    android:id="@+id/sb_home_shower"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -283,7 +283,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/washing_machine"
+                    android:id="@+id/home_washing_machine"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -298,7 +298,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_washing_machine"
+                    android:id="@+id/sb_home_washing_machine"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -317,7 +317,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/jacuzzi"
+                    android:id="@+id/home_jacuzzi"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -332,7 +332,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_jacuzzi"
+                    android:id="@+id/sb_home_jacuzzi"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -349,8 +349,9 @@
                 android:layout_height="match_parent"
                 android:layout_weight="4"
                 android:orientation="vertical">
+
                 <ImageView
-                    android:id="@+id/fridge"
+                    android:id="@+id/home_fridge"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -365,7 +366,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_fridge"
+                    android:id="@+id/sb_home_fridge"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"

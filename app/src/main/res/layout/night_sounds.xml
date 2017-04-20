@@ -32,13 +32,13 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/crickets"
+                    android:id="@+id/nature_night_crickets"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_nature_night_cricket"
-                    android:tag="nature_night_cricket" />
+                    android:tag="nature_night_crickets" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -48,7 +48,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_crickets"
+                    android:id="@+id/sb_nature_night_crickets"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -70,7 +70,7 @@
 
                 <ImageView
 
-                    android:id="@+id/grasshoppers"
+                    android:id="@+id/nature_night_grasshoppers"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="4"
@@ -86,7 +86,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_grasshoppers"
+                    android:id="@+id/sb_nature_night_grasshoppers"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -106,12 +106,12 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/owls"
+                    android:id="@+id/nature_night_owls"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:src="@drawable/ic_nature_night_owl"
-                    android:tag="nature_night_owl" />
+                    android:tag="nature_night_owls" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -121,7 +121,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_owls"
+                    android:id="@+id/sb_nature_night_owls"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -160,12 +160,12 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/wolves"
+                    android:id="@+id/nature_night_wolves"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:src="@drawable/ic_nature_night_wolf"
-                    android:tag="nature_night_wolf" />
+                    android:tag="nature_night_wolves" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -175,7 +175,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_wolves"
+                    android:id="@+id/sb_nature_night_wolves"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -195,7 +195,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/loon"
+                    android:id="@+id/nature_night_loons"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -210,7 +210,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_loons"
+                    android:id="@+id/sb_nature_night_loons"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -230,12 +230,12 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/frogs"
+                    android:id="@+id/nature_night_frogs"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
                     android:src="@drawable/ic_nature_night_frog"
-                    android:tag="nature_night_frog" />
+                    android:tag="nature_night_frogs" />
 
                 <TextView
                     android:layout_width="match_parent"
@@ -245,7 +245,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_frogs"
+                    android:id="@+id/sb_nature_night_frogs"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -283,7 +283,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/coyote"
+                    android:id="@+id/nature_night_coyote"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -298,7 +298,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_coyote"
+                    android:id="@+id/sb_nature_night_coyote"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -317,7 +317,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/coqui"
+                    android:id="@+id/nature_night_coqui"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -332,7 +332,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_coqui"
+                    android:id="@+id/sb_nature_night_coqui"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"

@@ -18,24 +18,23 @@ import java.util.List;
  * Created by Hoang on 4/18/2017.
  */
 
-public class RainSounds extends Fragment implements Serializable {
-//    private List<PressedKeyInfo> pressedKeyInfoList;
+public class RainSounds extends Fragment {
     private String[] listSounds = {
-            "morning_rain",
-            "umbrella",
-            "thunders",
-            "light",
-            "heavy",
-            "distant_thunder",
-            "tent",
-            "window",
-            "roof"
+            "rain_morning_rain",
+            "rain_umbrella",
+            "rain_thunders",
+            "rain_light",
+            "rain_heavy",
+            "rain_distant_thunder",
+            "rain_tent",
+            "rain_window",
+            "rain_roof"
     };
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        SoundManager.loadSoundIntoList(getContext(), "rain", listSounds);
+//        SoundManager.loadSoundIntoList(getContext(), listSounds);
     }
 
     @Nullable

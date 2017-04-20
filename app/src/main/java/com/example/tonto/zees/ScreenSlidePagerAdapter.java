@@ -17,13 +17,21 @@ import java.util.List;
 
 public class ScreenSlidePagerAdapter extends FragmentStatePagerAdapter {
     private MainActivity activity;
-    private List<Fragment> fragmentList;
+    private List<Fragment> fragmentList = new ArrayList<>();
 
-    public ScreenSlidePagerAdapter(FragmentManager fm, MainActivity activity,List<Fragment> fragmentList) {
+    public ScreenSlidePagerAdapter(FragmentManager fm, MainActivity activity) {
         super(fm);
         this.activity = activity;
-        this.fragmentList = fragmentList;
-
+        fragmentList.add(new RainSounds());
+        fragmentList.add(new OceanSounds());
+        fragmentList.add(new RiverSounds());
+        fragmentList.add(new NightSounds());
+        fragmentList.add(new CountrysideSounds());
+        fragmentList.add(new WindFireSounds());
+        fragmentList.add(new RelaxingMusic());
+        fragmentList.add(new OrientalSounds());
+        fragmentList.add(new CitySounds());
+        fragmentList.add(new HomeSounds());
     }
 
     @Override

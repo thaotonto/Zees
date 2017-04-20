@@ -32,7 +32,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/light_wind"
+                    android:id="@+id/air_light_wind"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="3"
@@ -48,7 +48,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_light_wind"
+                    android:id="@+id/sb_air_light_wind"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -70,7 +70,7 @@
 
                 <ImageView
 
-                    android:id="@+id/strong_wind"
+                    android:id="@+id/air_strong_wind"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_weight="4"
@@ -86,7 +86,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_strong_wind"
+                    android:id="@+id/sb_air_strong_wind"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -106,7 +106,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/mountain_wind"
+                    android:id="@+id/air_wind_mountain"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -121,7 +121,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_mountain_wind"
+                    android:id="@+id/sb_air_wind_mountain"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -160,7 +160,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/under_the_door"
+                    android:id="@+id/air_wind_door"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -175,7 +175,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_under_the_door"
+                    android:id="@+id/sb_air_wind_door"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -195,7 +195,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/campfire"
+                    android:id="@+id/fire_campfire"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -210,7 +210,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_campfire"
+                    android:id="@+id/sb_fire_campfire"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"
@@ -230,7 +230,7 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:id="@+id/fireplace"
+                    android:id="@+id/fire_fireplace"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_weight="4"
@@ -245,7 +245,7 @@
                     android:textColor="@android:color/white" />
 
                 <SeekBar
-                    android:id="@+id/sb_fireplace"
+                    android:id="@+id/sb_fire_fireplace"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="fill"

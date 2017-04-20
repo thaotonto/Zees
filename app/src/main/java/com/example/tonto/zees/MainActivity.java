@@ -39,7 +39,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private ViewPager mPager;
 
     private PagerAdapter mPagerAdapter;
-    private ArrayList fragmentList;
     private ImageView top;
     private TextView page;
     private TabLayout tabDots;
@@ -118,8 +117,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent intent = getIntent();
-        fragmentList = (ArrayList) intent.getSerializableExtra("FragmentList");
         page = (TextView) findViewById(R.id.page_title);
         page.setText(title[0]);
         top = (ImageView) findViewById(R.id.top);
@@ -137,7 +134,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
         mPager = (ViewPager) findViewById(R.id.view_pager);
-        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), this, fragmentList);
+        mPagerAdapter = new ScreenSlidePagerAdapter(getSupportFragmentManager(), this);
         mPager.setAdapter(mPagerAdapter);
         mPager.setPageTransformer(true, new PageTransformer());
         mPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
