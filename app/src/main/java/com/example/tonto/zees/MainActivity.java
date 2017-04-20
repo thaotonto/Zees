@@ -5,6 +5,8 @@ import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
+import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
@@ -20,6 +22,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,7 +34,9 @@ import android.widget.TextView;
 
 import com.example.tonto.zees.sounds.SoundManager;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -48,6 +53,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private Window window;
     private int currentButtonTint;
+    private static ArrayList<MediaPlayer> playingLargeSounds = new ArrayList<>();
+    private static ArrayList<MediaPlayer> createdMedia = new ArrayList<>();
+    private static ArrayList<String> playingLargeSoundsName = new ArrayList<>();
+    private static ArrayList<String> createdSounds = new ArrayList<>();
+
 
     private int[] images = {
             R.drawable.top_rain,
@@ -131,7 +141,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         setBackground(0);
 
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             setStatusbarColor(0);
         }
 
@@ -154,7 +164,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             public void onPageSelected(int position) {
                 setTop(position);
                 setBackground(position);
-                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP){
+                if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
                     setStatusbarColor(position);
                 }
                 currentButtonTint = Color.parseColor(statusBarColorCodes[position]);
@@ -250,7 +260,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public void setStatusbarColor(int position){
+    public void setStatusbarColor(int position) {
         window.setStatusBarColor(Color.parseColor(statusBarColorCodes[position]));
     }
 
@@ -260,14 +270,43 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         SeekBar seekBar = (SeekBar) findViewById(resID);
         if (v.isSelected()) {
             v.setSelected(false);
-            ((ImageView)v).setColorFilter(Color.WHITE);
+            ((ImageView) v).setColorFilter(Color.WHITE);
             seekBar.setVisibility(View.INVISIBLE);
-        }
-        else{
+            Iterator<String> iteratorName = playingLargeSoundsName.iterator();
+            Iterator<MediaPlayer> iteratorMedia = playingLargeSounds.iterator();
+            while (iteratorName.hasNext()) {
+                String name = iteratorName.next();
+                MediaPlayer mediaPlayer = iteratorMedia.next();
+                if (name.equals(v.getTag().toString())) {
+                    mediaPlayer.seekTo(0);
+                    mediaPlayer.pause();
+                    iteratorMedia.remove();
+                    iteratorName.remove();
+                }
+            }
+        } else {
             v.setSelected(true);
             seekBar.setVisibility(View.VISIBLE);
-            ((ImageView)v).setColorFilter(currentButtonTint);
+            ((ImageView) v).setColorFilter(currentButtonTint);
+            if (!createdSounds.contains(v.getTag().toString())) {
+                int id = getResources().getIdentifier(v.getTag().toString(), "raw", getPackageName());
+                MediaPlayer mediaPlayer = MediaPlayer.create(this, id);
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.start();
+                playingLargeSounds.add(mediaPlayer);
+                playingLargeSoundsName.add(v.getTag().toString());
+                createdSounds.add(v.getTag().toString());
+                createdMedia.add(mediaPlayer);
+            } else {
+                int index = createdSounds.indexOf(v.getTag().toString());
+                MediaPlayer mediaPlayer = createdMedia.get(index);
+                mediaPlayer.start();
+                playingLargeSounds.add(mediaPlayer);
+                playingLargeSoundsName.add(v.getTag().toString());
+
+            }
         }
-        SoundManager.playSound(v.getTag().toString());
     }
+
 }

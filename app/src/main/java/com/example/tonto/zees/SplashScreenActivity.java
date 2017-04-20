@@ -74,11 +74,11 @@ public class SplashScreenActivity extends AppCompatActivity {
             "air_wind_door",
             "fire_campfire",
             "fire_fireplace",
-            "music_piano",
-            "music_guitar",
-            "music_violin",
-            "music_harp",
-            "music_flute",
+//            "music_piano",
+//            "music_guitar",
+//            "music_violin",
+//            "music_harp",
+//            "music_flute",
             "oriental_bowls",
             "oriental_gong",
             "oriental_bells",
@@ -112,7 +112,6 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-        SoundManager.loadSoundIntoList(this, listSounds);
 
         loadingText = (TextView) findViewById(R.id.loading_text);
 
@@ -120,18 +119,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP)
             window.setStatusBarColor(Color.BLACK);
 
-        Runnable runnable = new Runnable() {
-            @Override
-            public void run() {
-                if (!doneLoad) {
-                    SoundManager.loadSoundIntoList(SplashScreenActivity.this, listSounds2);
-                    doneLoad = true;
-                }
-            }
-        };
-        Thread thread = new Thread(runnable);
-        thread.start();
-        CountDownTimer countDownTimer = new CountDownTimer(10000, 1000) {
+        CountDownTimer countDownTimer = new CountDownTimer(3000, 1000) {
 
             @Override
             public void onTick(long millisUntilFinished) {

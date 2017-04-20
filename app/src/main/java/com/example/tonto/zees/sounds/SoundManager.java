@@ -1,8 +1,11 @@
 package com.example.tonto.zees.sounds;
 
 import android.content.Context;
+import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.util.Log;
+
+import com.example.tonto.zees.MainActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -23,6 +26,7 @@ public class SoundManager {
     private static ArrayList<Integer> streamIDs = new ArrayList<>();
     private static int streamID;
     private static ArrayList<String> playingSounds = new ArrayList<>();
+    private static ArrayList<String> pausedSounds = new ArrayList<>();
 
     public static void loadSoundIntoList(Context context, String[] soundPack) {
         for (int i = 1; i <= soundPack.length; i++) {
@@ -30,14 +34,22 @@ public class SoundManager {
             listSoundID.put(soundPack[i - 1], STREAM_COUNT);
             STREAM_COUNT++;
             int soundPoolID = soundPool.load(context, resIDSound, 1);
-            Log.d("Load sound:",soundPack[i - 1]);
+            Log.d("Load sound:", soundPack[i - 1]);
             soundIDList.add(soundPoolID);
         }
     }
 
-
     public static void playSound(String string) {
-        boolean playing = false;
+        try {
+            streamID = soundPool.play(soundIDList.get(listSoundID.get(string)), 1.f, 1.f, 1, -1, 1.0f);
+            streamIDs.add(streamID);
+            playingSounds.add(string);
+        } catch (NullPointerException e) {
+
+        }
+    }
+
+    public static void stopSound(String string) {
         Iterator<String> iterator = playingSounds.iterator();
         Iterator<Integer> iteratorStreamIDs = streamIDs.iterator();
         while (iterator.hasNext()) {
@@ -45,20 +57,9 @@ public class SoundManager {
             String playingSound = iterator.next();
             if (playingSound.equals(string)) {
                 soundPool.stop(streamID);
-                playing = true;
                 iteratorStreamIDs.remove();
                 iterator.remove();
             }
         }
-        if (!playing) {
-            try {
-                streamID = soundPool.play(soundIDList.get(listSoundID.get(string)), 1.f, 1.f, 1, -1, 1.0f);
-                streamIDs.add(streamID);
-                playingSounds.add(string);
-            } catch (NullPointerException e){
-
-            }
-        }
     }
-
 }
