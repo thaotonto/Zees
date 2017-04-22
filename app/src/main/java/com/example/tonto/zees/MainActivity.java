@@ -266,6 +266,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         SeekBar seekBar = (SeekBar) findViewById(resID);
         if (v.isSelected()) {
             v.setSelected(false);
+            countSound--;
             ((ImageView) v).setColorFilter(Color.WHITE);
             seekBar.setVisibility(View.INVISIBLE);
             Iterator<String> iteratorName = playingLargeSoundsName.iterator();
@@ -278,9 +279,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 if (name.equals(v.getTag().toString())) {
                     mediaPlayer.seekTo(0);
                     mediaPlayer.pause();
-
                     mediaPlayer.release();
-                    countSound--;
                     iteratorSeekBar.remove();
                     iteratorMedia.remove();
                     iteratorName.remove();
