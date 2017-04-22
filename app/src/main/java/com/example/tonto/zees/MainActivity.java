@@ -1,14 +1,14 @@
 package com.example.tonto.zees;
 
-import android.content.Intent;
-import android.content.res.ColorStateList;
+import android.app.TimePickerDialog;
 import android.graphics.Color;
-import android.graphics.PorterDuff;
 import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
@@ -29,9 +29,12 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import java.util.ArrayList;
 import java.util.Iterator;
+
+import android.widget.TimePicker;
+
+import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -48,12 +51,21 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private Toolbar toolbar;
     private Window window;
     private int currentButtonTint;
+    private TextView reserved;
+    private long delayms;
+    //    private Timer timer;
+    private Thread timerThread;
+    private SeekBar sbMasterVol;
+    private ImageView iconMasterVol;
+    private TextView textMasterVol;
+    private AudioManager am;
+    private VolumeChangeObserver volumeChangeObserver;
+
     private static ArrayList<MediaPlayer> playingLargeSounds = new ArrayList<>();
     private static ArrayList<MediaPlayer> createdMedia = new ArrayList<>();
     private static ArrayList<String> playingLargeSoundsName = new ArrayList<>();
     private static ArrayList<String> createdSounds = new ArrayList<>();
     private static ArrayList<SeekBar> listenedSeekBar = new ArrayList<>();
-
     private int[] images = {
             R.drawable.top_rain,
             R.drawable.top_ocean,
@@ -118,12 +130,19 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             "City sounds",
             "Home sounds"
     };
+    private boolean timerEnabled = false;
+    private MenuItem timerItem;
 
     @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        //TODO
+        am = (AudioManager) getSystemService(AUDIO_SERVICE);
+        int volume_level = am.getStreamVolume(AudioManager.STREAM_MUSIC);
+        System.out.println("Volume LVL: " + volume_level);
 
         page = (TextView) findViewById(R.id.page_title);
         page.setText(title[0]);
@@ -136,6 +155,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         setBackground(0);
 
+        reserved = (TextView) findViewById(R.id.reserved);
+
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP) {
             setStatusbarColor(0);
         }
@@ -143,6 +164,41 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
 
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+
+        sbMasterVol = (SeekBar) findViewById(R.id.sb_master_vol);
+        iconMasterVol = (ImageView) findViewById(R.id.master_vol_icon);
+        textMasterVol = (TextView) findViewById(R.id.master_vol_text);
+        sbMasterVol.setMax(am.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
+        sbMasterVol.setProgress(volume_level);
+
+        if (sbMasterVol.getProgress() != 0) {
+            textMasterVol.setText(sbMasterVol.getProgress() + "");
+            iconMasterVol.setImageResource(R.drawable.ic_material_volume_on);
+        }
+
+        sbMasterVol.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (progress == 0) {
+                    iconMasterVol.setImageResource(R.drawable.ic_material_volume_off);
+                } else iconMasterVol.setImageResource(R.drawable.ic_material_volume_on);
+                textMasterVol.setText(progress + "");
+                am.setStreamVolume(AudioManager.STREAM_MUSIC, progress, 0);
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
+        });
+
+        volumeChangeObserver = new VolumeChangeObserver(new Handler(), sbMasterVol, this);
+        this.getApplicationContext().getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, volumeChangeObserver);
 
 
         mPager = (ViewPager) findViewById(R.id.view_pager);
@@ -186,6 +242,38 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        timerThread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                while (!timerThread.isInterrupted()) {
+                    //TODO
+                    if (timerEnabled == true) {
+                        try {
+                            Thread.sleep(1);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        delayms--;
+
+                        runOnUiThread(new Runnable() {
+                            int seconds = (int) (delayms / 1000) % 60;
+                            int minutes = (int) ((delayms / (1000 * 60)) % 60);
+                            int hours = (int) ((delayms / (1000 * 60 * 60)) % 24);
+
+                            @Override
+                            public void run() {
+                                reserved.setText(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+                                System.out.println(String.format("%02d:%02d:%02d", hours, minutes, seconds));
+                            }
+                        });
+
+                        if (delayms == 0) System.exit(0);
+                    }
+                }
+            }
+        });
+        timerThread.start();
     }
 
     @Override
@@ -213,7 +301,52 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+
+        if (id == R.id.action_timer) {
+            //TODO
+            timerItem = item;
+            if (timerEnabled == true) {
+                timerEnabled = false;
+                reserved.setVisibility(View.GONE);
+                timerItem.setIcon(R.drawable.ic_timer_white_48dp);
+            }
+//            if (timer != null) {
+//                timer.cancel();
+//                timer.purge();
+//                timer = null;
+//            }
+            TimePickerDialog timePickerDialog = new TimePickerDialog(this, 0, new TimePickerDialog.OnTimeSetListener() {
+                @Override
+                public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                    if (hourOfDay == 0 && minute == 0) {
+                        System.out.println("Invalid time");
+                    } else {
+                        //Don't do this
+//                        android.os.Handler handler = new android.os.Handler(new android.os.Handler.Callback() {
+//                            @Override
+//                            public boolean handleMessage(Message msg) {
+//                                if (msg.what == 0) {
+//                                    System.exit(0);
+//                                }
+//                                return false;
+//                            }
+//                        });
+//                        timer = new Timer();
+                        delayms = TimeUnit.HOURS.toMillis(hourOfDay) + TimeUnit.MINUTES.toMillis(minute);
+//                        ExitTask exitTask = new ExitTask(delayms, handler);
+//                        timer.schedule(exitTask, 1);
+                        reserved.setVisibility(View.VISIBLE);
+                        timerEnabled = true;
+                        timerItem.setIcon(R.drawable.ic_timer_off_white_48dp);
+                    }
+                }
+            }
+                    , 0, 0, true);
+            timePickerDialog.show();
+            return true;
+        }
+
+        if (id == R.id.action_light) {
             return true;
         }
 
@@ -287,13 +420,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         } else {
             if (countSound < MAX_SOUND) {
-            v.setSelected(true);
-                countSound ++;
+                v.setSelected(true);
+                countSound++;
 //            if (!listenedSeekBar.contains(seekBar)) {
 
 
 //            }
-            ((ImageView) v).setColorFilter(currentButtonTint);
+                ((ImageView) v).setColorFilter(currentButtonTint);
 //            if (!createdSounds.contains(v.getTag().toString())) {
 
                 int id = getResources().getIdentifier(v.getTag().toString(), "raw", getPackageName());
@@ -332,7 +465,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 });
                 listenedSeekBar.add(seekBar);
             } else {
-                Toast.makeText(MainActivity.this, "Can only play "+ MAX_SOUND + " sounds at once!",Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Can only play " + MAX_SOUND + " sounds at once!", Toast.LENGTH_SHORT).show();
             }
 //                createdSounds.add(v.getTag().toString());
 //                createdMedia.add(mediaPlayer);
@@ -347,9 +480,4 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            }
         }
     }
-
-    public void seekBarClicked() {
-
-    }
-
 }
