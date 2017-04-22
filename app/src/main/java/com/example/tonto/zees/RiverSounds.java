@@ -7,10 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.tonto.zees.sounds.SoundManager;
-
-import java.io.Serializable;
-
 /**
  * Created by Hoang on 4/18/2017.
  */

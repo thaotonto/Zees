@@ -6,16 +6,9 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.annotation.RequiresApi;
-import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Window;
 import android.widget.TextView;
-
-import com.example.tonto.zees.sounds.SoundManager;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by Hoang on 4/19/2017.
@@ -123,28 +116,28 @@ public class SplashScreenActivity extends AppCompatActivity {
 
             @Override
             public void onTick(long millisUntilFinished) {
-                switch (count) {
-                    case 0: {
-                        loadingText.setText("Loading");
-                        count++;
-                    }
-                    break;
-                    case 1: {
-                        loadingText.setText("Loading.");
-                        count++;
-                    }
-                    break;
-                    case 2: {
-                        loadingText.setText("Loading..");
-                        count++;
-                    }
-                    break;
-                    case 3: {
-                        loadingText.setText("Loading...");
-                        count = 0;
-                    }
-                    break;
-                }
+//                switch (count) {
+//                    case 0: {
+//                        loadingText.setText("Loading");
+//                        count++;
+//                    }
+//                    break;
+//                    case 1: {
+//                        loadingText.setText("Loading.");
+//                        count++;
+//                    }
+//                    break;
+//                    case 2: {
+//                        loadingText.setText("Loading..");
+//                        count++;
+//                    }
+//                    break;
+//                    case 3: {
+//                        loadingText.setText("Loading...");
+//                        count = 0;
+//                    }
+//                    break;
+//                }
             }
 
             @Override

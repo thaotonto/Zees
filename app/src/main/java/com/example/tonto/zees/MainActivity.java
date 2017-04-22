@@ -10,19 +10,15 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.RequiresApi;
-import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -31,18 +27,17 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.example.tonto.zees.sounds.SoundManager;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     public static final int NUM_PAGES = 10;
-
+    private int MAX_SOUND = 3;
+    private int countSound = 0;
     private ViewPager mPager;
 
     private PagerAdapter mPagerAdapter;
@@ -275,21 +270,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             seekBar.setVisibility(View.INVISIBLE);
             Iterator<String> iteratorName = playingLargeSoundsName.iterator();
             Iterator<MediaPlayer> iteratorMedia = playingLargeSounds.iterator();
+            Iterator<SeekBar> iteratorSeekBar = listenedSeekBar.iterator();
             while (iteratorName.hasNext()) {
                 String name = iteratorName.next();
+                iteratorSeekBar.next();
                 MediaPlayer mediaPlayer = iteratorMedia.next();
                 if (name.equals(v.getTag().toString())) {
                     mediaPlayer.seekTo(0);
                     mediaPlayer.pause();
+
+                    mediaPlayer.release();
+                    countSound--;
+                    iteratorSeekBar.remove();
                     iteratorMedia.remove();
                     iteratorName.remove();
                 }
             }
         } else {
+            if (countSound < MAX_SOUND) {
             v.setSelected(true);
-            seekBar.setProgress(50);
-            seekBar.setVisibility(View.VISIBLE);
-            if (!listenedSeekBar.contains(seekBar)) {
+                countSound ++;
+//            if (!listenedSeekBar.contains(seekBar)) {
+
+
+//            }
+            ((ImageView) v).setColorFilter(currentButtonTint);
+//            if (!createdSounds.contains(v.getTag().toString())) {
+
+                int id = getResources().getIdentifier(v.getTag().toString(), "raw", getPackageName());
+                MediaPlayer mediaPlayer = MediaPlayer.create(this, id);
+                mediaPlayer.setVolume(0.5f, 0.5f);
+                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                mediaPlayer.setLooping(true);
+                mediaPlayer.start();
+                playingLargeSounds.add(mediaPlayer);
+                playingLargeSoundsName.add(v.getTag().toString());
+
+                seekBar.setProgress(50);
+                seekBar.setVisibility(View.VISIBLE);
                 seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
                     @Override
                     public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -297,10 +315,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                         String seekBarName = seekBar.getResources().getResourceEntryName(seekBar.getId());
                         String subSeekBarName = seekBarName.substring(3);
                         System.out.println("SeekBar ID: " + subSeekBarName);
-                        int index = createdSounds.indexOf(subSeekBarName);
+                        int index = playingLargeSoundsName.indexOf(subSeekBarName);
                         float volume = (float) progress / 100;
                         System.out.println(String.format("Volume : %f", volume));
-                        createdMedia.get(index).setVolume(volume, volume);
+                        playingLargeSounds.get(index).setVolume(volume, volume);
                     }
 
                     @Override
@@ -314,28 +332,20 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                 });
                 listenedSeekBar.add(seekBar);
-            }
-            ((ImageView) v).setColorFilter(currentButtonTint);
-            if (!createdSounds.contains(v.getTag().toString())) {
-                int id = getResources().getIdentifier(v.getTag().toString(), "raw", getPackageName());
-                MediaPlayer mediaPlayer = MediaPlayer.create(this, id);
-                mediaPlayer.setVolume(0.5f, 0.5f);
-                mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-                mediaPlayer.setLooping(true);
-                mediaPlayer.start();
-                playingLargeSounds.add(mediaPlayer);
-                playingLargeSoundsName.add(v.getTag().toString());
-                createdSounds.add(v.getTag().toString());
-                createdMedia.add(mediaPlayer);
             } else {
-                int index = createdSounds.indexOf(v.getTag().toString());
-                System.out.println("created Sound tag: " + v.getTag().toString());
-                MediaPlayer mediaPlayer = createdMedia.get(index);
-                mediaPlayer.setVolume(0.5f, 0.5f);
-                mediaPlayer.start();
-                playingLargeSounds.add(mediaPlayer);
-                playingLargeSoundsName.add(v.getTag().toString());
+                Toast.makeText(MainActivity.this, "Can only play "+ MAX_SOUND + " sounds at once!",Toast.LENGTH_SHORT).show();
             }
+//                createdSounds.add(v.getTag().toString());
+//                createdMedia.add(mediaPlayer);
+//            } else {
+//                int index = createdSounds.indexOf(v.getTag().toString());
+//                System.out.println("created Sound tag: " + v.getTag().toString());
+//                MediaPlayer mediaPlayer = createdMedia.get(index);
+//                mediaPlayer.setVolume(0.5f, 0.5f);
+//                mediaPlayer.start();
+//                playingLargeSounds.add(mediaPlayer);
+//                playingLargeSoundsName.add(v.getTag().toString());
+//            }
         }
     }
 
