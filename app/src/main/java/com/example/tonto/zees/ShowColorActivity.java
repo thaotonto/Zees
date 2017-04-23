@@ -10,6 +10,7 @@ import android.widget.ImageView;
 public class ShowColorActivity extends AppCompatActivity {
 
     private ImageView backGround;
+    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
