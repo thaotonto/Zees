@@ -21,7 +21,7 @@ public class ChooseColorActivity extends AppCompatActivity {
     private int color = 1;
     private ArrayList<ImageView> colorList;
     private ImageView back;
-
+    //
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
