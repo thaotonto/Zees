@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 
@@ -62,10 +63,13 @@ public class LampActivity extends AppCompatActivity {
         int screen_brightness = (int) curBrightnessValue;
         seekBar.setProgress(screen_brightness);
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            int progress = 0;
+
             @Override
-            public void onProgressChanged(SeekBar seekBar, int progressValue, boolean fromUser) {
-                progress = progressValue;
+            public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
+                float BackLightValue = (float)arg1/255;
+                WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
+                layoutParams.screenBrightness = BackLightValue;
+                getWindow().setAttributes(layoutParams);
             }
 
             @Override
@@ -75,9 +79,7 @@ public class LampActivity extends AppCompatActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                android.provider.Settings.System.putInt(getContentResolver(),
-                        android.provider.Settings.System.SCREEN_BRIGHTNESS,
-                        progress);
+
             }
         });
     }

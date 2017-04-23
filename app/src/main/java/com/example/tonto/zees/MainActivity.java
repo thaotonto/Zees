@@ -40,7 +40,6 @@ import android.widget.TimePicker;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
-
     public static final int NUM_PAGES = 10;
     private int MAX_SOUND = 3;
     private int countSound = 0;
