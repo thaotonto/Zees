@@ -1,7 +1,9 @@
 package com.example.tonto.zees;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
-import android.content.ClipData;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -10,7 +12,6 @@ import android.media.MediaPlayer;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.RequiresApi;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.PagerAdapter;
@@ -20,7 +21,6 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.view.menu.MenuView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -32,7 +32,9 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 
 import android.widget.TimePicker;
@@ -66,6 +68,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private long offsetEnd;
     private boolean timerEnabled = false;
     private MenuItem timerItem;
+    private AlarmManager timerManager;
+    private PendingIntent timerIntent;
 
     private static ArrayList<MediaPlayer> playingLargeSounds = new ArrayList<>();
     private static ArrayList<MediaPlayer> createdMedia = new ArrayList<>();
@@ -141,6 +145,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if( getIntent().getBooleanExtra("Kill yourself", false)){
+            finish();
+            android.os.Process.killProcess(android.os.Process.myPid());
+            return;
+        }
+
+        timerManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+
 
         //TODO
         am = (AudioManager) getSystemService(AUDIO_SERVICE);
@@ -249,15 +262,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         timerThread = new Thread(new Runnable() {
             @Override
             public void run() {
-                while (!timerThread.isInterrupted()) {
+                while (true) {
                     //TODO
                     if (timerEnabled == true) {
                         try {
-                            Thread.sleep(1);
+                            Thread.sleep(1000);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        delayms--;
+                        delayms -= 1000;
 
                         runOnUiThread(new Runnable() {
                             int seconds = (int) (delayms / 1000) % 60;
@@ -271,7 +284,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             }
                         });
 
-                        if (delayms <= 0) System.exit(0);
+                        if (delayms <= 0) {
+//                            System.exit(0);
+                            timerThread.interrupt();
+                            timerEnabled = false;
+                        }
                     }
                 }
             }
@@ -311,14 +328,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             if (timerEnabled == true) {
                 timerEnabled = false;
                 reserved.setVisibility(View.GONE);
+                timerManager.cancel(timerIntent);
                 timerItem.setIcon(R.drawable.ic_timer_white_48dp);
+                delayms = 0;
             }
 //            if (timer != null) {
 //                timer.cancel();
 //                timer.purge();
 //                timer = null;
 //            }
-            TimePickerDialog timePickerDialog = new TimePickerDialog(this, 0, new TimePickerDialog.OnTimeSetListener() {
+            final TimePickerDialog timePickerDialog = new TimePickerDialog(this, 0, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     if (hourOfDay == 0 && minute == 0) {
@@ -335,10 +354,32 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //                            }
 //                        });
 //                        timer = new Timer();
+                        long curTime = System.currentTimeMillis();
                         delayms = TimeUnit.HOURS.toMillis(hourOfDay) + TimeUnit.MINUTES.toMillis(minute);
+                        System.out.println("Hour: " + hourOfDay + " Minute: " + minute + " Millis: " + delayms);
 //                        ExitTask exitTask = new ExitTask(delayms, handler);
 //                        timer.schedule(exitTask, 1);
                         reserved.setVisibility(View.VISIBLE);
+
+                        Intent intent = new Intent(getApplicationContext(), TimerReceiver.class);
+
+                        timerIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, 0);
+
+                        System.out.println("Time: " + curTime + delayms);
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTimeInMillis(curTime + delayms);
+
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss.SSS");
+
+                        System.out.println(formatter.format(calendar.getTime()));
+
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                            timerManager.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, curTime + delayms, timerIntent);
+                        }
+                        else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                            timerManager.setExact(AlarmManager.RTC_WAKEUP, curTime + delayms, timerIntent);
+                        }else timerManager.set(AlarmManager.RTC_WAKEUP, curTime + delayms, timerIntent);
+
                         timerEnabled = true;
                         timerItem.setIcon(R.drawable.ic_timer_off_white_48dp);
                     }
@@ -363,18 +404,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onPause() {
         //TODO
         super.onPause();
-        if (timerEnabled == true){
-            offsetStart = System.currentTimeMillis();
-        }
+//        if (timerEnabled == true) {
+//            offsetStart = System.currentTimeMillis();
+//        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        if (timerEnabled == true){
-            offsetEnd = System.currentTimeMillis();
-            delayms = delayms - (offsetEnd - offsetStart);
-        }
+//        if (timerEnabled == true) {
+//            offsetEnd = System.currentTimeMillis();
+//            delayms = delayms - (offsetEnd - offsetStart);
+//        }
     }
 
 
@@ -480,7 +521,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
                     @Override
                     public void onStartTrackingTouch(SeekBar seekBar) {
-                            //
+                        //
                     }
 
                     @Override

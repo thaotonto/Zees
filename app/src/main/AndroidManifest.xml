@@ -33,6 +33,8 @@
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity android:name=".ShowColorActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
+
+        <receiver android:name=".TimerReceiver"></receiver>
     </application>
 
 </manifest>
