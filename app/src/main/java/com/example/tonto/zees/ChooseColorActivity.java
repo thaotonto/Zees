@@ -52,7 +52,7 @@ public class ChooseColorActivity extends AppCompatActivity {
         }
         if (touch.isInside(back)) {
             if (touch.getAction() == ACTION_DOWN) {
-                Intent intent = new Intent(this, MainActivity.class);
+                Intent intent = new Intent(this, LampActivity.class);
                 intent.putExtra("COlOR TO SHOW", color);
                 startActivity(intent);
             }

@@ -63,6 +63,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private TextView textMasterVol;
     private AudioManager am;
     private VolumeChangeObserver volumeChangeObserver;
+    private long offsetStart;
+    private long offsetEnd;
+    private boolean timerEnabled = false;
+    private MenuItem timerItem;
 
     private static ArrayList<MediaPlayer> playingLargeSounds = new ArrayList<>();
     private static ArrayList<MediaPlayer> createdMedia = new ArrayList<>();
@@ -133,10 +137,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             "City sounds",
             "Home sounds"
     };
-    private boolean timerEnabled = false;
-    private MenuItem timerItem;
 
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -271,7 +272,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             }
                         });
 
-                        if (delayms == 0) System.exit(0);
+                        if (delayms <= 0) System.exit(0);
                     }
                 }
             }
@@ -357,6 +358,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    protected void onPause() {
+        //TODO
+        super.onPause();
+        if (timerEnabled == true){
+            offsetStart = System.currentTimeMillis();
+        }
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        if (timerEnabled == true){
+            offsetEnd = System.currentTimeMillis();
+            delayms = delayms - (offsetEnd - offsetStart);
+        }
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
