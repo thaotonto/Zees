@@ -1,4 +1,4 @@
-package com.example.tonto.zees;
+package com.example.tonto.zees.sounds;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -7,19 +7,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.tonto.zees.R;
+
 /**
  * Created by Hoang on 4/18/2017.
  */
 
-public class OceanSounds extends Fragment {
+public class HomeSounds extends Fragment {
     private String[] listSounds = {
-            "ocean_calm_waves",
-            "ocean_waves",
-            "ocean_seagulls",
-            "ocean_diver",
-            "ocean_dolphins",
-            "ocean_sailboat",
-            "ocean_whale"
+            "home_fan",
+            "home_air_conditioner",
+            "home_hair_dryer",
+            "home_vacuum_cleaner",
+            "home_cat_purring",
+            "home_shower",
+            "home_washing_machine",
+            "home_jacuzzi",
+            "home_fridge"
     };
 
     @Override
@@ -31,6 +35,6 @@ public class OceanSounds extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.ocean_sounds, container, false);
+        return inflater.inflate(R.layout.home_sounds, container, false);
     }
 }
