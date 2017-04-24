@@ -1,12 +1,19 @@
 package com.example.tonto.zees;
 
-import android.app.Activity;
-import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentStatePagerAdapter;
-import android.support.v4.view.ViewPager;
+
+import com.example.tonto.zees.sounds.CitySounds;
+import com.example.tonto.zees.sounds.CountrysideSounds;
+import com.example.tonto.zees.sounds.HomeSounds;
+import com.example.tonto.zees.sounds.NightSounds;
+import com.example.tonto.zees.sounds.OceanSounds;
+import com.example.tonto.zees.sounds.OrientalSounds;
+import com.example.tonto.zees.sounds.RainSounds;
+import com.example.tonto.zees.sounds.RelaxingMusic;
+import com.example.tonto.zees.sounds.RiverSounds;
+import com.example.tonto.zees.sounds.WindFireSounds;
 
 import java.util.ArrayList;
 import java.util.List;

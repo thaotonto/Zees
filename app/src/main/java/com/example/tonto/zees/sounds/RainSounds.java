@@ -1,4 +1,4 @@
-package com.example.tonto.zees;
+package com.example.tonto.zees.sounds;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -7,21 +7,23 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.tonto.zees.R;
+
 /**
  * Created by Hoang on 4/18/2017.
  */
 
-public class CountrysideSounds extends Fragment {
+public class RainSounds extends Fragment {
     private String[] listSounds = {
-            "nature_day_blackbirds",
-            "nature_day_crows",
-            "nature_day_farm",
-            "nature_day_cowbells",
-            "nature_day_sheep",
-            "nature_day_horse",
-            "nature_day_eagle",
-            "nature_day_turtledove",
-            "nature_day_cicadas"
+            "rain_morning_rain",
+            "rain_umbrella",
+            "rain_thunders",
+            "rain_light",
+            "rain_heavy",
+            "rain_distant_thunder",
+            "rain_tent",
+            "rain_window",
+            "rain_roof"
     };
 
     @Override
@@ -33,6 +35,8 @@ public class CountrysideSounds extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.countryside_sounds, container, false);
+        View view = inflater.inflate(R.layout.rain_sounds, container, false);
+        return view;
     }
+
 }

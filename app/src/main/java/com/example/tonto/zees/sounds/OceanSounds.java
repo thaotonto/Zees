@@ -1,4 +1,4 @@
-package com.example.tonto.zees;
+package com.example.tonto.zees.sounds;
 
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
@@ -7,16 +7,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.tonto.zees.R;
+
 /**
  * Created by Hoang on 4/18/2017.
  */
 
-public class RiverSounds extends Fragment {
+public class OceanSounds extends Fragment {
     private String[] listSounds = {
-            "water_river",
-            "water_brook",
-            "water_creek",
-            "water_waterfall"
+            "ocean_calm_waves",
+            "ocean_waves",
+            "ocean_seagulls",
+            "ocean_diver",
+            "ocean_dolphins",
+            "ocean_sailboat",
+            "ocean_whale"
     };
 
     @Override
@@ -28,6 +33,6 @@ public class RiverSounds extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.river_sounds, container, false);
+        return inflater.inflate(R.layout.ocean_sounds, container, false);
     }
 }
