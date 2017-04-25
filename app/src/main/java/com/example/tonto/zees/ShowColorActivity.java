@@ -57,6 +57,24 @@ public class ShowColorActivity extends AppCompatActivity {
             mVideoView.requestFocus();
             mVideoView.start();
         }
+        else if(mode==2)
+        {
+            backGround.setVisibility(View.INVISIBLE);
+            mVideoView.setVisibility(View.VISIBLE);
+            String uriPath=null;
+            uriPath = "android.resource://com.example.tonto.zees/"+R.raw.mood;
+
+            Uri uri = Uri.parse(uriPath);
+            mVideoView.setVideoURI(uri);
+            mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+                @Override
+                public void onPrepared(MediaPlayer mp) {
+                    mp.setLooping(true);
+                }
+            });
+            mVideoView.requestFocus();
+            mVideoView.start();
+        }
 
     }
 }
