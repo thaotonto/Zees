@@ -1,4 +1,4 @@
-package com.example.tonto.zees.Touches;
+package com.example.tonto.zees.touches;
 
 import android.view.View;
 

@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/alarm_background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background_rain" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar_alarm"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:elevation="4dp"
+            android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/reserved_alarm"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="5sp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="No alarm have been set"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+            <ListView
+                android:id="@+id/alarm_list"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="8"
+                android:divider="@android:color/transparent"
+                android:dividerHeight="5sp"
+                android:padding="5sp">
+
+            </ListView>
+
+            <ImageButton
+                android:id="@+id/add_alarm"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_margin="5sp"
+                android:layout_weight="1"
+                android:background="@drawable/pressable_button_bg_selector"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_alarm_add_white_48dp" />
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+</RelativeLayout>

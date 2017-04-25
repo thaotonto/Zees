@@ -1,4 +1,4 @@
-package com.example.tonto.zees;
+package com.example.tonto.zees.observers;
 
 import android.content.Context;
 import android.database.ContentObserver;

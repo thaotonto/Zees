@@ -1,4 +1,4 @@
-package com.example.tonto.zees;
+package com.example.tonto.zees.transformers;
 
 import android.support.v4.view.ViewPager;
 import android.view.View;

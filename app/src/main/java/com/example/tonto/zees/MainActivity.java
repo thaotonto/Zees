@@ -48,6 +48,12 @@ import com.example.tonto.zees.database.ZeesDatabase;
 
 import java.util.List;
 import java.util.StringTokenizer;
+
+import com.example.tonto.zees.adapters.ScreenSlidePagerAdapter;
+import com.example.tonto.zees.receivers.TimerReceiver;
+import com.example.tonto.zees.observers.VolumeChangeObserver;
+import com.example.tonto.zees.transformers.PageTransformer;
+
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -66,15 +72,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private int currentButtonTint;
     private TextView reserved;
     private long delayms;
-    //    private Timer timer;
     private Thread timerThread;
     private SeekBar sbMasterVol;
     private ImageView iconMasterVol;
     private TextView textMasterVol;
     private AudioManager am;
     private VolumeChangeObserver volumeChangeObserver;
-    private long offsetStart;
-    private long offsetEnd;
     private boolean timerEnabled = false;
     private MenuItem timerItem;
     private AlarmManager timerManager;
@@ -340,33 +343,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 timerItem.setIcon(R.drawable.ic_timer_white_48dp);
                 delayms = 0;
             }
-//            if (timer != null) {
-//                timer.cancel();
-//                timer.purge();
-//                timer = null;
-//            }
-            final TimePickerDialog timePickerDialog = new TimePickerDialog(this, 0, new TimePickerDialog.OnTimeSetListener() {
+            TimePickerDialog timePickerDialog = new TimePickerDialog(this, R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
                 @Override
                 public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
                     if (hourOfDay == 0 && minute == 0) {
                         System.out.println("Invalid time");
                     } else {
-                        //Don't do this
-//                        android.os.Handler handler = new android.os.Handler(new android.os.Handler.Callback() {
-//                            @Override
-//                            public boolean handleMessage(Message msg) {
-//                                if (msg.what == 0) {
-//                                    System.exit(0);
-//                                }
-//                                return false;
-//                            }
-//                        });
-//                        timer = new Timer();
                         long curTime = System.currentTimeMillis();
                         delayms = TimeUnit.HOURS.toMillis(hourOfDay) + TimeUnit.MINUTES.toMillis(minute);
                         System.out.println("Hour: " + hourOfDay + " Minute: " + minute + " Millis: " + delayms);
-//                        ExitTask exitTask = new ExitTask(delayms, handler);
-//                        timer.schedule(exitTask, 1);
                         reserved.setVisibility(View.VISIBLE);
 
                         Intent intent = new Intent(getApplicationContext(), TimerReceiver.class);
@@ -401,6 +386,12 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.action_light) {
             Intent intent = new Intent(this, LampActivity.class);
 
+            startActivity(intent);
+            return true;
+        }
+
+        if (id == R.id.action_alarm) {
+            Intent intent = new Intent(this, AlarmActivity.class);
             startActivity(intent);
             return true;
         }
@@ -455,7 +446,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 public void onClick(DialogInterface dialog, int which) {
                     stopAllSound();
                     StringTokenizer soundTokenizer = new StringTokenizer(arrayAdapter.getItem(which).getSounds(), "\n");
-                    StringTokenizer volumeTokenizer = new StringTokenizer(arrayAdapter.getItem(which).getVolume(),"\n");
+                    StringTokenizer volumeTokenizer = new StringTokenizer(arrayAdapter.getItem(which).getVolume(), "\n");
                     while (soundTokenizer.hasMoreTokens()) {
                         String sound = soundTokenizer.nextToken();
                         String volumeString = volumeTokenizer.nextToken();

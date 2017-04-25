@@ -3,6 +3,7 @@ package com.example.tonto.zees;
 import android.content.Context;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -16,6 +17,7 @@ import static com.example.tonto.zees.ChooseColorActivity.*;
 public class ShowColorActivity extends AppCompatActivity {
 
     private ImageView backGround;
+    private Window window;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,12 @@ public class ShowColorActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_show_color);
+        window = this.getWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(getResources().getColor(R.color.darkRain));
+        }
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         backGround= (ImageView)findViewById(R.id.iv_bg);
         VideoView mVideoView = (VideoView)findViewById(R.id.videoview);
         Bundle bundle= getIntent().getExtras();

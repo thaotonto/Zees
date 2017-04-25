@@ -1,9 +1,10 @@
-package com.example.tonto.zees;
+package com.example.tonto.zees.adapters;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
+import com.example.tonto.zees.MainActivity;
 import com.example.tonto.zees.sounds.CitySounds;
 import com.example.tonto.zees.sounds.CountrysideSounds;
 import com.example.tonto.zees.sounds.HomeSounds;

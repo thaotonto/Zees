@@ -1,8 +1,10 @@
-package com.example.tonto.zees;
+package com.example.tonto.zees.receivers;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+
+import com.example.tonto.zees.MainActivity;
 
 /**
  * Created by Hoang on 4/23/2017.

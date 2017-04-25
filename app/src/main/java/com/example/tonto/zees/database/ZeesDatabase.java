@@ -26,6 +26,26 @@ public class ZeesDatabase extends SQLiteAssetHelper {
             PRESET_VOLUME
     };
 
+    private static String ALARM_TABLE = "alarm";
+    private static String ALARM_NAME = "name";
+    private static String ALARM_DELAY = "delay";
+    private static String ALARM_DATE = "date";
+    private static String ALARM_TONE = "tone";
+    private static String ALARM_ENABLED = "enabled";
+    private static String ALARM_ID = "pending_id";
+
+    private static String[] ALARM_ALL_COLUMN = {
+            ALARM_NAME,
+            ALARM_DELAY,
+            ALARM_DATE,
+            ALARM_TONE,
+            ALARM_ENABLED
+    };
+
+    private static String[] ALARM_ID_ONLY = {
+            ALARM_ID
+    };
+
     public ZeesDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -45,5 +65,41 @@ public class ZeesDatabase extends SQLiteAssetHelper {
         cursor.close();
         db.close();
         return presets;
+    }
+
+    public List<Alarm> loadAllAlarm() {
+        List<Alarm> presets = new ArrayList<>();
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(ALARM_TABLE, ALARM_ALL_COLUMN, null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            String name = cursor.getString(cursor.getColumnIndex(ALARM_NAME));
+            String delay = cursor.getString(cursor.getColumnIndex(ALARM_DELAY));
+            String date = cursor.getString(cursor.getColumnIndex(ALARM_DATE));
+            String tone = cursor.getString(cursor.getColumnIndex(ALARM_TONE));
+            String enabled = cursor.getString(cursor.getColumnIndex(ALARM_ENABLED));
+            String id = cursor.getString(cursor.getColumnIndex(ALARM_ID));
+
+            Alarm alarm = new Alarm(name, delay, date, tone, enabled, id);
+            System.out.println(alarm);
+            presets.add(alarm);
+        }
+
+        cursor.close();
+        db.close();
+        return presets;
+    }
+
+    public boolean checkUniqueId(int idToCheck) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(ALARM_TABLE, ALARM_ID_ONLY, null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            String id = cursor.getString(cursor.getColumnIndex(ALARM_ID));
+            if (idToCheck == Integer.parseInt(id)) {
+                return false;
+            }
+        }
+        cursor.close();
+        db.close();
+        return true;
     }
 }

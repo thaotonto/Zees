@@ -1,15 +1,18 @@
 package com.example.tonto.zees;
 
 import android.content.Intent;
+import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.Window;
+import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.tonto.zees.Touches.Touch;
-import com.example.tonto.zees.Touches.TouchManager;
+import com.example.tonto.zees.touches.Touch;
+import com.example.tonto.zees.touches.TouchManager;
 
 import java.util.ArrayList;
 
@@ -31,10 +34,17 @@ public class ChooseColorActivity extends AppCompatActivity {
     private int mode = INFERNO;
     private TextView modeName;
     private int lastMode;
+    private Window window;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_choose_color);
+        window = this.getWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(getResources().getColor(R.color.darkRain));
+        }
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             color = bundle.getInt("PREV COLOR");

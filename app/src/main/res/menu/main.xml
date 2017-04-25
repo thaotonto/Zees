@@ -10,6 +10,13 @@
         app:showAsAction="always" />
 
     <item
+        android:id="@+id/action_alarm"
+        android:icon="@drawable/ic_alarm_white_48dp"
+        android:orderInCategory="100"
+        android:title="Set alarm"
+        app:showAsAction="always" />
+
+    <item
         android:id="@+id/action_timer"
         android:icon="@drawable/ic_timer_white_48dp"
         android:orderInCategory="100"

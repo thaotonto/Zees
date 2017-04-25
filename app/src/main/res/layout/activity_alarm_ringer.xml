@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/background_rain"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+    <TextView
+        android:id="@+id/alarm_name_ringer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/button_bg_selector"
+        android:layout_margin="5sp"
+        android:textSize="20sp"
+        android:textColor="@android:color/white"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/alarm_time_ringer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/button_bg_selector"
+        android:layout_margin="5sp"
+        android:textSize="25sp"
+        android:textColor="@android:color/white"
+        android:gravity="center" />
+
+    <ImageView
+        android:src="@drawable/ic_alarm_off_white_48dp"
+        android:id="@+id/turn_off_alarm"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@drawable/pressable_button_bg_selector"
+        android:scaleType="fitCenter"
+        android:layout_margin="5sp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>

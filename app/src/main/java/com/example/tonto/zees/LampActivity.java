@@ -1,18 +1,20 @@
 package com.example.tonto.zees;
 
 import android.content.Intent;
+import android.os.Build;
 import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.example.tonto.zees.Touches.TouchManager;
-import com.example.tonto.zees.Touches.Touch;
+import com.example.tonto.zees.touches.TouchManager;
+import com.example.tonto.zees.touches.Touch;
 
 import java.util.ArrayList;
 
@@ -42,11 +44,18 @@ public class LampActivity extends AppCompatActivity {
     private ImageView mood;
     private ImageView lava;
     private TextView text_mode;
+    private Window window;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lamp);
 
+        window = this.getWindow();
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            window.setStatusBarColor(getResources().getColor(R.color.darkRain));
+        }
+        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         ivColorChooserButon = (ImageView) findViewById(R.id.iv_Color_Chooser);
         ivGo = (ImageView) findViewById(R.id.iv_Go);
