@@ -1,9 +1,11 @@
 package com.example.tonto.zees;
 
 import android.app.AlarmManager;
+import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -27,6 +29,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -39,6 +42,12 @@ import java.util.Iterator;
 
 import android.widget.TimePicker;
 
+import com.example.tonto.zees.application.ZeesAplication;
+import com.example.tonto.zees.database.Preset;
+import com.example.tonto.zees.database.ZeesDatabase;
+
+import java.util.List;
+import java.util.StringTokenizer;
 import java.util.concurrent.TimeUnit;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -424,8 +433,42 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
-            // Handle the camera action
+        if (id == R.id.nav_preset) {
+            AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
+            builderSingle.setTitle(R.string.select_preset);
+            final ArrayAdapter<Preset> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item);
+            ZeesDatabase db = ZeesAplication.getInstance().getZeesDatabase();
+            final List<Preset> presets = db.loadAllPreset();
+            for (Preset preset : presets) {
+                arrayAdapter.add(preset);
+            }
+
+            builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+
+            builderSingle.setAdapter(arrayAdapter, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    stopAllSound();
+                    StringTokenizer soundTokenizer = new StringTokenizer(arrayAdapter.getItem(which).getSounds(), "\n");
+                    StringTokenizer volumeTokenizer = new StringTokenizer(arrayAdapter.getItem(which).getVolume(),"\n");
+                    while (soundTokenizer.hasMoreTokens()) {
+                        String sound = soundTokenizer.nextToken();
+                        String volumeString = volumeTokenizer.nextToken();
+                        int volume = Integer.parseInt(volumeString);
+                        int viewID = getResources().getIdentifier(sound, "id", getPackageName());
+                        int sbID = getResources().getIdentifier("sb_" + sound, "id", getPackageName());
+                        ImageView view = (ImageView) findViewById(viewID);
+                        SeekBar seekBar = (SeekBar) findViewById(sbID);
+                        playSound(view, seekBar, volume);
+                    }
+                }
+            });
+            builderSingle.show();
         } else if (id == R.id.nav_gallery) {
 
         } else if (id == R.id.nav_slideshow) {
@@ -539,22 +582,22 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void stopAllSound() {
-        SeekBar seekBar;
-        ImageView view;
+        countSound = 0;
+
         Iterator<String> iteratorName = playingLargeSoundsName.iterator();
         Iterator<MediaPlayer> iteratorMedia = playingLargeSounds.iterator();
         Iterator<SeekBar> iteratorSeekBar = listenedSeekBar.iterator();
         while (iteratorName.hasNext()) {
+            ImageView view;
             String name = iteratorName.next();
-            iteratorSeekBar.next();
             MediaPlayer mediaPlayer = iteratorMedia.next();
+            SeekBar seekBar = iteratorSeekBar.next();
             int viewID = getResources().getIdentifier(name, "id", getPackageName());
-            int sbID = getResources().getIdentifier("sb_" + name, "id", getPackageName());
             view = (ImageView) findViewById(viewID);
-            seekBar = (SeekBar) findViewById(sbID);
-            view.setSelected(false);
-            countSound--;
-            view.setColorFilter(Color.WHITE);
+            if (view != null) {
+                view.setSelected(false);
+                view.setColorFilter(Color.WHITE);
+            }
             seekBar.setVisibility(View.INVISIBLE);
 
             mediaPlayer.seekTo(0);

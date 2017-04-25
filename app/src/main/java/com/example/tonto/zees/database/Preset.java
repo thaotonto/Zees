@@ -9,9 +9,10 @@ public class Preset {
     private String sounds;
     private String volume;
 
-    public Preset(String name, String sounds) {
+    public Preset(String name, String sounds, String volume) {
         this.name = name;
         this.sounds = sounds;
+        this.volume = volume;
     }
 
     public String getName() {
@@ -24,5 +25,10 @@ public class Preset {
 
     public String getVolume() {
         return volume;
+    }
+
+    @Override
+    public String toString() {
+        return name;
     }
 }

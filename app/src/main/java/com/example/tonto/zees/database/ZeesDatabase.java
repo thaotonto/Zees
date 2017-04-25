@@ -22,7 +22,8 @@ public class ZeesDatabase extends SQLiteAssetHelper {
     private static String PRESET_VOLUME = "volume";
     private static String[] PRESET_ALL_COLUMN = {
             PRESET_NAME,
-            PRESET_SOUND
+            PRESET_SOUND,
+            PRESET_VOLUME
     };
 
     public ZeesDatabase(Context context) {
@@ -36,7 +37,8 @@ public class ZeesDatabase extends SQLiteAssetHelper {
         while (cursor.moveToNext()) {
             String name = cursor.getString(cursor.getColumnIndex(PRESET_NAME));
             String sound = cursor.getString(cursor.getColumnIndex(PRESET_SOUND));
-            Preset preset = new Preset(name, sound);
+            String volume = cursor.getString(cursor.getColumnIndex(PRESET_VOLUME));
+            Preset preset = new Preset(name, sound, volume);
             presets.add(preset);
         }
 
