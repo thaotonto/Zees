@@ -4,33 +4,13 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_preset"
-            android:icon="@drawable/abc_ic_menu_overflow_material"
-            android:title="Import" />
+            android:icon="@drawable/ic_view_list_black_48dp"
+            android:title="Preset" />
         <item
-            android:id="@+id/nav_gallery"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Gallery" />
-        <item
-            android:id="@+id/nav_slideshow"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="Slideshow" />
-        <item
-            android:id="@+id/nav_manage"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Tools" />
-    </group>
+            android:id="@+id/nav_custom"
+            android:icon="@drawable/ic_playlist_add_black_48dp"
+            android:title="Custom preset" />
 
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
-        </menu>
-    </item>
+    </group>
 
 </menu>
