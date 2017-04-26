@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.tonto.zees.database.Alarm;
+import com.example.tonto.zees.database.ZeesDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -43,7 +44,8 @@ public class AlarmRingerActivity extends AppCompatActivity {
         alarmName.setText(alarm.getName());
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(Long.parseLong(alarm.getDate()));
-        SQLiteDatabase db = AlarmActivity.zeesDatabase.getWritableDatabase();
+        ZeesDatabase zeesDatabase = new ZeesDatabase(this);
+        SQLiteDatabase db = zeesDatabase.getWritableDatabase();
         db.delete("alarm", "pending_id" + "='" + alarm.getPendingId() + "' ;", null);
         db.close();
         if (AlarmActivity.alarmList != null) {

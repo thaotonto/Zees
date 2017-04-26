@@ -122,6 +122,10 @@ public class AlarmAdapter extends ArrayAdapter {
 
                     alarm.setDate(calendar.getTimeInMillis() + "");
 
+                    SQLiteDatabase db = AlarmActivity.zeesDatabase.getWritableDatabase();
+                    db.execSQL("UPDATE alarm SET enabled = 'true' WHERE pending_id = '" + alarm.getPendingId()+"';");
+                    db.close();
+
                     Intent intent = new Intent(context.getApplicationContext(), AlarmReceiver.class);
                     intent.putExtra("Alarm Info", alarm);
                     PendingIntent pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), Integer.parseInt(alarm.getPendingId()), intent, 0);

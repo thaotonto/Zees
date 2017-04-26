@@ -38,13 +38,14 @@ public class LampActivity extends AppCompatActivity {
     private ArrayList<ImageView> buttonList;
     private int color = COLOR1;
     private SeekBar seekBar;
-    private int lava_mode= INFERNO;
-    private int mode=1;
+    private int lava_mode = INFERNO;
+    private int mode = 1;
     private ImageView simple;
     private ImageView mood;
     private ImageView lava;
     private TextView text_mode;
     private Window window;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,15 +60,15 @@ public class LampActivity extends AppCompatActivity {
 
         ivColorChooserButon = (ImageView) findViewById(R.id.iv_Color_Chooser);
         ivGo = (ImageView) findViewById(R.id.iv_Go);
-        simple=(ImageView) findViewById((R.id.button1));
-        mood=(ImageView) findViewById((R.id.button2));
-        lava=(ImageView) findViewById((R.id.button3));
-        text_mode=(TextView) findViewById(R.id.text_mode);
+        simple = (ImageView) findViewById((R.id.button1));
+        mood = (ImageView) findViewById((R.id.button2));
+        lava = (ImageView) findViewById((R.id.button3));
+        text_mode = (TextView) findViewById(R.id.text_mode);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             color = bundle.getInt("COlOR TO SHOW");
-            lava_mode=bundle.getInt("LAVA MODE TO SHOW");
-            mode= bundle.getInt("LAST MODE");
+            lava_mode = bundle.getInt("LAVA MODE TO SHOW");
+            mode = bundle.getInt("LAST MODE");
             text_mode.setText(setText(mode));
 
         }
@@ -93,7 +94,7 @@ public class LampActivity extends AppCompatActivity {
 
             @Override
             public void onProgressChanged(SeekBar arg0, int arg1, boolean arg2) {
-                float BackLightValue = (float)arg1/255;
+                float BackLightValue = (float) arg1 / 255;
                 WindowManager.LayoutParams layoutParams = getWindow().getAttributes();
                 layoutParams.screenBrightness = BackLightValue;
                 getWindow().setAttributes(layoutParams);
@@ -125,26 +126,20 @@ public class LampActivity extends AppCompatActivity {
                     setPressed(buttonList.get(i), false);
                 }
             }
-            if(touch.isInside(simple))
-            {
+            if (touch.isInside(simple)) {
                 text_mode.setText("NIGHT LIGHT");
-                mode=1;
-            }
-            else if (touch.isInside(mood))
-            {
+                mode = 1;
+            } else if (touch.isInside(mood)) {
                 text_mode.setText("MOOD LIGHT");
-                mode=2;
-            }
-            else if(touch.isInside(lava))
-            {
+                mode = 2;
+            } else if (touch.isInside(lava)) {
                 text_mode.setText("LAVA LIGHT");
-                mode=3;
-            }
-            else if (touch.isInside(ivColorChooserButon)) {
+                mode = 3;
+            } else if (touch.isInside(ivColorChooserButon)) {
                 Intent intent = new Intent(this, ChooseColorActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-                intent.putExtra("PREV COLOR",color);
-                intent.putExtra("LAST MODE",mode);
+                intent.putExtra("PREV COLOR", color);
+                intent.putExtra("LAST MODE", mode);
                 startActivity(intent);
                 setPressed(ivColorChooserButon, false);
 
@@ -153,12 +148,13 @@ public class LampActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, ShowColorActivity.class);
                 intent.putExtra("COlOR TO SHOW", color);
                 intent.putExtra("MODE TO SHOW", mode);
-                intent.putExtra("LAVA MODE TO SHOW",lava_mode);
+                intent.putExtra("LAVA MODE TO SHOW", lava_mode);
                 startActivity(intent);
             }
         }
         return super.onTouchEvent(event);
     }
+
     private void setPressed(ImageView view, boolean isPressed) {
         if (isPressed) {
 
@@ -174,15 +170,15 @@ public class LampActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this,MainActivity.class);
+        Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
     }
-    private String setText(int mode)
-    {
-        if(mode==1)
+
+    private String setText(int mode) {
+        if (mode == 1)
             return "NIGHT LIGHT";
-        else  if(mode==2)
+        else if (mode == 2)
             return "MOOD LIGHT";
         else
             return "LAVA LIGHT";

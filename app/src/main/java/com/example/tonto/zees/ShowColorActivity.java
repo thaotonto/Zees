@@ -18,6 +18,7 @@ public class ShowColorActivity extends AppCompatActivity {
 
     private ImageView backGround;
     private Window window;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,29 +32,26 @@ public class ShowColorActivity extends AppCompatActivity {
         }
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        backGround= (ImageView)findViewById(R.id.iv_bg);
-        VideoView mVideoView = (VideoView)findViewById(R.id.videoview);
-        Bundle bundle= getIntent().getExtras();
-        int color= bundle.getInt("COlOR TO SHOW");
-        int mode= bundle.getInt("MODE TO SHOW");
-        int lava_mode= bundle.getInt("LAVA MODE TO SHOW");
-        if(mode==1)
-        {
+        backGround = (ImageView) findViewById(R.id.iv_bg);
+        VideoView mVideoView = (VideoView) findViewById(R.id.videoview);
+        Bundle bundle = getIntent().getExtras();
+        int color = bundle.getInt("COlOR TO SHOW");
+        int mode = bundle.getInt("MODE TO SHOW");
+        int lava_mode = bundle.getInt("LAVA MODE TO SHOW");
+        if (mode == 1) {
             mVideoView.setVisibility(View.INVISIBLE);
             backGround.setVisibility(View.VISIBLE);
             Context context = backGround.getContext();
-            int id = context.getResources().getIdentifier("color"+color+"_bg", "drawable", context.getPackageName());
+            int id = context.getResources().getIdentifier("color" + color + "_bg", "drawable", context.getPackageName());
             backGround.setImageResource(id);
-        }
-        else if(mode==3)
-        {
+        } else if (mode == 3) {
             backGround.setVisibility(View.INVISIBLE);
             mVideoView.setVisibility(View.VISIBLE);
-            String uriPath=null;
-            if(lava_mode== INFERNO)
-                uriPath = "android.resource://com.example.tonto.zees/"+R.raw.inferno;
-            else if(lava_mode==WATER)
-                uriPath = "android.resource://com.example.tonto.zees/"+R.raw.water;
+            String uriPath = null;
+            if (lava_mode == INFERNO)
+                uriPath = "android.resource://com.example.tonto.zees/" + R.raw.inferno;
+            else if (lava_mode == WATER)
+                uriPath = "android.resource://com.example.tonto.zees/" + R.raw.water;
             Uri uri = Uri.parse(uriPath);
             mVideoView.setVideoURI(uri);
             mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -64,13 +62,11 @@ public class ShowColorActivity extends AppCompatActivity {
             });
             mVideoView.requestFocus();
             mVideoView.start();
-        }
-        else if(mode==2)
-        {
+        } else if (mode == 2) {
             backGround.setVisibility(View.INVISIBLE);
             mVideoView.setVisibility(View.VISIBLE);
-            String uriPath=null;
-            uriPath = "android.resource://com.example.tonto.zees/"+R.raw.mood;
+            String uriPath = null;
+            uriPath = "android.resource://com.example.tonto.zees/" + R.raw.mood;
 
             Uri uri = Uri.parse(uriPath);
             mVideoView.setVideoURI(uri);

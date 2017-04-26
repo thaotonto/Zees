@@ -35,6 +35,7 @@ public class ChooseColorActivity extends AppCompatActivity {
     private TextView modeName;
     private int lastMode;
     private Window window;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,7 +49,7 @@ public class ChooseColorActivity extends AppCompatActivity {
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
             color = bundle.getInt("PREV COLOR");
-            lastMode= bundle.getInt("LAST MODE");
+            lastMode = bundle.getInt("LAST MODE");
         }
         colorList = new ArrayList<>();
         colorList.add((ImageView) findViewById(R.id.color1));
@@ -60,7 +61,7 @@ public class ChooseColorActivity extends AppCompatActivity {
         colorList.add((ImageView) findViewById(R.id.color7));
         backward = (TextView) findViewById(R.id.backward);
         forward = (TextView) findViewById(R.id.forward);
-        modeName= (TextView) findViewById(R.id.lava_mode_name);
+        modeName = (TextView) findViewById(R.id.lava_mode_name);
         back = (TextView) findViewById(R.id.back1_button);
     }
 
@@ -89,29 +90,24 @@ public class ChooseColorActivity extends AppCompatActivity {
             } else if (touch.getAction() == ACTION_POINTER_UP || touch.getAction() == ACTION_UP) {
                 setPressed(backward, false);
             }
-        }
-         else if(touch.isInside(forward))
-        {
+        } else if (touch.isInside(forward)) {
             if (touch.getAction() == ACTION_DOWN || touch.getAction() == ACTION_POINTER_DOWN) {
-                if (mode +1 > NUMBER_OF_MODE) {
+                if (mode + 1 > NUMBER_OF_MODE) {
                     mode = 1;
                 } else
                     mode++;
                 modeName.setText(setModeName(mode));
                 setPressed(forward, true);
 
+            } else if (touch.getAction() == ACTION_POINTER_UP || touch.getAction() == ACTION_UP) {
+                setPressed(forward, false);
             }
-            else if(touch.getAction() == ACTION_POINTER_UP || touch.getAction() == ACTION_UP)
-            {
-                setPressed(forward,false);
-            }
-        }
-        else if (touch.isInside(back)) {
-            if (touch.getAction() == ACTION_DOWN||touch.getAction()==ACTION_POINTER_DOWN) {
+        } else if (touch.isInside(back)) {
+            if (touch.getAction() == ACTION_DOWN || touch.getAction() == ACTION_POINTER_DOWN) {
                 Intent intent = new Intent(this, LampActivity.class);
                 intent.putExtra("COlOR TO SHOW", color);
                 intent.putExtra("LAVA MODE TO SHOW", mode);
-                intent.putExtra("LAST MODE",lastMode);
+                intent.putExtra("LAST MODE", lastMode);
                 startActivity(intent);
             }
         }
@@ -135,11 +131,11 @@ public class ChooseColorActivity extends AppCompatActivity {
 
         }
     }
-    private String setModeName(int mode)
-    {
-        if(mode==INFERNO)
+
+    private String setModeName(int mode) {
+        if (mode == INFERNO)
             return "Inferno";
-        else if(mode== WATER)
+        else if (mode == WATER)
             return "Clouds on water";
         return null;
     }

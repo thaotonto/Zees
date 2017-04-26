@@ -30,28 +30,31 @@
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
-                android:id="@+id/reserved_alarm"
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:layout_margin="5sp"
-                android:layout_weight="1"
-                android:gravity="center"
-                android:text="No alarm have been set"
-                android:textColor="@android:color/white"
-                android:textSize="20sp"
-                android:visibility="gone" />
+                android:layout_weight="9">
 
-            <ListView
-                android:id="@+id/alarm_list"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:layout_weight="8"
-                android:divider="@android:color/transparent"
-                android:dividerHeight="5sp"
-                android:padding="5sp">
+                <TextView
+                    android:id="@+id/reserved_alarm"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_margin="5sp"
+                    android:gravity="center"
+                    android:text="No alarm have been set"
+                    android:textColor="@android:color/white"
+                    android:textSize="20sp"
+                    android:visibility="visible" />
 
-            </ListView>
+                <ListView
+                    android:id="@+id/alarm_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:divider="@android:color/transparent"
+                    android:dividerHeight="5sp"
+                    android:padding="5sp"></ListView>
+
+            </RelativeLayout>
 
             <ImageButton
                 android:id="@+id/add_alarm"

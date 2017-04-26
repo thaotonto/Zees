@@ -78,7 +78,7 @@ public class AlarmActivity extends AppCompatActivity {
         alarmList = zeesDatabase.loadAllAlarm();
         if (alarmList.isEmpty()) {
             reserved.setVisibility(View.VISIBLE);
-        }
+        } else reserved.setVisibility(View.GONE);
         listView = (ListView) findViewById(R.id.alarm_list);
         alarmAdapter = new AlarmAdapter(this, R.layout.alarm_element, alarmList);
         listView.setAdapter(alarmAdapter);
@@ -86,9 +86,6 @@ public class AlarmActivity extends AppCompatActivity {
         addAlarmButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if (!v.isSelected())
-//                    v.setSelected(true);
-//                else v.setSelected(false);
                 TimePickerDialog timePickerDialog = new TimePickerDialog(AlarmActivity.this, R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
                     @Override
                     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
@@ -116,6 +113,11 @@ public class AlarmActivity extends AppCompatActivity {
                         do {
                             id = randomId.nextInt(100);
                         } while (zeesDatabase.checkUniqueId(id) == false);
+
+                        if (zeesDatabase.checkUniqueDate(calendar.getTimeInMillis()) == false) {
+                            Toast.makeText(AlarmActivity.this, "This alarm has already been set", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
 
                         Alarm alarm = new Alarm("Alarm " + alarmNo, delayms + "", calendar.getTimeInMillis() + "", "Test", "true", id + "");
                         alarmNo++;
@@ -187,11 +189,14 @@ public class AlarmActivity extends AppCompatActivity {
         addAlarmButton.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-//                if (event.getActionMasked() == MotionEvent.ACTION_DOWN) {
-//                    v.setPressed(true);
-//                } else v.setPressed(false);
                 return false;
             }
         });
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        zeesDatabase.close();
     }
 }

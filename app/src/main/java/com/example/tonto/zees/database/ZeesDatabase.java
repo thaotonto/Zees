@@ -47,6 +47,10 @@ public class ZeesDatabase extends SQLiteAssetHelper {
             ALARM_ID
     };
 
+    private static String[] ALARM_DATE_ONLY = {
+            ALARM_DATE
+    };
+
     public ZeesDatabase(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -96,6 +100,20 @@ public class ZeesDatabase extends SQLiteAssetHelper {
         while (cursor.moveToNext()) {
             String id = cursor.getString(cursor.getColumnIndex(ALARM_ID));
             if (idToCheck == Integer.parseInt(id)) {
+                return false;
+            }
+        }
+        cursor.close();
+        db.close();
+        return true;
+    }
+
+    public boolean checkUniqueDate(long dateToCheck) {
+        SQLiteDatabase db = getReadableDatabase();
+        Cursor cursor = db.query(ALARM_TABLE, ALARM_DATE_ONLY, null, null, null, null, null);
+        while (cursor.moveToNext()) {
+            String date = cursor.getString(cursor.getColumnIndex(ALARM_DATE));
+            if (dateToCheck == Long.parseLong(date)) {
                 return false;
             }
         }
