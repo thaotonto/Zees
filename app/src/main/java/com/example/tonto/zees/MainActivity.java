@@ -4,9 +4,12 @@ import android.app.AlarmManager;
 import android.app.AlertDialog;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.res.Resources;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
@@ -30,7 +33,9 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -56,8 +61,11 @@ import com.example.tonto.zees.transformers.PageTransformer;
 
 import java.util.concurrent.TimeUnit;
 
+import static com.example.tonto.zees.AlarmActivity.zeesDatabase;
+
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public static final int NUM_PAGES = 10;
+    public ZeesDatabase zeesDatabase;
     private int MAX_SOUND = 3;
     private int countSound = 0;
     private ViewPager mPager;
@@ -425,7 +433,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         int id = item.getItemId();
 
         if (id == R.id.nav_preset) {
-            AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
+            AlertDialog.Builder builderSingle = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
             builderSingle.setTitle(R.string.select_preset);
             final ArrayAdapter<Preset> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item);
             ZeesDatabase db = ZeesAplication.getInstance().getZeesDatabase();
@@ -461,7 +469,54 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             });
             builderSingle.show();
         } else if (id == R.id.nav_custom) {
-
+            if (countSound == 0) {
+                Toast.makeText(MainActivity.this, "There is no sound playing!", Toast.LENGTH_SHORT).show();
+            } else {
+                AlertDialog.Builder builderSingle = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
+                builderSingle.setTitle("Save your playing sound ?");
+                builderSingle.setMessage("Enter name: ");
+                final EditText input = new EditText(MainActivity.this);
+                LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+                        LinearLayout.LayoutParams.MATCH_PARENT,
+                        LinearLayout.LayoutParams.MATCH_PARENT);
+                input.setLayoutParams(lp);
+                builderSingle.setView(input);
+                builderSingle.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+                builderSingle.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        String name = input.getText().toString();
+                        if (name.trim().isEmpty()) {
+                            Toast.makeText(MainActivity.this, "Please enter name!", Toast.LENGTH_SHORT).show();
+                        } else {
+                            zeesDatabase = new ZeesDatabase(MainActivity.this);
+                            String sound = "";
+                            String volume = "";
+                            SQLiteDatabase db = zeesDatabase.getWritableDatabase();
+                            Iterator<String> iteratorName = playingLargeSoundsName.iterator();
+                            Iterator<SeekBar> iteratorSeekBar = listenedSeekBar.iterator();
+                            sound = iteratorName.next();
+                            SeekBar seekBar = iteratorSeekBar.next();
+                            volume = seekBar.getProgress() + "";
+                            while (iteratorName.hasNext()) {
+                                sound = sound + "\n" + iteratorName.next();
+                                volume = volume + "\n" + iteratorSeekBar.next().getProgress();
+                            }
+                            ContentValues values = new ContentValues();
+                            values.put("name", name);
+                            values.put("sound", sound);
+                            values.put("volume", volume);
+                            db.insert("preset", null, values);
+                        }
+                    }
+                });
+                builderSingle.show();
+            }
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
