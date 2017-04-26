@@ -167,12 +167,16 @@ public class AlarmAdapter extends ArrayAdapter {
                     alarmList.get(alarmList.indexOf(buttonView.getTag())).setEnabled("false");
                     System.out.println("Pending Id: " + alarm.getPendingId());
 
+                    SQLiteDatabase db = AlarmActivity.zeesDatabase.getWritableDatabase();
+                    db.execSQL("UPDATE alarm SET enabled = 'false' WHERE pending_id = '" + alarm.getPendingId()+"';");
+                    db.close();
+
                     Intent intent = new Intent(context.getApplicationContext(), AlarmReceiver.class);
                     intent.putExtra("Alarm Info", alarm);
                     PendingIntent pendingIntent = PendingIntent.getBroadcast(context, Integer.parseInt(alarm.getPendingId()), intent, 0);
                     pendingIntent.cancel();
                     AlarmActivity.alarmManager.cancel(pendingIntent);
-                    Toast.makeText(context, "Alarm canceled", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(context, "Alarm canceled.", Toast.LENGTH_SHORT).show();
                 }
                 System.out.println("State: " + alarmList.get(alarmList.indexOf(buttonView.getTag())).getEnabled());
             }

@@ -39,7 +39,8 @@ public class ZeesDatabase extends SQLiteAssetHelper {
             ALARM_DELAY,
             ALARM_DATE,
             ALARM_TONE,
-            ALARM_ENABLED
+            ALARM_ENABLED,
+            ALARM_ID
     };
 
     private static String[] ALARM_ID_ONLY = {
