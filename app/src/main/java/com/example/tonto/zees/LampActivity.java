@@ -113,7 +113,8 @@ public class LampActivity extends AppCompatActivity {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        Touch touch = TouchManager.toTouch(event);
+//        Touch touch = TouchManager.toTouch(event);
+        Touch touch= TouchManager.toTouch(event);
         if (touch.getAction() == ACTION_DOWN || touch.getAction() == ACTION_POINTER_DOWN) {
             for (int i = 0; i < buttonList.size(); i++) {
                 if (touch.isInside(buttonList.get(i))) {

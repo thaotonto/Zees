@@ -1,6 +1,7 @@
 package com.example.tonto.zees;
 
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
@@ -52,6 +53,11 @@ public class ShowColorActivity extends AppCompatActivity {
                 uriPath = "android.resource://com.example.tonto.zees/" + R.raw.inferno;
             else if (lava_mode == WATER)
                 uriPath = "android.resource://com.example.tonto.zees/" + R.raw.water;
+            else if(lava_mode==CAMP)
+            {
+                uriPath="android.resource://com.example.tonto.zees/" + R.raw.fire;
+                this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+            }
             Uri uri = Uri.parse(uriPath);
             mVideoView.setVideoURI(uri);
             mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
@@ -62,6 +68,8 @@ public class ShowColorActivity extends AppCompatActivity {
             });
             mVideoView.requestFocus();
             mVideoView.start();
+
+
         } else if (mode == 2) {
             backGround.setVisibility(View.INVISIBLE);
             mVideoView.setVisibility(View.VISIBLE);

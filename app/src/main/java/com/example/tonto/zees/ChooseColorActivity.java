@@ -28,9 +28,11 @@ public class ChooseColorActivity extends AppCompatActivity {
     private TextView back;
     private TextView backward;
     private TextView forward;
-    public static final int NUMBER_OF_MODE = 2;
+    public static final int NUMBER_OF_MODE = 3;
     public static final int INFERNO = 1;
     public static final int WATER = 2;
+    public static final int CAMP = 3;
+
     private int mode = INFERNO;
     private TextView modeName;
     private int lastMode;
@@ -137,6 +139,8 @@ public class ChooseColorActivity extends AppCompatActivity {
             return "Inferno";
         else if (mode == WATER)
             return "Clouds on water";
+        else if(mode==CAMP)
+            return "CAMP FIRE";
         return null;
     }
 }
