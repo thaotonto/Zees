@@ -31,9 +31,10 @@ public class ShowColorActivity extends AppCompatActivity {
     private Thread thread;
     private Handler handler;
     MediaPlayer mp;
-     MediaPlayer mp1 ;
+    MediaPlayer mp1;
 
-    private Context context=this;
+    private Context context = this;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,11 +85,11 @@ public class ShowColorActivity extends AppCompatActivity {
                 mVideoView.start();
             } else {
                 mp = MediaPlayer.create(this, R.raw.big_thunder);
-                mp1= MediaPlayer.create(this, R.raw.thunder);
+                mp1 = MediaPlayer.create(this, R.raw.thunder);
                 backGround.setVisibility(View.VISIBLE);
                 mVideoView.setVisibility(View.INVISIBLE);
                 Context context = backGround.getContext();
-                int id = context.getResources().getIdentifier("color" + 1 + "_bg", "drawable", context.getPackageName());
+                int id = context.getResources().getIdentifier("thunder", "drawable", context.getPackageName());
                 backGround.setImageResource(id);
                 getCamera();
                 handler = new Handler();
@@ -158,66 +159,67 @@ public class ShowColorActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         handler.removeCallbacks(loop);
+        camera.release();
         super.onBackPressed();
 
     }
 
     private Runnable loop = new Runnable() {
         int i = 0;
-
+        int second=0;
         @Override
         public void run() {
-
-//                try {
-//                    Thread.sleep(4000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
             try {
 
                 i++;
-                Log.d("abc",i+"");
-                if (i % 200 == 0) {
-                        if(mp1.isPlaying())
-                            mp1.pause();
-                        mp.start();
-                        turnOnFlash();
-                } else if (i % 210 == 0)
-                        turnOffFlash();
-                    else if (i % 290 == 0) {
-                        if(mp.isPlaying())
-                        {
-                            mp.pause();
-                        }
-                        mp1.start();
-                        turnOnFlash();
-                        try {
-                            Thread.sleep(50);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        turnOffFlash();
-                        mp1.start();
-                        turnOnFlash();
-                        try {
-                            Thread.sleep(50);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        turnOffFlash();
-                        mp1.start();
-                        turnOnFlash();
-                        try {
-                            Thread.sleep(50);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-
-                        turnOffFlash();
-
+                if(i%50==0)
+                    second++;
+                Log.d("abc", second + " " +i);
+                if (second % 3 == 0&&i%50==0) {
+                    mp.seekTo(0);
+                    mp.start();
+                    turnOnFlash();
+                    try{
+                        thread.sleep(2000);
+                    }catch (Exception e)
+                    {
+                        e.printStackTrace();
                     }
+                    mp.pause();
+                    turnOffFlash();
+                }
+
+                else if (second % 5 == 0&&i%50==0) {
+                    mp1.seekTo(0);
+                    mp1.start();
+                    turnOnFlash();
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    turnOffFlash();
+
+
+                    turnOnFlash();
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    turnOffFlash();
+
+                    turnOnFlash();
+                    try {
+                        Thread.sleep(100);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                    turnOffFlash();
+
+                }
 
 
                 handler.postDelayed(this, 20);
