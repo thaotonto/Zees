@@ -37,6 +37,7 @@ public class ChooseColorActivity extends AppCompatActivity {
     private int mode = INFERNO;
     private TextView modeName;
     private int lastMode;
+    private int lastLavaMode;
     private Window window;
 
     @Override
@@ -53,6 +54,8 @@ public class ChooseColorActivity extends AppCompatActivity {
         if (bundle != null) {
             color = bundle.getInt("PREV COLOR");
             lastMode = bundle.getInt("LAST MODE");
+            lastLavaMode=bundle.getInt("LAST LAVA MODE");
+            mode=lastLavaMode;
         }
         colorList = new ArrayList<>();
         colorList.add((ImageView) findViewById(R.id.color1));
@@ -66,6 +69,7 @@ public class ChooseColorActivity extends AppCompatActivity {
         forward = (TextView) findViewById(R.id.forward);
         modeName = (TextView) findViewById(R.id.lava_mode_name);
         back = (TextView) findViewById(R.id.back1_button);
+        modeName.setText(setModeName(mode));
     }
 
     @Override

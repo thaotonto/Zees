@@ -141,6 +141,7 @@ public class LampActivity extends AppCompatActivity {
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 intent.putExtra("PREV COLOR", color);
                 intent.putExtra("LAST MODE", mode);
+                intent.putExtra("LAST LAVA MODE",lava_mode);
                 startActivity(intent);
                 setPressed(ivColorChooserButon, false);
 

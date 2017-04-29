@@ -1,13 +1,17 @@
 package com.example.tonto.zees;
 
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
 
 import android.hardware.Camera;
+import android.hardware.camera2.CameraAccessException;
+import android.hardware.camera2.CameraManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +26,7 @@ import static com.example.tonto.zees.ChooseColorActivity.*;
 
 public class ShowColorActivity extends AppCompatActivity {
 
+    private static final String TAG = "a";
     private ImageView backGround;
     private Window window;
     private Camera camera;
@@ -158,66 +163,66 @@ public class ShowColorActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        handler.removeCallbacks(loop);
-        camera.release();
+        if (handler != null)
+            handler.removeCallbacks(loop);
+        if(camera!=null)
+            camera.release();
         super.onBackPressed();
 
     }
 
     private Runnable loop = new Runnable() {
         int i = 0;
-        int second=0;
+        int second = 0;
+
         @Override
         public void run() {
             try {
 
                 i++;
-                if(i%50==0)
+                if (i % 50 == 0)
                     second++;
-                Log.d("abc", second + " " +i);
-                if (second % 3 == 0&&i%50==0) {
+                Log.d("abc", second + " " + i);
+                if (second % 3 == 0 && i % 50 == 0) {
                     mp.seekTo(0);
                     mp.start();
-                    turnOnFlash();
-                    try{
+                    turnOn();
+                    try {
                         thread.sleep(2000);
-                    }catch (Exception e)
-                    {
+                    } catch (Exception e) {
                         e.printStackTrace();
                     }
                     mp.pause();
-                    turnOffFlash();
-                }
-
-                else if (second % 5 == 0&&i%50==0) {
+                    turnOff();
+                } else if (second % 5 == 0 && i % 50 == 0) {
                     mp1.seekTo(0);
                     mp1.start();
-                    turnOnFlash();
+                    turnOn();
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
 
-                    turnOffFlash();
+                    turnOff();
 
 
-                    turnOnFlash();
+                    turnOn();
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
 
-                    turnOffFlash();
+                    turnOff();
 
-                    turnOnFlash();
+                    turnOn();
                     try {
                         Thread.sleep(100);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
-                    turnOffFlash();
+                    turnOff();
 
                 }
 
@@ -228,4 +233,43 @@ public class ShowColorActivity extends AppCompatActivity {
             }
         }
     };
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private static void handleActionTurnOnFlashLight(Context context) {
+        try {
+
+            CameraManager manager = null;
+            manager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
+            String[] list = manager.getCameraIdList();
+            manager.setTorchMode(list[0], true);
+        } catch (CameraAccessException cae) {
+            Log.e(TAG, cae.getMessage());
+            cae.printStackTrace();
+        }
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.M)
+    private static void handleActionTurnOffFlashLight(Context context) {
+        try {
+            CameraManager manager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
+            manager.setTorchMode(manager.getCameraIdList()[0], false);
+        } catch (CameraAccessException cae) {
+            Log.e(TAG, cae.getMessage());
+            cae.printStackTrace();
+        }
+    }
+
+    private void turnOn() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            handleActionTurnOnFlashLight(this);
+        else
+            turnOnFlash();
+    }
+
+    private void turnOff() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M)
+            handleActionTurnOffFlashLight(this);
+        else
+            turnOffFlash();
+    }
 }
