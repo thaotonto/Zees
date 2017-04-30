@@ -404,7 +404,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         if (id == R.id.action_light) {
             Intent intent = new Intent(this, LampActivity.class);
-
+            intent.putExtra("Position", currentPosition);
             startActivity(intent);
             overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
             return true;

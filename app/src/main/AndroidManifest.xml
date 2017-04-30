@@ -33,8 +33,10 @@
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <activity android:name=".LampActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
+        <activity
+            android:label="Lamp"
+            android:name=".LampActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
         <activity android:name=".ChooseColorActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
         <activity android:name=".ShowColorActivity"
