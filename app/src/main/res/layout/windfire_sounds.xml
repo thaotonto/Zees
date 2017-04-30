@@ -9,9 +9,13 @@
     <!--android:layout_height="0dp"-->
     <!--android:layout_weight="0.5"></View>-->
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <LinearLayout
@@ -29,25 +33,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/air_light_wind"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="4"
                     android:background="@drawable/button_bg_selector"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_air_light_wind"
                     android:tag="air_light_wind"
-                    android:tint="@android:color/white" />
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Light wind"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_air_light_wind"
@@ -70,26 +78,30 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
 
                     android:id="@+id/air_strong_wind"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="4"
                     android:background="@drawable/button_bg_selector"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_air_strong_wind"
                     android:tag="air_strong_wind"
-                    android:tint="@android:color/white" />
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Strong wind"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_air_strong_wind"
@@ -111,25 +123,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/air_wind_mountain"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:background="@drawable/button_bg_selector"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_air_wind_mountain"
                     android:tag="air_wind_mountain"
-                    android:tint="@android:color/white" />
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Mountain wind"
-                    android:textColor="@android:color/white" />
+                    android:text="Mountain"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_air_wind_mountain"
@@ -170,25 +186,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/air_wind_door"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:background="@drawable/button_bg_selector"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_air_wind_door"
                     android:tag="air_wind_door"
-                    android:tint="@android:color/white" />
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Under the door"
-                    android:textColor="@android:color/white" />
+                    android:text="Under door"
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_air_wind_door"
@@ -210,25 +230,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/fire_campfire"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:background="@drawable/button_bg_selector"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_fire_campfire"
                     android:tag="fire_campfire"
-                    android:tint="@android:color/white" />
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Campfire"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_fire_campfire"
@@ -250,25 +274,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/fire_fireplace"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:background="@drawable/button_bg_selector"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_fire_fireplace"
                     android:tag="fire_fireplace"
-                    android:tint="@android:color/white" />
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Fireplace"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_fire_fireplace"
@@ -354,5 +382,7 @@
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="0dp"-->
     <!--android:layout_weight="0.2"></View>-->
+
+    </ScrollView>
 
 </LinearLayout>

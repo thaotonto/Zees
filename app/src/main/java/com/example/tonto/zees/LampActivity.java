@@ -175,6 +175,7 @@ public class LampActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
         startActivity(intent);
+        overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
     }
 
     private String setText(int mode) {

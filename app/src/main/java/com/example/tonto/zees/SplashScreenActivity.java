@@ -148,6 +148,7 @@ public class SplashScreenActivity extends AppCompatActivity {
                 Intent intent = new Intent(SplashScreenActivity.this, MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK );
                 startActivity(intent);
+                overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
             }
         };
 

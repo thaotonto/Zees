@@ -116,6 +116,7 @@ public class ChooseColorActivity extends AppCompatActivity {
                 intent.putExtra("LAVA MODE TO SHOW", mode);
                 intent.putExtra("LAST MODE", lastMode);
                 startActivity(intent);
+                overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
             }
         }
         return super.onTouchEvent(event);

@@ -46,11 +46,11 @@ public class AlarmRingerActivity extends AppCompatActivity {
         calendar.setTimeInMillis(Long.parseLong(alarm.getDate()));
         ZeesDatabase zeesDatabase = new ZeesDatabase(this);
         SQLiteDatabase db = zeesDatabase.getWritableDatabase();
-        db.delete("alarm", "pending_id" + "='" + alarm.getPendingId() + "' ;", null);
+//        db.delete("alarm", "pending_id" + "='" + alarm.getPendingId() + "' ;", null);
+        db.execSQL("UPDATE alarm SET enabled = 'false' WHERE pending_id = '" + alarm.getPendingId()+"';");
         db.close();
         if (AlarmActivity.alarmList != null) {
-            AlarmActivity.alarmList.remove(alarm);
-            AlarmActivity.alarmNo--;
+            AlarmActivity.alarmList.get(AlarmActivity.alarmList.indexOf(alarm)).setEnabled("false");
             if (AlarmActivity.alarmList.isEmpty())
                 AlarmActivity.reserved.setVisibility(View.VISIBLE);
             AlarmActivity.alarmAdapter.notifyDataSetChanged();
@@ -61,9 +61,6 @@ public class AlarmRingerActivity extends AppCompatActivity {
         alarmTurnOffBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                if(!v.isSelected())
-//                    v.setSelected(true);
-//                else v.setSelected(false);
                 mediaPlayer.stop();
                 mediaPlayer.release();
                 vibrator.cancel();
@@ -78,10 +75,6 @@ public class AlarmRingerActivity extends AppCompatActivity {
         alarmTurnOffBtn.setOnTouchListener(new View.OnTouchListener() {
             @Override
             public boolean onTouch(View v, MotionEvent event) {
-//                if (event.getActionMasked() == MotionEvent.ACTION_DOWN){
-//                    v.setPressed(true);
-//                }
-//                else v.setPressed(false);
                 return false;
             }
         });

@@ -69,7 +69,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private int MAX_SOUND = 3;
     private int countSound = 0;
     private ViewPager mPager;
+    private int currentPosition;
 
+    private LinearLayout masterLayout;
     private PagerAdapter mPagerAdapter;
     private ImageView top;
     private TextView page;
@@ -84,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private SeekBar sbMasterVol;
     private ImageView iconMasterVol;
     private TextView textMasterVol;
+    private ImageView masterPauseBtn;
     private AudioManager am;
     private VolumeChangeObserver volumeChangeObserver;
     private boolean timerEnabled = false;
@@ -183,6 +186,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         page.setText(title[0]);
         top = (ImageView) findViewById(R.id.top);
         background = (ImageView) findViewById(R.id.background);
+        currentPosition = 0;
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -205,6 +209,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         textMasterVol = (TextView) findViewById(R.id.master_vol_text);
         sbMasterVol.setMax(am.getStreamMaxVolume(AudioManager.STREAM_MUSIC));
         sbMasterVol.setProgress(volume_level);
+
+        masterLayout = (LinearLayout) findViewById(R.id.master_layout);
+        masterPauseBtn = (ImageView) findViewById(R.id.master_pause);
 
         if (sbMasterVol.getProgress() != 0) {
             textMasterVol.setText(sbMasterVol.getProgress() + "");
@@ -350,6 +357,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 timerManager.cancel(timerIntent);
                 timerItem.setIcon(R.drawable.ic_timer_white_48dp);
                 delayms = 0;
+                return true;
             }
             TimePickerDialog timePickerDialog = new TimePickerDialog(this, R.style.DialogTheme, new TimePickerDialog.OnTimeSetListener() {
                 @Override
@@ -395,12 +403,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, LampActivity.class);
 
             startActivity(intent);
+            overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
             return true;
         }
 
         if (id == R.id.action_alarm) {
             Intent intent = new Intent(this, AlarmActivity.class);
+            intent.putExtra("Position",currentPosition);
             startActivity(intent);
+            overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
             return true;
         }
 
@@ -530,6 +541,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     public void setBackground(int position) {
+        currentPosition = position;
         background.setImageResource(backgrounds[position]);
         toolbar.setBackground(actionBarColorCodes[position]);
     }
@@ -554,6 +566,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (countSound < MAX_SOUND) {
             v.setSelected(true);
             countSound++;
+            if (countSound > 0 && masterLayout.getVisibility() == View.GONE)
+                masterLayout.setVisibility(View.VISIBLE);
             ((ImageView) v).setColorFilter(currentButtonTint);
 
             int id = getResources().getIdentifier(v.getTag().toString(), "raw", getPackageName());
@@ -599,7 +613,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private void stopSound(View v, SeekBar seekBar) {
         v.setSelected(false);
         countSound--;
+        if (countSound == 0 && masterLayout.getVisibility() == View.VISIBLE)
+            masterLayout.setVisibility(View.GONE);
         ((ImageView) v).setColorFilter(Color.WHITE);
+
         seekBar.setVisibility(View.INVISIBLE);
         Iterator<String> iteratorName = playingLargeSoundsName.iterator();
         Iterator<MediaPlayer> iteratorMedia = playingLargeSounds.iterator();
@@ -621,6 +638,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     private void stopAllSound() {
         countSound = 0;
+        masterLayout.setVisibility(View.GONE);
 
         Iterator<String> iteratorName = playingLargeSoundsName.iterator();
         Iterator<MediaPlayer> iteratorMedia = playingLargeSounds.iterator();
@@ -660,6 +678,24 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         while (iteratorMedia.hasNext()) {
             MediaPlayer mediaPlayer = iteratorMedia.next();
             mediaPlayer.start();
+        }
+    }
+
+    public void masterStopClicked(View v) {
+        stopAllSound();
+        masterPauseBtn.setSelected(false);
+        masterPauseBtn.setImageResource(R.drawable.ic_material_pause);
+    }
+
+    public void masterPauseClicked(View v) {
+        if (v.isSelected()) {
+            v.setSelected(false);
+            ((ImageView) v).setImageResource(R.drawable.ic_material_pause);
+            resumeAllSound();
+        } else {
+            v.setSelected(true);
+            ((ImageView) v).setImageResource(R.drawable.ic_material_play);
+            pauseAllSound();
         }
     }
 }

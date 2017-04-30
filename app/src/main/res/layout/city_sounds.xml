@@ -3,7 +3,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
     <!--<View-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="0dp"-->
@@ -29,25 +32,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/city_musician"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_city_musician"
                     android:tag="city_musician"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Musician"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_musician"
@@ -70,26 +77,30 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
 
                     android:id="@+id/city_coffee_shop"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_city_coffee_shop"
                     android:tag="city_coffee_shop"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Coffee Shop"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_coffee_shop"
@@ -111,25 +122,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/city_fountain"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_city_fountain"
                     android:tag="city_fountain"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Fountain"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_fountain"
@@ -170,25 +185,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/city_children"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_city_children"
                     android:tag="city_children"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Children"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_children"
@@ -210,25 +229,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/city_traffic"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_city_traffic"
                     android:tag="city_traffic"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Traffic"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_traffic"
@@ -250,25 +273,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/city_subway"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_city_subway"
                     android:tag="city_subway"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Subway"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_subway"
@@ -308,25 +335,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/city_works"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_city_road_work"
                     android:tag="city_works"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Road work"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_works"
@@ -347,25 +378,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/city_train_station"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_city_station"
                     android:tag="city_train_station"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Train station"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_train_station"
@@ -405,5 +440,7 @@
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="0dp"-->
     <!--android:layout_weight="0.2"></View>-->
+
+    </ScrollView>
 
 </LinearLayout>

@@ -53,7 +53,8 @@
         android:layout_weight="1"
         android:gravity="center"
         android:textOff="Disabled"
-        android:textOn="Enabled" />
+        android:textOn="Enabled"
+        android:theme="@style/SCBSwitch"/>
 
     <ImageView
         android:id="@+id/delete_alarm"

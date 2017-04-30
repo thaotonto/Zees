@@ -168,7 +168,7 @@ public class ShowColorActivity extends AppCompatActivity {
         if(camera!=null)
             camera.release();
         super.onBackPressed();
-
+        overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
     }
 
     private Runnable loop = new Runnable() {

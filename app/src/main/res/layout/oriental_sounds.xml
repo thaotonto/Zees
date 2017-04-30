@@ -9,6 +9,10 @@
     <!--android:layout_height="0dp"-->
     <!--android:layout_weight="0.5"></View>-->
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,25 +33,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/oriental_bowls"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_bowl"
                     android:tag="oriental_bowls"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Bowls"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_bowls"
@@ -70,26 +78,30 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
 
                     android:id="@+id/oriental_gong"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_gong"
                     android:tag="oriental_gong"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Gong"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_gong"
@@ -111,25 +123,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/oriental_bells"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_bell"
                     android:tag="oriental_bells"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Bells"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_bells"
@@ -170,25 +186,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/oriental_om"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_om"
                     android:tag="oriental_om"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Om"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_om"
@@ -210,25 +230,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/oriental_flute"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_flute"
                     android:tag="oriental_flute"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Flute"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_flute"
@@ -250,25 +274,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/oriental_didgeridoo"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_didgeridoo"
                     android:tag="oriental_didgeridoo"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Didgeridoo"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_didgeridoo"
@@ -308,25 +336,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/oriental_chimes"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_chimes"
                     android:tag="oriental_chimes"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Chimes"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_chimes"
@@ -347,25 +379,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/oriental_string"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_oriental_string"
                     android:tag="oriental_string"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Guzheng"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_string"
@@ -405,5 +441,7 @@
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="0dp"-->
     <!--android:layout_weight="0.2"></View>-->
+
+    </ScrollView>
 
 </LinearLayout>

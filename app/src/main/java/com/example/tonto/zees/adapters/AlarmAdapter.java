@@ -95,7 +95,6 @@ public class AlarmAdapter extends ArrayAdapter {
                 db.close();
                 alarmList.remove(v.getTag());
                 if (alarmList.isEmpty()) AlarmActivity.reserved.setVisibility(View.VISIBLE);
-                AlarmActivity.alarmNo--;
                 notifyDataSetChanged();
                 Toast.makeText(context, "Alarm deleted", Toast.LENGTH_SHORT).show();
             }

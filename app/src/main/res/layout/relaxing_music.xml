@@ -9,6 +9,10 @@
     <!--android:layout_height="0dp"-->
     <!--android:layout_weight="0.5"></View>-->
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -29,25 +33,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/music_piano"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_music_piano"
                     android:tag="music_piano"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Piano"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_music_piano"
@@ -70,26 +78,30 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
 
                     android:id="@+id/music_guitar"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_music_guitar"
                     android:tag="music_guitar"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Guitar"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_music_guitar"
@@ -111,25 +123,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/music_violin"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_music_violin"
                     android:tag="music_violin"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Violin"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_music_violin"
@@ -170,25 +186,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/music_harp"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_music_harp"
                     android:tag="music_harp"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Harp"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_music_harp"
@@ -210,25 +230,29 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="4"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:gravity="center">
 
                 <ImageView
                     android:id="@+id/music_flute"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="0dp"
                     android:layout_weight="4"
                     android:onClick="viewClicked"
                     android:src="@drawable/ic_music_flute"
                     android:tag="music_flute"
                     android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"/>
+                    android:tint="@android:color/white"
+                    android:padding="12sp"
+                    android:scaleType="center"/>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
                     android:text="Flute"
-                    android:textColor="@android:color/white" />
+                    android:textColor="@android:color/white"
+                    android:layout_marginTop="2sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_music_flute"
@@ -330,5 +354,7 @@
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="0dp"-->
     <!--android:layout_weight="0.2"></View>-->
+
+    </ScrollView>
 
 </LinearLayout>

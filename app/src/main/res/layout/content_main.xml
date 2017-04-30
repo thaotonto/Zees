@@ -19,24 +19,23 @@
         android:layout_height="match_parent"
         android:orientation="vertical">
 
+        <TextView
+            android:id="@+id/reserved"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="16sp"
+            android:visibility="gone" />
+
         <ImageView
             android:id="@+id/top"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="2"
-            android:scaleType="fitXY"
-            android:src="@drawable/top_rain"/>
-
-        <TextView
-            android:id="@+id/reserved"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:layout_marginTop="10sp"
-            android:textColor="@android:color/white"
-            android:textSize="16sp"
-            android:visibility="gone"/>
-
+            android:scaleType="fitStart"
+            android:src="@drawable/top_rain" />
 
         <android.support.design.widget.TabLayout
             android:id="@+id/tabDots"
@@ -52,21 +51,60 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:paddingBottom="5sp"
             android:textColor="@android:color/white"
-            android:textSize="16sp"/>
+            android:textSize="16sp" />
 
-        <ScrollView
+
+        <android.support.v4.view.ViewPager
+            android:id="@+id/view_pager"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_weight="7"
-            android:fillViewport="true"
-            android:scrollbars="vertical">
+            android:layout_weight="7" />
 
-            <android.support.v4.view.ViewPager
-                android:id="@+id/view_pager"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </ScrollView>
+        <LinearLayout
+            android:id="@+id/master_layout"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"></View>
+
+            <ImageView
+                android:id="@+id/master_pause"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="masterPauseClicked"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_material_pause" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="2"></View>
+
+            <ImageView
+                android:id="@+id/master_stop"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:onClick="masterStopClicked"
+                android:scaleType="fitCenter"
+                android:src="@drawable/ic_material_stop" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="3"></View>
+
+        </LinearLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -75,36 +113,35 @@
 
             <ImageView
                 android:id="@+id/master_vol_icon"
-                android:src="@drawable/ic_material_volume_off"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
+                android:layout_marginLeft="10sp"
+                android:layout_weight="1"
                 android:scaleType="center"
-                android:layout_marginLeft="10sp"/>
+                android:src="@drawable/ic_material_volume_off" />
 
             <SeekBar
-                android:layout_gravity="center"
                 android:id="@+id/sb_master_vol"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center"
                 android:layout_weight="6"
-                android:thumbTint="@android:color/white"
+                android:progress="0"
                 android:progressTint="@android:color/white"
-                android:progress="0" />
+                android:thumbTint="@android:color/white" />
 
             <TextView
                 android:id="@+id/master_vol_text"
                 android:layout_width="0dp"
-                android:layout_weight="1"
                 android:layout_height="match_parent"
-                android:textSize="16sp"
+                android:layout_marginRight="10sp"
+                android:layout_weight="1"
                 android:gravity="center"
-                android:textColor="@android:color/white"
                 android:text="0"
-                android:layout_marginRight="10sp" />
+                android:textColor="@android:color/white"
+                android:textSize="16sp" />
 
         </LinearLayout>
-
 
 
     </LinearLayout>

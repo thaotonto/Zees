@@ -7,9 +7,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
@@ -42,7 +45,6 @@ public class AlarmActivity extends AppCompatActivity {
     public static ZeesDatabase zeesDatabase;
     public static List<Alarm> alarmList;
     private ImageButton addAlarmButton;
-    public static int alarmNo;
     public static AlarmManager alarmManager;
     public static AlarmAdapter alarmAdapter;
     private ListView listView;
@@ -50,26 +52,66 @@ public class AlarmActivity extends AppCompatActivity {
     private Window window;
     private Toolbar toolbar;
     public static TextView reserved;
+    private int currentPosition;
+    private int[] backgrounds = {
+            R.drawable.background_rain,
+            R.drawable.background_ocean,
+            R.drawable.background_water,
+            R.drawable.background_nature_night,
+            R.drawable.background_nature_day,
+            R.drawable.background_air_fire,
+            R.drawable.background_music,
+            R.drawable.background_oriental,
+            R.drawable.background_city,
+            R.drawable.background_home
+    };
+
+    private ColorDrawable[] actionBarColorCodes = {
+            new ColorDrawable(Color.parseColor("#ff597f9c")),
+            new ColorDrawable(Color.parseColor("#ff749daf")),
+            new ColorDrawable(Color.parseColor("#ff899bbf")),
+            new ColorDrawable(Color.parseColor("#ff1d3856")),
+            new ColorDrawable(Color.parseColor("#ff357829")),
+            new ColorDrawable(Color.parseColor("#ffc7b098")),
+            new ColorDrawable(Color.parseColor("#ffdc8686")),
+            new ColorDrawable(Color.parseColor("#ff8e91d4")),
+            new ColorDrawable(Color.parseColor("#ff01579b")),
+            new ColorDrawable(Color.parseColor("#ffaca08e"))
+    };
+
+    private String[] statusBarColorCodes = {
+            "#ff233a5a",
+            "#ff437b92",
+            "#ff6680a8",
+            "#ff0d1f37",
+            "#ff194c23",
+            "#ff6a594a",
+            "#ff573636",
+            "#ff3a3589",
+            "#ff263238",
+            "#ff7e7362"
+    };
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
+        currentPosition = getIntent().getIntExtra("Position",0);
+
         window = this.getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(getResources().getColor(R.color.darkRain));
-        }
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
         window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
 
         toolbar = (Toolbar) findViewById(R.id.toolbar_alarm);
         setSupportActionBar(toolbar);
-        toolbar.setBackgroundColor((getResources().getColor(R.color.lightRain)));
         toolbar.setTitleTextColor(getResources().getColor(android.R.color.white));
 
         background = (ImageView) findViewById(R.id.alarm_background);
-        background.setImageResource(R.drawable.background_rain);
+        setBackground(currentPosition);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            setStatusbarColor(currentPosition);
+        }
 
         reserved = (TextView) findViewById(R.id.reserved_alarm);
 
@@ -119,8 +161,7 @@ public class AlarmActivity extends AppCompatActivity {
                             return;
                         }
 
-                        Alarm alarm = new Alarm("Alarm " + alarmNo, delayms + "", calendar.getTimeInMillis() + "", "Test", "true", id + "");
-                        alarmNo++;
+                        Alarm alarm = new Alarm("Alarm", delayms + "", calendar.getTimeInMillis() + "", "Test", "true", id + "");
                         alarmList.add(alarm);
                         reserved.setVisibility(View.GONE);
 
@@ -198,5 +239,21 @@ public class AlarmActivity extends AppCompatActivity {
     protected void onDestroy() {
         super.onDestroy();
         zeesDatabase.close();
+    }
+
+    public void setBackground(int position) {
+        background.setImageResource(backgrounds[position]);
+        toolbar.setBackground(actionBarColorCodes[position]);
+    }
+
+    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+    public void setStatusbarColor(int position) {
+        window.setStatusBarColor(Color.parseColor(statusBarColorCodes[position]));
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
     }
 }
