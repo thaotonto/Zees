@@ -32,10 +32,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -66,11 +68,12 @@ import static com.example.tonto.zees.AlarmActivity.zeesDatabase;
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public static final int NUM_PAGES = 10;
     public ZeesDatabase zeesDatabase;
+    private boolean dismissDialog;
     private int MAX_SOUND = 3;
     private int countSound = 0;
     private ViewPager mPager;
     private int currentPosition;
-
+    private List<String> deleteItem;
     private LinearLayout masterLayout;
     private PagerAdapter mPagerAdapter;
     private ImageView top;
@@ -403,15 +406,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             Intent intent = new Intent(this, LampActivity.class);
 
             startActivity(intent);
-            overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
+            overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
             return true;
         }
 
         if (id == R.id.action_alarm) {
             Intent intent = new Intent(this, AlarmActivity.class);
-            intent.putExtra("Position",currentPosition);
+            intent.putExtra("Position", currentPosition);
             startActivity(intent);
-            overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
+            overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
             return true;
         }
 
@@ -501,6 +504,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 builderSingle.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
+                    }
+                });
+                final AlertDialog dialog = builderSingle.create();
+                dialog.show();
+                dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
                         String name = input.getText().toString();
                         if (name.trim().isEmpty()) {
                             Toast.makeText(MainActivity.this, "Please enter name!", Toast.LENGTH_SHORT).show();
@@ -523,11 +533,83 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                             values.put("sound", sound);
                             values.put("volume", volume);
                             db.insert("preset", null, values);
+                            dialog.dismiss();
                         }
                     }
                 });
-                builderSingle.show();
             }
+        } else if (id == R.id.nav_delete) {
+            deleteItem = new ArrayList<>();
+            AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
+            builderSingle.setTitle(R.string.delete_preset);
+            ArrayAdapter<Preset> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.select_dialog_multichoice);
+            ZeesDatabase db = ZeesAplication.getInstance().getZeesDatabase();
+            List<Preset> presets = db.loadAllPreset();
+            for (Preset preset : presets) {
+                arrayAdapter.add(preset);
+            }
+
+            builderSingle.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builderSingle.setPositiveButton("Delete", null);
+            builderSingle.setAdapter(arrayAdapter, null);
+            final AlertDialog alertDialog = builderSingle.create();
+            alertDialog.show();
+            ListView listView = alertDialog.getListView();
+            listView.setItemsCanFocus(false);
+            listView.setChoiceMode(ListView.CHOICE_MODE_MULTIPLE);
+            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                @Override
+                public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                    if (!deleteItem.isEmpty()) {
+                        if (deleteItem.contains(parent.getItemAtPosition(position).toString())) {
+                            deleteItem.remove(parent.getItemAtPosition(position).toString());
+                        } else {
+                            deleteItem.add(parent.getItemAtPosition(position).toString());
+                        }
+                    } else deleteItem.add(parent.getItemAtPosition(position).toString());
+                }
+            });
+            alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (deleteItem.isEmpty()) {
+                        Toast.makeText(MainActivity.this, "Nothing selected!", Toast.LENGTH_SHORT).show();
+                    } else {
+                        dismissDialog = false;
+                        AlertDialog.Builder builderInner = new AlertDialog.Builder(MainActivity.this);
+                        builderInner.setTitle("Are you sure ?");
+                        builderInner.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                zeesDatabase = new ZeesDatabase(MainActivity.this);
+                                SQLiteDatabase db = zeesDatabase.getWritableDatabase();
+                                Iterator<String> iterator = deleteItem.iterator();
+                                while (iterator.hasNext()) {
+                                    String name = iterator.next();
+                                    db.delete("preset", "name" + "='" + name + "' ;", null);
+                                }
+                                db.close();
+                                dismissDialog = true;
+                                dialog.dismiss();
+                                alertDialog.dismiss();
+                            }
+                        });
+                        builderInner.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dialog.dismiss();
+                            }
+                        });
+                        AlertDialog dialogInner = builderInner.create();
+                        dialogInner.show();
+                    }
+                }
+            });
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
