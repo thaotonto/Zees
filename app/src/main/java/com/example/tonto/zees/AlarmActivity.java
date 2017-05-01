@@ -31,6 +31,7 @@ import com.example.tonto.zees.database.Alarm;
 import com.example.tonto.zees.adapters.AlarmAdapter;
 import com.example.tonto.zees.database.ZeesDatabase;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
@@ -97,7 +98,7 @@ public class AlarmActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
 
-        currentPosition = getIntent().getIntExtra("Position",0);
+        currentPosition = getIntent().getIntExtra("Position", 0);
 
         window = this.getWindow();
         window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
@@ -146,7 +147,7 @@ public class AlarmActivity extends AppCompatActivity {
                             calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);
                         }
 
-                        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss.SSS");
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss.SSS");
 
                         System.out.println(formatter.format(calendar.getTime()));
 
@@ -161,7 +162,7 @@ public class AlarmActivity extends AppCompatActivity {
                             return;
                         }
 
-                        Alarm alarm = new Alarm("Alarm", delayms + "", calendar.getTimeInMillis() + "", "Test", "true", id + "");
+                        Alarm alarm = new Alarm("Alarm set on", delayms + "", calendar.getTimeInMillis() + "", "Test", "true", id + "");
                         alarmList.add(alarm);
                         reserved.setVisibility(View.GONE);
 
@@ -192,21 +193,32 @@ public class AlarmActivity extends AppCompatActivity {
                         } else
                             alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 
-                        long timeLeft = calendar.getTimeInMillis() - curTime;
-                        int hours = (int) ((timeLeft / (1000 * 60 * 60)) % 24);
-                        int minutes = (int) ((timeLeft / (1000 * 60)) % 60);
+//                        long timeLeft = calendar.getTimeInMillis() - curTime;
+//                        int hours = (int) ((timeLeft / (1000 * 60 * 60)) % 24);
+//                        int minutes = (int) ((timeLeft / (1000 * 60)) % 60);
+//                        System.out.println((((double) timeLeft / (1000 * 60 * 60)) % 24));
+//                        System.out.println((((double) timeLeft / (1000 * 60)) % 60));
+//                        if ((((double) timeLeft / (1000 * 60)) % 60) < 1.0 && (((double) timeLeft / (1000 * 60)) % 60) > 0.0) {
+//                            minutes = 1;
+//                        }
+                        int timeLeft = calendar.get(Calendar.HOUR_OF_DAY) + calendar.get(Calendar.MINUTE) - (new Time(System.currentTimeMillis()).getHours() + new Time(System.currentTimeMillis()).getMinutes());
+                        if (timeLeft < 0)
+                            timeLeft = 1440 + timeLeft;
+                        int hours = timeLeft / 60;
+                        int minutes = timeLeft % 60;
+                        System.out.println("Hours left: " + hours + " Minutes left: " + minutes);
                         if (hours != 0 && minutes != 0) {
                             if (hours != 1 && minutes != 1) {
                                 Toast.makeText(AlarmActivity.this, "Alarm set for " + hours + " hours and " + minutes + " minutes from now.", Toast.LENGTH_SHORT).show();
                             }
                             if (hours == 1 && minutes != 1) {
-                                Toast.makeText(AlarmActivity.this, "Alarm set for " + hours + " hour and " + minutes + " minutes from now.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AlarmActivity.this, "Alarm set for 1 hour and " + minutes + " minutes from now.", Toast.LENGTH_SHORT).show();
                             }
                             if (hours == 1 && minutes == 1) {
-                                Toast.makeText(AlarmActivity.this, "Alarm set for " + hours + " hour and " + minutes + " minute from now.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AlarmActivity.this, "Alarm set for 1 hour and 1 minute from now.", Toast.LENGTH_SHORT).show();
                             }
                             if (hours != 1 && minutes == 1) {
-                                Toast.makeText(AlarmActivity.this, "Alarm set for " + hours + " hours and " + minutes + " minute from now.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AlarmActivity.this, "Alarm set for " + hours + " hours and 1 minute from now.", Toast.LENGTH_SHORT).show();
                             }
                         }
                         if (hours != 0 && minutes == 0) {
@@ -219,11 +231,14 @@ public class AlarmActivity extends AppCompatActivity {
                             if (minutes != 1)
                                 Toast.makeText(AlarmActivity.this, "Alarm set for " + minutes + " minutes from now.", Toast.LENGTH_SHORT).show();
                             else
-                                Toast.makeText(AlarmActivity.this, "Alarm set for " + minutes + " minute from now.", Toast.LENGTH_SHORT).show();
+                                Toast.makeText(AlarmActivity.this, "Alarm set for 1 minute from now.", Toast.LENGTH_SHORT).show();
+                        }
+                        if (hours == 0 && minutes == 0){
+                            Toast.makeText(AlarmActivity.this, "Alarm set for 24 hours from now.", Toast.LENGTH_SHORT).show();
                         }
                     }
                 }
-                        , 0, 0, true);
+                        , new Time(System.currentTimeMillis()).getHours(), new Time(System.currentTimeMillis()).getMinutes(), true);
                 timePickerDialog.show();
             }
         });
@@ -254,6 +269,6 @@ public class AlarmActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
+        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
     }
 }

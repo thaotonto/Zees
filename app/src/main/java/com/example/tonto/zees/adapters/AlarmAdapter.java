@@ -25,9 +25,11 @@ import com.example.tonto.zees.R;
 import com.example.tonto.zees.receivers.AlarmReceiver;
 import com.example.tonto.zees.database.Alarm;
 
+import java.sql.Time;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Locale;
 
 /**
  * Created by Hoang on 4/24/2017.
@@ -66,16 +68,28 @@ public class AlarmAdapter extends ArrayAdapter {
         enabled.setTag(alarmList.get(position));
         deleteButton.setTag(alarmList.get(position));
 
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(Long.parseLong(alarmList.get(position).getDate()));
-
-        SimpleDateFormat formatter = new SimpleDateFormat("hh:mm");
-        time.setText(formatter.format(calendar.getTime()));
-
-        formatter = new SimpleDateFormat("dd/MM/yyyy");
-        date.setText(formatter.format(calendar.getTime()));
-
         name.setText(alarmList.get(position).getName());
+
+        if (!alarmList.get(position).getName().equals("Re-enable to")) {
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(Long.parseLong(alarmList.get(position).getDate()));
+
+            SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+            time.setText(formatter.format(calendar.getTime()));
+
+            date.setVisibility(View.VISIBLE);
+            formatter = new SimpleDateFormat("dd/MM/yyyy");
+            date.setText(formatter.format(calendar.getTime()));
+        } else {
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(Long.parseLong(alarmList.get(position).getDate()));
+
+            SimpleDateFormat formatter = new SimpleDateFormat("HH:mm");
+            time.setText(formatter.format(calendar.getTime()));
+            date.setText("set this alarm.");
+        }
+
 
         if (alarmList.get(position).getEnabled().equals("true")) enabled.setChecked(true);
         else enabled.setChecked(false);
@@ -96,7 +110,7 @@ public class AlarmAdapter extends ArrayAdapter {
                 alarmList.remove(v.getTag());
                 if (alarmList.isEmpty()) AlarmActivity.reserved.setVisibility(View.VISIBLE);
                 notifyDataSetChanged();
-                Toast.makeText(context, "Alarm deleted", Toast.LENGTH_SHORT).show();
+                Toast.makeText(context, "Alarm deleted.", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -119,10 +133,13 @@ public class AlarmAdapter extends ArrayAdapter {
                         calendar.set(Calendar.DAY_OF_MONTH, calendar.get(Calendar.DAY_OF_MONTH) + 1);
                     }
 
+                    alarm.setName("Alarm set on");
                     alarm.setDate(calendar.getTimeInMillis() + "");
 
                     SQLiteDatabase db = AlarmActivity.zeesDatabase.getWritableDatabase();
-                    db.execSQL("UPDATE alarm SET enabled = 'true' WHERE pending_id = '" + alarm.getPendingId()+"';");
+                    db.execSQL("UPDATE alarm SET enabled = 'true' WHERE pending_id = '" + alarm.getPendingId() + "';");
+                    db.execSQL("UPDATE alarm SET name = 'Alarm set on' WHERE pending_id = '" + alarm.getPendingId() + "';");
+                    db.execSQL("UPDATE alarm SET date = '" + calendar.getTimeInMillis() + "' WHERE pending_id = '" + alarm.getPendingId() + "';");
                     db.close();
 
                     Intent intent = new Intent(context.getApplicationContext(), AlarmReceiver.class);
@@ -136,21 +153,30 @@ public class AlarmAdapter extends ArrayAdapter {
                     } else
                         AlarmActivity.alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
                     notifyDataSetChanged();
-                    long timeLeft = calendar.getTimeInMillis() - curTime;
-                    hours = (int) ((timeLeft / (1000 * 60 * 60)) % 24);
-                    minutes = (int) ((timeLeft / (1000 * 60)) % 60);
+//                    long timeLeft = calendar.getTimeInMillis() - curTime;
+//                    hours = (int) ((timeLeft / (1000 * 60 * 60)) % 24);
+//                    minutes = (int) ((timeLeft / (1000 * 60)) % 60);
+//                    if ((((double) timeLeft / (1000 * 60)) % 60) < 1.0 && (((double) timeLeft / (1000 * 60)) % 60) > 0.0) {
+//                        minutes = 1;
+//                    }
+                    int timeLeft = calendar.get(Calendar.HOUR_OF_DAY) + calendar.get(Calendar.MINUTE) - (new Time(System.currentTimeMillis()).getHours() + new Time(System.currentTimeMillis()).getMinutes());
+                    if (timeLeft < 0)
+                        timeLeft = 1440 + timeLeft;
+                    hours = timeLeft / 60;
+                    minutes = timeLeft % 60;
+                    System.out.println("Hours left: " + hours + " Minutes left: " + minutes);
                     if (hours != 0 && minutes != 0) {
                         if (hours != 1 && minutes != 1) {
                             Toast.makeText(context, "Alarm set for " + hours + " hours and " + minutes + " minutes from now.", Toast.LENGTH_SHORT).show();
                         }
                         if (hours == 1 && minutes != 1) {
-                            Toast.makeText(context, "Alarm set for " + hours + " hour and " + minutes + " minutes from now.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Alarm set for 1 hour and " + minutes + " minutes from now.", Toast.LENGTH_SHORT).show();
                         }
                         if (hours == 1 && minutes == 1) {
-                            Toast.makeText(context, "Alarm set for " + hours + " hour and " + minutes + " minute from now.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Alarm set for 1 hour and 1 minute from now.", Toast.LENGTH_SHORT).show();
                         }
                         if (hours != 1 && minutes == 1) {
-                            Toast.makeText(context, "Alarm set for " + hours + " hours and " + minutes + " minute from now.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Alarm set for " + hours + " hours and 1 minute from now.", Toast.LENGTH_SHORT).show();
                         }
                     }
                     if (hours != 0 && minutes == 0) {
@@ -163,7 +189,10 @@ public class AlarmAdapter extends ArrayAdapter {
                         if (minutes != 1)
                             Toast.makeText(context, "Alarm set for " + minutes + " minutes from now.", Toast.LENGTH_SHORT).show();
                         else
-                            Toast.makeText(context, "Alarm set for " + minutes + " minute from now.", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Alarm set for 1 minute from now.", Toast.LENGTH_SHORT).show();
+                    }
+                    if (hours == 0 && minutes == 0){
+                        Toast.makeText(context, "Alarm set for 24 hours from now.", Toast.LENGTH_SHORT).show();
                     }
                 }
                 if (!isChecked) {
@@ -171,8 +200,12 @@ public class AlarmAdapter extends ArrayAdapter {
                     System.out.println("Pending Id: " + alarm.getPendingId());
 
                     SQLiteDatabase db = AlarmActivity.zeesDatabase.getWritableDatabase();
-                    db.execSQL("UPDATE alarm SET enabled = 'false' WHERE pending_id = '" + alarm.getPendingId()+"';");
+                    db.execSQL("UPDATE alarm SET enabled = 'false' WHERE pending_id = '" + alarm.getPendingId() + "';");
+                    db.execSQL("UPDATE alarm SET name = 'Re-enable to' WHERE pending_id = '" + alarm.getPendingId() + "';");
                     db.close();
+
+                    alarm.setName("Re-enable to");
+                    notifyDataSetChanged();
 
                     Intent intent = new Intent(context.getApplicationContext(), AlarmReceiver.class);
                     intent.putExtra("Alarm Info", alarm);
