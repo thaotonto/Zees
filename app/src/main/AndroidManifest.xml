@@ -57,7 +57,10 @@
         <activity
             android:name=".ShowSimpleColorActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
-        <activity android:name=".ShowMoodLightActivity"
+        <activity
+            android:name=".ShowMoodLightActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity android:name=".ShowLavaLightActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
     </application>
 

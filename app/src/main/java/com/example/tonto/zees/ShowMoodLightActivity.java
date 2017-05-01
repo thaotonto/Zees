@@ -9,7 +9,6 @@ import android.view.WindowManager;
 import android.widget.VideoView;
 
 public class ShowMoodLightActivity extends AppCompatActivity {
-    private VideoView mVideoView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

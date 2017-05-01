@@ -120,12 +120,13 @@ public class LampActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        lava.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        lava.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LampActivity.this, ShowLavaLightActivity.class);
+                startActivity(intent);
+            }
+        });
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         seekBar.setMax(255);
         float curBrightnessValue = 0;
