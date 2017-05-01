@@ -11,6 +11,7 @@ import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Handler;
+import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -25,8 +26,7 @@ import android.widget.VideoView;
 import static com.example.tonto.zees.ChooseColorActivity.*;
 
 public class ShowColorActivity extends AppCompatActivity {
-
-    private static final String TAG = "a";
+    public static int color=1;
     private ImageView backGround;
     private Window window;
     private Camera camera;
@@ -38,89 +38,89 @@ public class ShowColorActivity extends AppCompatActivity {
     MediaPlayer mp;
     MediaPlayer mp1;
 
-    private Context context = this;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_show_color);
-        window = this.getWindow();
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            window.setStatusBarColor(getResources().getColor(R.color.darkRain));
-        }
-        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
-        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
-        backGround = (ImageView) findViewById(R.id.iv_bg);
-        VideoView mVideoView = (VideoView) findViewById(R.id.videoview);
-        Bundle bundle = getIntent().getExtras();
-        int color = bundle.getInt("COlOR TO SHOW");
-        int mode = bundle.getInt("MODE TO SHOW");
-        int lava_mode = bundle.getInt("LAVA MODE TO SHOW");
-        if (mode == 1) {
-            mVideoView.setVisibility(View.INVISIBLE);
-            backGround.setVisibility(View.VISIBLE);
-            Context context = backGround.getContext();
-            int id = context.getResources().getIdentifier("color" + color + "_bg", "drawable", context.getPackageName());
-            backGround.setImageResource(id);
-        } else if (mode == 3) {
-            backGround.setVisibility(View.INVISIBLE);
-            mVideoView.setVisibility(View.VISIBLE);
-            String uriPath = null;
-            if (lava_mode == INFERNO)
-                uriPath = "android.resource://com.example.tonto.zees/" + R.raw.inferno;
-            else if (lava_mode == WATER)
-                uriPath = "android.resource://com.example.tonto.zees/" + R.raw.water;
-            else if (lava_mode == CAMP) {
-                uriPath = "android.resource://com.example.tonto.zees/" + R.raw.fire;
-                this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-            }
-            if (lava_mode != THUNDER) {
-                Uri uri = Uri.parse(uriPath);
-                mVideoView.setVideoURI(uri);
-                mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                    @Override
-                    public void onPrepared(MediaPlayer mp) {
-                        mp.setLooping(true);
-                    }
-                });
-                mVideoView.requestFocus();
-                mVideoView.start();
-            } else {
-                mp = MediaPlayer.create(this, R.raw.big_thunder);
-                mp1 = MediaPlayer.create(this, R.raw.thunder);
-                backGround.setVisibility(View.VISIBLE);
-                mVideoView.setVisibility(View.INVISIBLE);
-                Context context = backGround.getContext();
-                int id = context.getResources().getIdentifier("thunder", "drawable", context.getPackageName());
-                backGround.setImageResource(id);
-                getCamera();
-                handler = new Handler();
-                handler.post(loop);
-            }
 
+//        requestWindowFeature(Window.FEATURE_NO_TITLE);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
 
-        } else if (mode == 2) {
-            backGround.setVisibility(View.INVISIBLE);
-            mVideoView.setVisibility(View.VISIBLE);
-            String uriPath = "android.resource://com.example.tonto.zees/" + R.raw.mood;
-
-            Uri uri = Uri.parse(uriPath);
-            mVideoView.setVideoURI(uri);
-            mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
-                @Override
-                public void onPrepared(MediaPlayer mp) {
-                    mp.setLooping(true);
-                }
-            });
-            mVideoView.requestFocus();
-            mVideoView.start();
-        }
+//        window = this.getWindow();
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            window.setStatusBarColor(getResources().getColor(R.color.darkRain));
+//        }
+//        window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+//        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+//        VideoView mVideoView = (VideoView) findViewById(R.id.videoview);
+//        Bundle bundle = getIntent().getExtras();
+//        int color = bundle.getInt("COlOR TO SHOW");
+//        int mode = bundle.getInt("MODE TO SHOW");
+//        int lava_mode = bundle.getInt("LAVA MODE TO SHOW");
+//        if (mode == 1) {
+//            mVideoView.setVisibility(View.INVISIBLE);
+//            backGround.setVisibility(View.VISIBLE);
+//            Context context = backGround.getContext();
+//            int id = context.getResources().getIdentifier("color" + color + "_bg", "drawable", context.getPackageName());
+//            backGround.setImageResource(id);
+//        } else if (mode == 3) {
+//            backGround.setVisibility(View.INVISIBLE);
+//            mVideoView.setVisibility(View.VISIBLE);
+//            String uriPath = null;
+//            if (lava_mode == INFERNO)
+//                uriPath = "android.resource://com.example.tonto.zees/" + R.raw.inferno;
+//            else if (lava_mode == WATER)
+//                uriPath = "android.resource://com.example.tonto.zees/" + R.raw.water;
+//            else if (lava_mode == CAMP) {
+//                uriPath = "android.resource://com.example.tonto.zees/" + R.raw.fire;
+//                this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+//            }
+//            if (lava_mode != THUNDER) {
+//                Uri uri = Uri.parse(uriPath);
+//                mVideoView.setVideoURI(uri);
+//                mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//                    @Override
+//                    public void onPrepared(MediaPlayer mp) {
+//                        mp.setLooping(true);
+//                    }
+//                });
+//                mVideoView.requestFocus();
+//                mVideoView.start();
+//            } else {
+//                mp = MediaPlayer.create(this, R.raw.big_thunder);
+//                mp1 = MediaPlayer.create(this, R.raw.thunder);
+//                backGround.setVisibility(View.VISIBLE);
+//                mVideoView.setVisibility(View.INVISIBLE);
+//                Context context = backGround.getContext();
+//                int id = context.getResources().getIdentifier("thunder", "drawable", context.getPackageName());
+//                backGround.setImageResource(id);
+//                getCamera();
+//                handler = new Handler();
+//                handler.post(loop);
+//            }
+//
+//
+//        } else if (mode == 2) {
+//            backGround.setVisibility(View.INVISIBLE);
+//            mVideoView.setVisibility(View.VISIBLE);
+//            String uriPath = "android.resource://com.example.tonto.zees/" + R.raw.mood;
+//
+//            Uri uri = Uri.parse(uriPath);
+//            mVideoView.setVideoURI(uri);
+//            mVideoView.setOnPreparedListener(new MediaPlayer.OnPreparedListener() {
+//                @Override
+//                public void onPrepared(MediaPlayer mp) {
+//                    mp.setLooping(true);
+//                }
+//            });
+//            mVideoView.requestFocus();
+//            mVideoView.start();
+//        }
 
     }
-
     private void getCamera() {
         if (camera == null) {
             try {
@@ -243,7 +243,6 @@ public class ShowColorActivity extends AppCompatActivity {
             String[] list = manager.getCameraIdList();
             manager.setTorchMode(list[0], true);
         } catch (CameraAccessException cae) {
-            Log.e(TAG, cae.getMessage());
             cae.printStackTrace();
         }
     }
@@ -254,7 +253,6 @@ public class ShowColorActivity extends AppCompatActivity {
             CameraManager manager = (CameraManager) context.getSystemService(Context.CAMERA_SERVICE);
             manager.setTorchMode(manager.getCameraIdList()[0], false);
         } catch (CameraAccessException cae) {
-            Log.e(TAG, cae.getMessage());
             cae.printStackTrace();
         }
     }

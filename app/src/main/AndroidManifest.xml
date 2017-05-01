@@ -5,6 +5,7 @@
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.CAMERA" />
+
     <uses-feature android:name="android.hardware.camera" />
 
     <application
@@ -32,26 +33,30 @@
             android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
-
         <activity
-            android:label="Lamp"
             android:name=".LampActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
-        <activity android:name=".ChooseColorActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"/>
-        <activity android:name=".ShowColorActivity"
-            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
-
+            android:label="Lamp"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:label="Alarms"
+            android:name=".ChooseColorActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
+            android:name=".ShowColorActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
+        <activity
             android:name=".AlarmActivity"
+            android:label="Alarms"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".AlarmRingerActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
-        <receiver android:name=".receivers.TimerReceiver"></receiver>
-        <receiver android:name=".receivers.AlarmReceiver"></receiver>
+        <receiver android:name=".receivers.TimerReceiver" />
+        <receiver android:name=".receivers.AlarmReceiver" />
+
+        <activity
+            android:name=".ShowSimpleColorActivity"
+            android:theme="@style/Theme.AppCompat.DayNight.NoActionBar"></activity>
     </application>
 
 </manifest>

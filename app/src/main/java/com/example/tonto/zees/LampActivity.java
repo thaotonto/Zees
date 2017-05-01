@@ -9,8 +9,6 @@ import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
@@ -18,29 +16,8 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
-import com.example.tonto.zees.touches.TouchManager;
-import com.example.tonto.zees.touches.Touch;
-
-import java.util.ArrayList;
-
-import static android.view.MotionEvent.ACTION_DOWN;
-import static android.view.MotionEvent.ACTION_POINTER_DOWN;
-import static android.view.MotionEvent.ACTION_POINTER_UP;
-import static android.view.MotionEvent.ACTION_UP;
-import static com.example.tonto.zees.ChooseColorActivity.INFERNO;
-
 public class LampActivity extends AppCompatActivity {
-    public static final int COLOR1 = 1;
-    public static final int COLOR2 = 2;
-    public static final int COLOR3 = 3;
-    public static final int COLOR4 = 4;
-    public static final int COLOR5 = 5;
-    public static final int COLOR6 = 6;
-    public static final int COLOR7 = 7;
-    private int color = COLOR1;
     private SeekBar seekBar;
-    private int lava_mode = INFERNO;
-    private int mode = 1;
     private ImageView simple;
     private ImageView mood;
     private ImageView lava;
@@ -106,9 +83,6 @@ public class LampActivity extends AppCompatActivity {
         setContentView(R.layout.activity_lamp);
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
-            color = bundle.getInt("COlOR TO SHOW");
-            lava_mode = bundle.getInt("LAVA MODE TO SHOW");
-            mode = bundle.getInt("LAST MODE");
          currentPosition=bundle.getInt("Position");
         }
 
@@ -135,21 +109,22 @@ public class LampActivity extends AppCompatActivity {
         simple.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent = new Intent(LampActivity.this, ShowSimpleColorActivity.class);
+                startActivity(intent);
             }
         });
-        mood.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-        lava.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
+//        mood.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+//        lava.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         seekBar.setMax(255);
         float curBrightnessValue = 0;
@@ -250,15 +225,6 @@ public class LampActivity extends AppCompatActivity {
         overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
     }
 
-    private String setText(int mode) {
-        if (mode == 1)
-            return "NIGHT LIGHT";
-        else if (mode == 2)
-            return "MOOD LIGHT";
-        else
-            return "LAVA LIGHT";
-
-    }
     public void setBackground(int position) {
         background.setImageResource(backgrounds[position]);
         toolbar.setBackground(actionBarColorCodes[position]);
