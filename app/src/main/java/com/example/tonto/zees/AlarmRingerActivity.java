@@ -106,11 +106,14 @@ public class AlarmRingerActivity extends AppCompatActivity {
                 if (progress > 20) {
                     alarmSlideHint.setVisibility(View.GONE);
                 }
-                if (progress > 75){
+                if (progress > 60){
                     alarmTurnOffIcon.setVisibility(View.GONE);
+                    seekBar.setThumb(getResources().getDrawable(R.drawable.ic_alarm_off_white_48dp));
                 }
-                else alarmTurnOffIcon.setVisibility(View.VISIBLE);
-                if (progress == 80) {
+                else{
+                    alarmTurnOffIcon.setVisibility(View.VISIBLE);
+                }
+                if (progress > 75) {
                     seekBar.setThumb(getResources().getDrawable(R.drawable.ic_alarm_off_white_48dp));
                     alarmTurnOffIcon.setVisibility(View.GONE);
                     mediaPlayer.stop();
