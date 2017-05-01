@@ -113,12 +113,13 @@ public class LampActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-//        mood.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//            }
-//        });
+        mood.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(LampActivity.this, ShowMoodLightActivity.class);
+                startActivity(intent);
+            }
+        });
 //        lava.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
