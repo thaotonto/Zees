@@ -124,6 +124,10 @@ public class LampActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(LampActivity.this, ShowLavaLightActivity.class);
+                if(ShowLavaLightActivity.currentMode==4)
+                {
+                    ShowLavaLightActivity.isBack=false;
+                }
                 startActivity(intent);
             }
         });

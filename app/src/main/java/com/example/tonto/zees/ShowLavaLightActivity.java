@@ -21,7 +21,7 @@ import android.widget.VideoView;
 
 public class ShowLavaLightActivity extends AppCompatActivity {
     private static int NUMBER_OF_MODES = 4;
-    private static int currentMode = 1;
+    public static int currentMode = 1;
     private TextView back;
     private TextView text;
     private TextView next;
@@ -29,12 +29,10 @@ public class ShowLavaLightActivity extends AppCompatActivity {
     private boolean isFlashOn;
     private MediaPlayer mp;
     private MediaPlayer mp1;
-    private Handler handler;
+    private Handler handler=new Handler();
     private Camera camera;
-    private static boolean isBack = false;
-    private static int second=0;
-    private static int i=0;
-    private static int a;
+    public static boolean isBack = false;
+    private static boolean hasThunder=false;
     Camera.Parameters params;
 
     @Override
@@ -74,6 +72,20 @@ public class ShowLavaLightActivity extends AppCompatActivity {
             }
             setText();
             setVideo();
+            if (currentMode == 4) {
+                isBack=false;
+                Log.d("kig","hasthunder "+hasThunder );
+                if(!hasThunder)
+                {
+                    makeThunder();
+                    Log.d("kig","kajd");
+
+                    handler.post(loop);
+                    hasThunder=true;
+                }
+            } else if (currentMode != 4) {
+                isBack = true;
+            }
         }
     };
 
@@ -90,12 +102,7 @@ public class ShowLavaLightActivity extends AppCompatActivity {
         else if (currentMode == 4)
             uriPath = "android.resource://com.example.tonto.zees/" + R.raw.rain;
         playVideo(uriPath);
-        if (currentMode == 4) {
-            makeThunder();
-        } else if (currentMode != 4) {
 
-            isBack = true;
-        }
     }
 
     private void playVideo(String uriPath) {
@@ -127,12 +134,13 @@ public class ShowLavaLightActivity extends AppCompatActivity {
     }
 
     private void makeThunder() {
-        isBack=false;
+        isBack = false;
+
         mp = MediaPlayer.create(this, R.raw.big_thunder);
         mp1 = MediaPlayer.create(this, R.raw.thunder);
         getCamera();
-        handler = new Handler();
-        handler.post(loop);
+
+
     }
 
     private void getCamera() {
@@ -213,31 +221,30 @@ public class ShowLavaLightActivity extends AppCompatActivity {
 
     private Runnable loop = new Runnable() {
 
-        boolean isBig=true;
+        int second = 0;
+        int i = 0;
+        int a = 0;
+        boolean isBig = true;
+
         @Override
         public void run() {
-
             try {
 
                 i++;
-                if (i % 50 == 0)
-                {
+                if (i % 50 == 0) {
                     second++;
-                    i=0;
+                    i = 0;
                 }
-                Log.d("second",""+second+" "+i);
+                Log.d("second", "" + second + " " + i);
                 if (!isBack) {
-
-                    if (second % 4 == 0 && i ==0) {
-                        a=second;
-                        if(isBig)
-                        {
+                    if (second % 4 == 0 && i == 0) {
+                        a = second;
+                        if (isBig) {
                             turnOn();
                             mp.seekTo(0);
                             mp.start();
-                            isBig=false;
-                        }
-                        else {
+                            isBig = false;
+                        } else {
                             turnOn();
                             mp1.seekTo(0);
                             mp1.start();
@@ -268,25 +275,24 @@ public class ShowLavaLightActivity extends AppCompatActivity {
                             }
 
                             turnOff();
-                            isBig=true;
+                            isBig = true;
                         }
 
-                    }
-                    else if((second==a+2&&i==0))
-                    {
-                        if(!isBig)
-                        mp.pause();
-                        turnOff();
+                    } else if ((second == a + 2 && i == 0)) {
+                        if (!isBig) {
+                            mp.pause();
+                            turnOff();
+                        }
+
                     }
 
 //                    else if (second % 7 == 0 && i % 50 == 0) {
 //
 //                    }
-                }
-                else {
+                } else {
                     mp.pause();
                     mp1.pause();
-                    if(isFlashOn)
+                    if (isFlashOn)
                         turnOff();
                 }
                 handler.postDelayed(this, 20);
