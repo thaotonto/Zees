@@ -31,6 +31,10 @@ public class ShowLavaLightActivity extends AppCompatActivity {
     private MediaPlayer mp1;
     private Handler handler;
     private Camera camera;
+    private static boolean isBack = false;
+    private static int second=0;
+    private static int i=0;
+    private static int a;
     Camera.Parameters params;
 
     @Override
@@ -88,15 +92,9 @@ public class ShowLavaLightActivity extends AppCompatActivity {
         playVideo(uriPath);
         if (currentMode == 4) {
             makeThunder();
-        }
-        else if(currentMode!=4)
-        {
-            if (handler != null)
-            {
-                handler.removeCallbacks(loop);
-                mp1.stop();
-                mp.stop();
-            }
+        } else if (currentMode != 4) {
+
+            isBack = true;
         }
     }
 
@@ -129,6 +127,7 @@ public class ShowLavaLightActivity extends AppCompatActivity {
     }
 
     private void makeThunder() {
+        isBack=false;
         mp = MediaPlayer.create(this, R.raw.big_thunder);
         mp1 = MediaPlayer.create(this, R.raw.thunder);
         getCamera();
@@ -213,59 +212,83 @@ public class ShowLavaLightActivity extends AppCompatActivity {
     }
 
     private Runnable loop = new Runnable() {
-        int i = 0;
-        int second = 0;
 
+        boolean isBig=true;
         @Override
         public void run() {
+
             try {
 
                 i++;
                 if (i % 50 == 0)
+                {
                     second++;
-                if (second % 3 == 0 && i % 50 == 0) {
-                    mp.seekTo(0);
-                    mp.start();
-                    turnOn();
-                    try {
-                        Thread.sleep(2000);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    mp.pause();
-                    turnOff();
-                } else if (second % 5 == 0 && i % 50 == 0) {
-                    mp1.seekTo(0);
-                    mp1.start();
-                    turnOn();
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    turnOff();
-
-
-                    turnOn();
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-
-                    turnOff();
-
-                    turnOn();
-                    try {
-                        Thread.sleep(100);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    turnOff();
-
+                    i=0;
                 }
+                Log.d("second",""+second+" "+i);
+                if (!isBack) {
 
+                    if (second % 4 == 0 && i ==0) {
+                        a=second;
+                        if(isBig)
+                        {
+                            turnOn();
+                            mp.seekTo(0);
+                            mp.start();
+                            isBig=false;
+                        }
+                        else {
+                            turnOn();
+                            mp1.seekTo(0);
+                            mp1.start();
+
+                            try {
+                                Thread.sleep(100);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            turnOff();
+
+
+                            turnOn();
+                            try {
+                                Thread.sleep(100);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            turnOff();
+
+                            turnOn();
+                            try {
+                                Thread.sleep(100);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+
+                            turnOff();
+                            isBig=true;
+                        }
+
+                    }
+                    else if((second==a+2&&i==0))
+                    {
+                        if(!isBig)
+                        mp.pause();
+                        turnOff();
+                    }
+
+//                    else if (second % 7 == 0 && i % 50 == 0) {
+//
+//                    }
+                }
+                else {
+                    mp.pause();
+                    mp1.pause();
+                    if(isFlashOn)
+                        turnOff();
+                }
                 handler.postDelayed(this, 20);
             } catch (Exception e) {
                 e.printStackTrace();
@@ -275,16 +298,11 @@ public class ShowLavaLightActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if (handler != null)
-        {
-            handler.removeCallbacks(loop);
-            mp1.stop();
-            mp.stop();
-        }
-        if(camera!=null)
+        isBack = true;
+        if (camera != null)
             camera.release();
         super.onBackPressed();
-        overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
+        overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
     }
 }
 
