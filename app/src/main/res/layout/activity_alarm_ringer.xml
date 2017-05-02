@@ -1,48 +1,91 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:src="@drawable/background_rain"/>
+        android:src="@android:color/black" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <TextView
-        android:id="@+id/alarm_name_ringer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/button_bg_selector"
-        android:layout_margin="5sp"
-        android:textSize="20sp"
-        android:textColor="@android:color/white"
-        android:gravity="center"/>
 
-    <TextView
-        android:id="@+id/alarm_time_ringer"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/button_bg_selector"
-        android:layout_margin="5sp"
-        android:textSize="25sp"
-        android:textColor="@android:color/white"
-        android:gravity="center" />
+        <TextView
+            android:id="@+id/alarm_time_ringer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5sp"
+            android:layout_weight="3"
+            android:gravity="bottom"
+            android:text="Test"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="120sp" />
 
-    <ImageView
-        android:src="@drawable/ic_alarm_off_white_48dp"
-        android:id="@+id/turn_off_alarm"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:background="@drawable/pressable_button_bg_selector"
-        android:scaleType="fitCenter"
-        android:layout_margin="5sp"/>
+        <TextView
+            android:id="@+id/alarm_date_ringer"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="5sp"
+            android:layout_weight="2"
+            android:gravity="top"
+            android:text="Test"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="40sp" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="10sp"
+            android:layout_weight="1"
+            android:background="@drawable/button_bg_default"
+            android:gravity="center"
+            android:padding="10sp">
+
+            <TextView
+                android:id="@+id/alarm_slide_hint"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="Slide to turn off"
+                android:textColor="@android:color/white"
+                android:textSize="20sp"
+                android:visibility="visible" />
+
+            <android.support.v7.widget.AppCompatSeekBar
+                android:id="@+id/alarm_slider"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:clickable="false"
+                android:max="80"
+                android:paddingLeft="5sp"
+                android:paddingRight="5sp"
+                android:progressDrawable="@android:color/transparent"
+                android:thumb="@drawable/ic_touch_app_white_48dp"
+                android:thumbOffset="1sp" />
+
+            <ImageView
+                android:id="@+id/alarm_turn_off_icon"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:paddingRight="20sp"
+                android:src="@drawable/ic_alarm_off_white_48dp"
+                android:visibility="visible" />
+
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"></View>
+
 
     </LinearLayout>
 
