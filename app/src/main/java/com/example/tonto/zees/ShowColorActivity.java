@@ -188,7 +188,7 @@ public class ShowColorActivity extends AppCompatActivity {
                     mp.start();
                     turnOn();
                     try {
-                        thread.sleep(2000);
+                        Thread.sleep(2000);
                     } catch (Exception e) {
                         e.printStackTrace();
                     }

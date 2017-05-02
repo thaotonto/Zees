@@ -31,4 +31,8 @@ public class ShowMoodLightActivity extends AppCompatActivity {
         mVideoView.requestFocus();
         mVideoView.start();
     }
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
+    }
 }

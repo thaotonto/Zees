@@ -81,4 +81,10 @@ public class ShowSimpleColorActivity extends AppCompatActivity {
         int id = context.getResources().getIdentifier("color" + color + "_bg", "drawable", context.getPackageName());
         backGround.setImageResource(id);
     }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        overridePendingTransition(R.anim.abc_fade_in,R.anim.abc_fade_out);
+    }
 }
