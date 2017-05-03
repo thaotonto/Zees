@@ -2,13 +2,13 @@ package com.example.tonto.zees;
 
 import android.app.AlarmManager;
 import android.app.AlertDialog;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
@@ -26,6 +26,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -63,8 +64,6 @@ import com.example.tonto.zees.transformers.PageTransformer;
 
 import java.util.concurrent.TimeUnit;
 
-import static com.example.tonto.zees.AlarmActivity.zeesDatabase;
-
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
     public static final int NUM_PAGES = 10;
     public ZeesDatabase zeesDatabase;
@@ -96,6 +95,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private MenuItem timerItem;
     private AlarmManager timerManager;
     private PendingIntent timerIntent;
+    private NotificationManager notificationManager;
+    NotificationCompat.Builder builderReturn;
     private int DEFAULT_VOLUME = 50;
     private ArrayList<MediaPlayer> playingLargeSounds = new ArrayList<>();
     private ArrayList<String> playingLargeSoundsName = new ArrayList<>();
@@ -178,6 +179,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         timerManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
 
         //TODO
@@ -323,6 +326,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         });
         timerThread.start();
+
+        builderReturn = (NotificationCompat.Builder) new NotificationCompat.Builder(this).setSmallIcon(R.drawable.icon_notification_small).setContentTitle("Zees").setContentText("Touch to open again");
+        Intent intent = new Intent(this, MainActivity.class);
+        PendingIntent returnIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        builderReturn.setContentIntent(returnIntent);
     }
 
     @Override
@@ -428,6 +436,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //        if (timerEnabled == true) {
 //            offsetStart = System.currentTimeMillis();
 //        }
+        if (countSound > 0) {
+            notificationManager.notify(0, builderReturn.build());
+        }
     }
 
     @Override
@@ -437,6 +448,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 //            offsetEnd = System.currentTimeMillis();
 //            delayms = delayms - (offsetEnd - offsetStart);
 //        }
+        if (countSound > 0)
+            notificationManager.cancel(0);
     }
 
 
