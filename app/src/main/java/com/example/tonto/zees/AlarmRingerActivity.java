@@ -37,6 +37,7 @@ public class AlarmRingerActivity extends AppCompatActivity {
     private Alarm alarm;
     private Vibrator vibrator;
     private Window window;
+    private int prevProgress;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -100,8 +101,12 @@ public class AlarmRingerActivity extends AppCompatActivity {
         alarmSlider.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (prevProgress > progress){
+                    seekBar.setThumb(getResources().getDrawable(R.drawable.ic_adjust_white_48dp));
+                }
                 if (progress == 0) {
                     alarmSlideHint.setVisibility(View.VISIBLE);
+                    seekBar.setThumb(getResources().getDrawable(R.drawable.ic_touch_app_white_48dp));
                 }
                 if (progress > 20) {
                     alarmSlideHint.setVisibility(View.GONE);
@@ -126,6 +131,7 @@ public class AlarmRingerActivity extends AppCompatActivity {
                     finish();
                     System.exit(0);
                 }
+                prevProgress = progress;
             }
 
             @Override
