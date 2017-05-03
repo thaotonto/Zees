@@ -33,6 +33,7 @@ public class ShowLavaLightActivity extends AppCompatActivity {
     private Camera camera;
     public static boolean isBack = false;
     private static boolean hasThunder=false;
+    private static int position;
     Camera.Parameters params;
 
     @Override
@@ -240,11 +241,13 @@ public class ShowLavaLightActivity extends AppCompatActivity {
                     if (second % 4 == 0 && i == 0) {
                         a = second;
                         if (isBig) {
+
                             turnOn();
                             mp.seekTo(0);
                             mp.start();
                             isBig = false;
                         } else {
+
                             turnOn();
                             mp1.seekTo(0);
                             mp1.start();
@@ -290,8 +293,10 @@ public class ShowLavaLightActivity extends AppCompatActivity {
 //
 //                    }
                 } else {
-                    mp.pause();
-                    mp1.pause();
+                    if(mp.isPlaying())
+                        mp.pause();
+                    if(mp1.isPlaying())
+                        mp1.pause();
                     if (isFlashOn)
                         turnOff();
                 }
@@ -305,10 +310,39 @@ public class ShowLavaLightActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         isBack = true;
-        if (camera != null)
-            camera.release();
+
         super.onBackPressed();
         overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
+    }
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try{
+            if (mVideoView != null) {
+                position = mVideoView.getCurrentPosition();
+                mVideoView.pause();
+            }
+            if(currentMode==4)
+            {
+                isBack=true;
+            }
+        }catch (Exception e) {
+        }
+    }
+
+    protected void onResume() {
+        super.onResume();
+        try{
+            if (mVideoView != null) {
+                mVideoView.seekTo(position);
+                mVideoView.start();
+            }
+            if(currentMode==4)
+            {
+                isBack=false;
+            }
+        }catch (Exception e) {
+        }
     }
 }
 
