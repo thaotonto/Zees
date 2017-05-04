@@ -1,5 +1,6 @@
 package com.example.tonto.zees;
 
+import android.app.NotificationManager;
 import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
@@ -38,10 +39,12 @@ public class AlarmRingerActivity extends AppCompatActivity {
     private Vibrator vibrator;
     private Window window;
     private int prevProgress;
+    private NotificationManager notificationManager;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
         setContentView(R.layout.activity_alarm_ringer);
         window = getWindow();
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -156,6 +159,7 @@ public class AlarmRingerActivity extends AppCompatActivity {
             }
         });
 
+        notificationManager.cancel(Integer.parseInt(alarm.getPendingId()));
         mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.alarm_oxygen);
         mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
         mediaPlayer.start();

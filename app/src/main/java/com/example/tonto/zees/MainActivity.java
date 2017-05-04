@@ -60,6 +60,7 @@ import java.util.StringTokenizer;
 import com.example.tonto.zees.adapters.ScreenSlidePagerAdapter;
 import com.example.tonto.zees.receivers.TimerReceiver;
 import com.example.tonto.zees.observers.VolumeChangeObserver;
+import com.example.tonto.zees.services.NotificationService;
 import com.example.tonto.zees.transformers.PageTransformer;
 
 import java.util.concurrent.TimeUnit;
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private AlarmManager timerManager;
     private PendingIntent timerIntent;
     private NotificationManager notificationManager;
+    private NotificationService notificationService;
     NotificationCompat.Builder builderReturn;
     private int DEFAULT_VOLUME = 50;
     private ArrayList<MediaPlayer> playingLargeSounds = new ArrayList<>();
@@ -182,6 +184,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
+        notificationService = new NotificationService();
+
+        Intent notiIntent = new Intent(this,NotificationService.class);
+        startService(notiIntent);
 
         //TODO
         am = (AudioManager) getSystemService(AUDIO_SERVICE);
@@ -433,6 +439,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onPause() {
         //TODO
         super.onPause();
+        System.out.println("Paused");
 //        if (timerEnabled == true) {
 //            offsetStart = System.currentTimeMillis();
 //        }
@@ -444,6 +451,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onResume() {
         super.onResume();
+        System.out.println("Resumed");
 //        if (timerEnabled == true) {
 //            offsetEnd = System.currentTimeMillis();
 //            delayms = delayms - (offsetEnd - offsetStart);
@@ -452,6 +460,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             notificationManager.cancel(0);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        System.out.println("Destroyed");
+        if (countSound > 0)
+            notificationManager.cancel(0);
+    }
 
     @SuppressWarnings("StatementWithEmptyBody")
     @Override

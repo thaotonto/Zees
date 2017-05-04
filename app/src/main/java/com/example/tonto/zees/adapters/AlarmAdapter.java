@@ -1,6 +1,7 @@
 package com.example.tonto.zees.adapters;
 
 import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
@@ -9,6 +10,7 @@ import android.os.Build;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v7.app.NotificationCompat;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -37,12 +39,16 @@ import java.util.Locale;
 
 public class AlarmAdapter extends ArrayAdapter {
     private Context context;
-    List<Alarm> alarmList;
+    private List<Alarm> alarmList;
+    private NotificationManager notificationManager;
+    private NotificationCompat.Builder alarmNotiBuilder;
+
 
     public AlarmAdapter(@NonNull Context context, @LayoutRes int resource, @NonNull List<Alarm> alarmList) {
         super(context, resource, alarmList);
         this.context = context;
         this.alarmList = alarmList;
+        notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
     }
 
     @NonNull
@@ -111,6 +117,7 @@ public class AlarmAdapter extends ArrayAdapter {
                 if (alarmList.isEmpty()) AlarmActivity.reserved.setVisibility(View.VISIBLE);
                 notifyDataSetChanged();
                 Toast.makeText(context, "Alarm deleted.", Toast.LENGTH_SHORT).show();
+                notificationManager.cancel(Integer.parseInt(alarm.getPendingId()));
             }
         });
 
@@ -194,6 +201,12 @@ public class AlarmAdapter extends ArrayAdapter {
                     if (hours == 0 && minutes == 0){
                         Toast.makeText(context, "Alarm set for 24 hours from now.", Toast.LENGTH_SHORT).show();
                     }
+                    SimpleDateFormat formatter = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+                    alarmNotiBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(context).setSmallIcon(R.drawable.ic_snooze_white_48dp).setContentTitle("Alarm set at " + formatter.format(calendar.getTime())).setContentText("Touch for more");
+                    Intent intentAlarm = new Intent(context, AlarmActivity.class);
+                    PendingIntent returnIntent = PendingIntent.getActivity(context, Integer.parseInt(alarm.getPendingId()), intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT);
+                    alarmNotiBuilder.setContentIntent(returnIntent);
+                    notificationManager.notify(Integer.parseInt(alarm.getPendingId()),alarmNotiBuilder.build());
                 }
                 if (!isChecked) {
                     alarmList.get(alarmList.indexOf(buttonView.getTag())).setEnabled("false");
@@ -213,6 +226,7 @@ public class AlarmAdapter extends ArrayAdapter {
                     pendingIntent.cancel();
                     AlarmActivity.alarmManager.cancel(pendingIntent);
                     Toast.makeText(context, "Alarm canceled.", Toast.LENGTH_SHORT).show();
+                    notificationManager.cancel(Integer.parseInt(alarm.getPendingId()));
                 }
                 System.out.println("State: " + alarmList.get(alarmList.indexOf(buttonView.getTag())).getEnabled());
             }

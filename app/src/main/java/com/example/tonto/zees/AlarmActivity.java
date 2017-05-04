@@ -1,6 +1,7 @@
 package com.example.tonto.zees;
 
 import android.app.AlarmManager;
+import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
@@ -14,6 +15,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
 import android.view.MotionEvent;
 import android.view.View;
@@ -53,6 +55,8 @@ public class AlarmActivity extends AppCompatActivity {
     private Window window;
     private Toolbar toolbar;
     public static TextView reserved;
+    private NotificationManager notificationManager;
+    private NotificationCompat.Builder alarmNotiBuilder;
     private int currentPosition;
     private int[] backgrounds = {
             R.drawable.background_rain,
@@ -97,6 +101,8 @@ public class AlarmActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_alarm);
+
+        notificationManager = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
 
         currentPosition = getIntent().getIntExtra("Position", 0);
 
@@ -157,10 +163,10 @@ public class AlarmActivity extends AppCompatActivity {
                             id = randomId.nextInt(100);
                         } while (zeesDatabase.checkUniqueId(id) == false);
 
-                        if (zeesDatabase.checkUniqueDate(calendar.getTimeInMillis()) == false) {
-                            Toast.makeText(AlarmActivity.this, "This alarm has already been set", Toast.LENGTH_SHORT).show();
-                            return;
-                        }
+//                        if (zeesDatabase.checkUniqueDate(calendar.getTimeInMillis()) == false) {
+//                            Toast.makeText(AlarmActivity.this, "This alarm has already been set", Toast.LENGTH_SHORT).show();
+//                            return;
+//                        }
 
                         Alarm alarm = new Alarm("Alarm set on", delayms + "", calendar.getTimeInMillis() + "", "Test", "true", id + "");
                         alarmList.add(alarm);
@@ -193,14 +199,6 @@ public class AlarmActivity extends AppCompatActivity {
                         } else
                             alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 
-//                        long timeLeft = calendar.getTimeInMillis() - curTime;
-//                        int hours = (int) ((timeLeft / (1000 * 60 * 60)) % 24);
-//                        int minutes = (int) ((timeLeft / (1000 * 60)) % 60);
-//                        System.out.println((((double) timeLeft / (1000 * 60 * 60)) % 24));
-//                        System.out.println((((double) timeLeft / (1000 * 60)) % 60));
-//                        if ((((double) timeLeft / (1000 * 60)) % 60) < 1.0 && (((double) timeLeft / (1000 * 60)) % 60) > 0.0) {
-//                            minutes = 1;
-//                        }
                         int timeLeft = calendar.get(Calendar.HOUR_OF_DAY) + calendar.get(Calendar.MINUTE) - (new Time(System.currentTimeMillis()).getHours() + new Time(System.currentTimeMillis()).getMinutes());
                         if (timeLeft < 0)
                             timeLeft = 1440 + timeLeft;
@@ -236,6 +234,13 @@ public class AlarmActivity extends AppCompatActivity {
                         if (hours == 0 && minutes == 0){
                             Toast.makeText(AlarmActivity.this, "Alarm set for 24 hours from now.", Toast.LENGTH_SHORT).show();
                         }
+
+                        formatter = new SimpleDateFormat("HH:mm dd/MM/yyyy");
+                        alarmNotiBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(AlarmActivity.this).setSmallIcon(R.drawable.ic_snooze_white_48dp).setContentTitle("Alarm set at " + formatter.format(calendar.getTime())).setContentText("Touch for more");
+                        Intent intentAlarm = new Intent(getApplicationContext(), AlarmActivity.class);
+                        PendingIntent returnIntent = PendingIntent.getActivity(AlarmActivity.this, id, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT);
+                        alarmNotiBuilder.setContentIntent(returnIntent);
+                        notificationManager.notify(id,alarmNotiBuilder.build());
                     }
                 }
                         , new Time(System.currentTimeMillis()).getHours(), new Time(System.currentTimeMillis()).getMinutes(), true);
@@ -248,6 +253,7 @@ public class AlarmActivity extends AppCompatActivity {
                 return false;
             }
         });
+
     }
 
     @Override
