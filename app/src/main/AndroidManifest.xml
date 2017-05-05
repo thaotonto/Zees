@@ -39,12 +39,6 @@
             android:label="Lamp"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".ChooseColorActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".ShowColorActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".AlarmActivity"
             android:label="Alarms"
             android:theme="@style/AppTheme.NoActionBar" />
