@@ -64,7 +64,8 @@
                 android:layout_weight="1"
                 android:background="@drawable/pressable_button_bg_selector"
                 android:scaleType="fitCenter"
-                android:src="@drawable/ic_alarm_add_white_48dp" />
+                android:src="@drawable/ic_alarm_add_white_48dp"
+                android:padding="2sp"/>
 
         </LinearLayout>
     </LinearLayout>

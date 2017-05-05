@@ -199,9 +199,13 @@ public class AlarmActivity extends AppCompatActivity {
                         } else
                             alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
 
-                        int timeLeft = calendar.get(Calendar.HOUR_OF_DAY) + calendar.get(Calendar.MINUTE) - (new Time(System.currentTimeMillis()).getHours() + new Time(System.currentTimeMillis()).getMinutes());
+                        int timeLeft = calendar.get(Calendar.HOUR_OF_DAY) * 60 + calendar.get(Calendar.MINUTE) - (new Time(curTime).getHours() * 60 + new Time(curTime).getMinutes());
+
+                        System.out.println("Hour set: " + calendar.get(Calendar.HOUR_OF_DAY));
+                        System.out.println("Current hour: " + new Time(curTime).getHours());
                         if (timeLeft < 0)
                             timeLeft = 1440 + timeLeft;
+                        System.out.println("Time left: " + timeLeft);
                         int hours = timeLeft / 60;
                         int minutes = timeLeft % 60;
                         System.out.println("Hours left: " + hours + " Minutes left: " + minutes);
@@ -231,7 +235,7 @@ public class AlarmActivity extends AppCompatActivity {
                             else
                                 Toast.makeText(AlarmActivity.this, "Alarm set for 1 minute from now.", Toast.LENGTH_SHORT).show();
                         }
-                        if (hours == 0 && minutes == 0){
+                        if (hours == 0 && minutes == 0) {
                             Toast.makeText(AlarmActivity.this, "Alarm set for 24 hours from now.", Toast.LENGTH_SHORT).show();
                         }
 
@@ -240,7 +244,7 @@ public class AlarmActivity extends AppCompatActivity {
                         Intent intentAlarm = new Intent(getApplicationContext(), AlarmActivity.class);
                         PendingIntent returnIntent = PendingIntent.getActivity(AlarmActivity.this, id, intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT);
                         alarmNotiBuilder.setContentIntent(returnIntent);
-                        notificationManager.notify(id,alarmNotiBuilder.build());
+                        notificationManager.notify(id, alarmNotiBuilder.build());
                     }
                 }
                         , new Time(System.currentTimeMillis()).getHours(), new Time(System.currentTimeMillis()).getMinutes(), true);

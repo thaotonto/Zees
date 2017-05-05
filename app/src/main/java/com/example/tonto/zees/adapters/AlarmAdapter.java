@@ -160,13 +160,7 @@ public class AlarmAdapter extends ArrayAdapter {
                     } else
                         AlarmActivity.alarmManager.set(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), pendingIntent);
                     notifyDataSetChanged();
-//                    long timeLeft = calendar.getTimeInMillis() - curTime;
-//                    hours = (int) ((timeLeft / (1000 * 60 * 60)) % 24);
-//                    minutes = (int) ((timeLeft / (1000 * 60)) % 60);
-//                    if ((((double) timeLeft / (1000 * 60)) % 60) < 1.0 && (((double) timeLeft / (1000 * 60)) % 60) > 0.0) {
-//                        minutes = 1;
-//                    }
-                    int timeLeft = calendar.get(Calendar.HOUR_OF_DAY) + calendar.get(Calendar.MINUTE) - (new Time(System.currentTimeMillis()).getHours() + new Time(System.currentTimeMillis()).getMinutes());
+                    int timeLeft = calendar.get(Calendar.HOUR_OF_DAY) * 60 + calendar.get(Calendar.MINUTE) - (new Time(curTime).getHours() * 60 + new Time(curTime).getMinutes());
                     if (timeLeft < 0)
                         timeLeft = 1440 + timeLeft;
                     hours = timeLeft / 60;
@@ -198,7 +192,7 @@ public class AlarmAdapter extends ArrayAdapter {
                         else
                             Toast.makeText(context, "Alarm set for 1 minute from now.", Toast.LENGTH_SHORT).show();
                     }
-                    if (hours == 0 && minutes == 0){
+                    if (hours == 0 && minutes == 0) {
                         Toast.makeText(context, "Alarm set for 24 hours from now.", Toast.LENGTH_SHORT).show();
                     }
                     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm dd/MM/yyyy");
@@ -206,7 +200,7 @@ public class AlarmAdapter extends ArrayAdapter {
                     Intent intentAlarm = new Intent(context, AlarmActivity.class);
                     PendingIntent returnIntent = PendingIntent.getActivity(context, Integer.parseInt(alarm.getPendingId()), intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT);
                     alarmNotiBuilder.setContentIntent(returnIntent);
-                    notificationManager.notify(Integer.parseInt(alarm.getPendingId()),alarmNotiBuilder.build());
+                    notificationManager.notify(Integer.parseInt(alarm.getPendingId()), alarmNotiBuilder.build());
                 }
                 if (!isChecked) {
                     alarmList.get(alarmList.indexOf(buttonView.getTag())).setEnabled("false");
