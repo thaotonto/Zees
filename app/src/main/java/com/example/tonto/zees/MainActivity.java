@@ -477,7 +477,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         if (id == R.id.nav_preset) {
             AlertDialog.Builder builderSingle = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
             builderSingle.setTitle(R.string.select_preset);
-            final ArrayAdapter<Preset> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item);
+            final ArrayAdapter<Preset> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.select_dialog_item);
             ZeesDatabase db = ZeesAplication.getInstance().getZeesDatabase();
             final List<Preset> presets = db.loadAllPreset();
             for (Preset preset : presets) {
@@ -568,7 +568,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         } else if (id == R.id.nav_delete) {
             deleteItem = new ArrayList<>();
-            AlertDialog.Builder builderSingle = new AlertDialog.Builder(this);
+            AlertDialog.Builder builderSingle = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
             builderSingle.setTitle(R.string.delete_preset);
             ArrayAdapter<Preset> arrayAdapter = new ArrayAdapter<>(this, android.R.layout.select_dialog_multichoice);
             ZeesDatabase db = ZeesAplication.getInstance().getZeesDatabase();
