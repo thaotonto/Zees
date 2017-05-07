@@ -10,6 +10,10 @@ import android.support.annotation.RequiresApi;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Window;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.LinearInterpolator;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
@@ -21,6 +25,7 @@ public class SplashScreenActivity extends AppCompatActivity {
     private Window window;
     private TextView loadingText;
     private int count = 0;
+    private ImageView logo;
 
     private String[] listSounds = {
             "rain_morning_rain",
@@ -107,12 +112,25 @@ public class SplashScreenActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
-
         loadingText = (TextView) findViewById(R.id.loading_text);
+
 
         window = getWindow();
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.LOLLIPOP)
             window.setStatusBarColor(Color.BLACK);
+
+        logo = (ImageView) findViewById(R.id.logo);
+
+        Animation animation1 = AnimationUtils.loadAnimation(SplashScreenActivity.this, R.anim.abc_fade_in);
+        animation1.setInterpolator(new LinearInterpolator());
+        animation1.setDuration(2000);
+
+        Animation animation2 = AnimationUtils.loadAnimation(SplashScreenActivity.this, R.anim.abc_fade_in);
+        animation2.setInterpolator(new LinearInterpolator());
+        animation2.setDuration(2000);
+
+        logo.startAnimation(animation1);
+        loadingText.startAnimation(animation2);
 
         CountDownTimer countDownTimer = new CountDownTimer(3000, 1000) {
 

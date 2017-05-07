@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="5sp">
+
+    <ImageView
+        android:id="@+id/alarm_vol_icon"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_alarm_off_black_36dp"
+        android:layout_marginRight="5sp"
+        android:scaleType="center"
+        android:layout_gravity="center"/>
+
+    <android.support.v7.widget.AppCompatSeekBar
+        android:id="@+id/sb_alarm_vol"
+        android:layout_width="0dp"
+        android:layout_weight="6"
+        android:layout_height="wrap_content"
+        android:thumbTint="@android:color/black"
+        android:progressTint="@android:color/black"
+        android:layout_gravity="center" />
+
+    <TextView
+        android:layout_marginLeft="5sp"
+        android:id="@+id/alarm_vol_text"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_gravity="center"
+        android:text="0"/>
+
+</LinearLayout>

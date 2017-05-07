@@ -412,6 +412,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
                     , 0, 0, true);
+            timePickerDialog.setTitle("Choose time left until shutdown (hh:mm)");
             timePickerDialog.show();
             return true;
         }

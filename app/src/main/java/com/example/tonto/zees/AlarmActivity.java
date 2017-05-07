@@ -6,17 +6,25 @@ import android.app.PendingIntent;
 import android.app.TimePickerDialog;
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
+import android.media.AudioManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
+import android.support.v7.view.ContextThemeWrapper;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
@@ -24,10 +32,12 @@ import android.view.WindowManager;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import com.example.tonto.zees.observers.AlarmVolumeChangeObserver;
 import com.example.tonto.zees.receivers.AlarmReceiver;
 import com.example.tonto.zees.database.Alarm;
 import com.example.tonto.zees.adapters.AlarmAdapter;
@@ -58,6 +68,10 @@ public class AlarmActivity extends AppCompatActivity {
     private NotificationManager notificationManager;
     private NotificationCompat.Builder alarmNotiBuilder;
     private int currentPosition;
+    private AudioManager am;
+    private SeekBar sbVolAlarm;
+    private TextView textVolAlarm;
+    private ImageView iconVolAlarm;
     private int[] backgrounds = {
             R.drawable.background_rain,
             R.drawable.background_ocean,
@@ -123,6 +137,7 @@ public class AlarmActivity extends AppCompatActivity {
         reserved = (TextView) findViewById(R.id.reserved_alarm);
 
         zeesDatabase = new ZeesDatabase(this);
+        am = (AudioManager) getSystemService(AUDIO_SERVICE);
         alarmManager = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
         alarmList = zeesDatabase.loadAllAlarm();
         if (alarmList.isEmpty()) {
@@ -248,6 +263,7 @@ public class AlarmActivity extends AppCompatActivity {
                     }
                 }
                         , new Time(System.currentTimeMillis()).getHours(), new Time(System.currentTimeMillis()).getMinutes(), true);
+                timePickerDialog.setTitle("Choose alarm time (hh:mm)");
                 timePickerDialog.show();
             }
         });
@@ -258,6 +274,71 @@ public class AlarmActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.app_bar_alarm, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if (id == R.id.action_alarm_volume) {
+            AlertDialog.Builder alarmVolDialogBuilder = new AlertDialog.Builder(this);
+            LayoutInflater layoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+            View dialogView = layoutInflater.inflate(R.layout.alarm_vol_dialog, null);
+
+            sbVolAlarm = (SeekBar) dialogView.findViewById(R.id.sb_alarm_vol);
+            iconVolAlarm = (ImageView) dialogView.findViewById(R.id.alarm_vol_icon);
+            textVolAlarm = (TextView) dialogView.findViewById(R.id.alarm_vol_text);
+
+            sbVolAlarm.setMax(am.getStreamMaxVolume(AudioManager.STREAM_ALARM));
+            sbVolAlarm.setProgress(am.getStreamVolume(AudioManager.STREAM_ALARM));
+
+            AlarmVolumeChangeObserver alarmVolumeChangeObserver = new AlarmVolumeChangeObserver(new Handler(), sbVolAlarm, this);
+            this.getContentResolver().registerContentObserver(android.provider.Settings.System.CONTENT_URI, true, alarmVolumeChangeObserver);
+
+            if (sbVolAlarm.getProgress() != 0) {
+                textVolAlarm.setText(sbVolAlarm.getProgress() + "");
+                iconVolAlarm.setImageResource(R.drawable.ic_alarm_black_36dp);
+            }
+
+            sbVolAlarm.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+                @Override
+                public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                    System.out.println(progress);
+                    if (progress == 0) {
+                        iconVolAlarm.setImageResource(R.drawable.ic_alarm_off_black_36dp);
+                    } else iconVolAlarm.setImageResource(R.drawable.ic_alarm_black_36dp);
+                    textVolAlarm.setText(progress + "");
+                    am.setStreamVolume(AudioManager.STREAM_ALARM, progress, 0);
+                }
+
+                @Override
+                public void onStartTrackingTouch(SeekBar seekBar) {
+
+                }
+
+                @Override
+                public void onStopTrackingTouch(SeekBar seekBar) {
+
+                }
+            });
+
+            alarmVolDialogBuilder.setNegativeButton("BACK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            alarmVolDialogBuilder.setView(dialogView);
+            alarmVolDialogBuilder.setTitle("Change alarm volume");
+            alarmVolDialogBuilder.create();
+            alarmVolDialogBuilder.show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

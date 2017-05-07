@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Vibrator;
@@ -21,6 +22,7 @@ import android.widget.TextView;
 import com.example.tonto.zees.database.Alarm;
 import com.example.tonto.zees.database.ZeesDatabase;
 
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
@@ -160,8 +162,15 @@ public class AlarmRingerActivity extends AppCompatActivity {
         });
 
         notificationManager.cancel(Integer.parseInt(alarm.getPendingId()));
-        mediaPlayer = MediaPlayer.create(getApplicationContext(), R.raw.alarm_oxygen);
-        mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+        mediaPlayer = new MediaPlayer();
+        mediaPlayer.setAudioStreamType(AudioManager.STREAM_ALARM);
+        mediaPlayer.setLooping(true);
+        try {
+            mediaPlayer.setDataSource(this, Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.alarm_oxygen));
+            mediaPlayer.prepare();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         mediaPlayer.start();
     }
 }
