@@ -662,7 +662,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     Uri uri = Uri.parse(uriText);
 
                     send.setData(uri);
-                    startActivity(Intent.createChooser(send, "Send mail..."));
+                    try {
+                        startActivity(Intent.createChooser(send, "Send mail..."));
+                    } catch (android.content.ActivityNotFoundException exception) {
+                        Toast.makeText(MainActivity.this, "No email clients installed.", Toast.LENGTH_SHORT).show();
+                    }
                 }
             });
             builderSingle.show();
