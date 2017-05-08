@@ -54,7 +54,8 @@
                     android:gravity="center"
                     android:text="Musician"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_musician"
@@ -63,7 +64,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -100,7 +102,8 @@
                     android:gravity="center"
                     android:text="Coffee Shop"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_coffee_shop"
@@ -109,7 +112,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -144,7 +148,8 @@
                     android:gravity="center"
                     android:text="Fountain"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_fountain"
@@ -153,7 +158,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -207,7 +213,8 @@
                     android:gravity="center"
                     android:text="Children"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_children"
@@ -216,7 +223,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -251,7 +259,8 @@
                     android:gravity="center"
                     android:text="Traffic"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_traffic"
@@ -260,7 +269,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -295,7 +305,8 @@
                     android:gravity="center"
                     android:text="Subway"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_subway"
@@ -304,7 +315,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -357,7 +369,8 @@
                     android:gravity="center"
                     android:text="Road work"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_works"
@@ -366,7 +379,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
             </LinearLayout>
 
             <View
@@ -400,7 +414,8 @@
                     android:gravity="center"
                     android:text="Train station"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_city_train_station"
@@ -409,7 +424,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
             </LinearLayout>
 
             <View

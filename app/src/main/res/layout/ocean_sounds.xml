@@ -55,7 +55,8 @@
                     android:gravity="center"
                     android:text="Calm waves"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_ocean_calm_waves"
@@ -64,7 +65,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -99,7 +101,8 @@
                     android:gravity="center"
                     android:text="Waves"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_ocean_waves"
@@ -108,7 +111,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -144,7 +148,8 @@
                     android:gravity="center"
                     android:text="Seagulls"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_ocean_seagulls"
@@ -153,7 +158,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -207,7 +213,8 @@
                     android:gravity="center"
                     android:text="Scubadiver"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_ocean_diver"
@@ -216,7 +223,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
             </LinearLayout>
 
             <View
@@ -251,7 +259,8 @@
                     android:gravity="center"
                     android:text="Dolphins"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_ocean_dolphins"
@@ -260,7 +269,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -295,7 +305,8 @@
                     android:gravity="center"
                     android:text="Sailboat"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_ocean_sailboat"
@@ -304,7 +315,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -357,7 +369,8 @@
                     android:gravity="center"
                     android:text="Whale"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_ocean_whale"
@@ -366,7 +379,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 

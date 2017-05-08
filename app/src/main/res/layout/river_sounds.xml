@@ -13,318 +13,323 @@
         android:layout_height="wrap_content"
         android:fillViewport="true">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></View>
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/water_river"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:onClick="viewClicked"
-                    android:src="@drawable/ic_water_river"
-                    android:tag="water_river"
-                    android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"
-                    android:padding="12sp"
-                    android:scaleType="center"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="River"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"
-                    />
+                    android:orientation="vertical">
 
-                <SeekBar
-                    android:id="@+id/sb_water_river"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill"
-                    android:visibility="invisible"
-                    android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    <ImageView
+                        android:id="@+id/water_river"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="4"
+                        android:background="@drawable/button_bg_selector"
+                        android:onClick="viewClicked"
+                        android:padding="12sp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_water_river"
+                        android:tag="water_river"
+                        android:tint="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2sp"
+                        android:gravity="center"
+                        android:text="River"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"/>
+
+                    <SeekBar
+                        android:id="@+id/sb_water_river"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:progressTint="@android:color/white"
+                        android:thumbTint="@android:color/white"
+                        android:visibility="invisible"
+                        android:layout_marginBottom="2sp"/>
+
+                </LinearLayout>
+
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+
+                        android:id="@+id/water_brook"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="4"
+                        android:background="@drawable/button_bg_selector"
+                        android:onClick="viewClicked"
+                        android:padding="12sp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_water_brook"
+                        android:tag="water_brook"
+                        android:tint="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2sp"
+                        android:gravity="center"
+                        android:text="Brook"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"/>
+
+                    <SeekBar
+                        android:id="@+id/sb_water_brook"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:progressTint="@android:color/white"
+                        android:thumbTint="@android:color/white"
+                        android:visibility="invisible"
+                        android:layout_marginBottom="2sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/water_creek"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="4"
+                        android:background="@drawable/button_bg_selector"
+                        android:onClick="viewClicked"
+                        android:padding="12sp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_water_creek"
+                        android:tag="water_creek"
+                        android:tint="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2sp"
+                        android:gravity="center"
+                        android:text="Creek"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"/>
+
+                    <SeekBar
+                        android:id="@+id/sb_water_creek"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:progressTint="@android:color/white"
+                        android:thumbTint="@android:color/white"
+                        android:visibility="invisible"
+                        android:layout_marginBottom="2sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
+
 
             </LinearLayout>
 
-
             <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"></View>
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6"
+                android:orientation="horizontal">
 
-                <ImageView
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
 
-                    android:id="@+id/water_brook"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:onClick="viewClicked"
-                    android:src="@drawable/ic_water_brook"
-                    android:tag="water_brook"
-                    android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"
-                    android:padding="12sp"
-                    android:scaleType="center"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="Brook"
-                    android:textColor="@android:color/white"
-                    android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:orientation="vertical">
 
-                <SeekBar
-                    android:id="@+id/sb_water_brook"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill"
-                    android:visibility="invisible"
-                    android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    <ImageView
+                        android:id="@+id/water_waterfall"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_weight="4"
+                        android:background="@drawable/button_bg_selector"
+                        android:onClick="viewClicked"
+                        android:padding="12sp"
+                        android:scaleType="center"
+                        android:src="@drawable/ic_water_waterfall"
+                        android:tag="water_waterfall"
+                        android:tint="@android:color/white" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2sp"
+                        android:gravity="center"
+                        android:text="Waterfall"
+                        android:textColor="@android:color/white"
+                        android:textSize="13sp"/>
+
+                    <SeekBar
+                        android:id="@+id/sb_water_waterfall"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="fill"
+                        android:progressTint="@android:color/white"
+                        android:thumbTint="@android:color/white"
+                        android:visibility="invisible"
+                        android:layout_marginBottom="2sp"/>
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
 
             </LinearLayout>
 
             <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
                 android:layout_weight="1"></View>
 
             <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6"
+                android:orientation="horizontal">
 
-                <ImageView
-                    android:id="@+id/water_creek"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
                     android:layout_weight="4"
-                    android:onClick="viewClicked"
-                    android:src="@drawable/ic_water_creek"
-                    android:tag="water_creek"
-                    android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"
-                    android:padding="12sp"
-                    android:scaleType="center"/>
+                    android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Creek"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
 
-                <SeekBar
-                    android:id="@+id/sb_water_creek"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill"
-                    android:visibility="invisible"
-                    android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="4"
+                    android:orientation="vertical">
+
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"></View>
+
 
             </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></View>
-
 
         </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"></View>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></View>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:orientation="vertical"
-                android:gravity="center">
-
-                <ImageView
-                    android:id="@+id/water_waterfall"
-                    android:layout_width="wrap_content"
-                    android:layout_height="0dp"
-                    android:layout_weight="4"
-                    android:onClick="viewClicked"
-                    android:src="@drawable/ic_water_waterfall"
-                    android:tag="water_waterfall"
-                    android:background="@drawable/button_bg_selector"
-                    android:tint="@android:color/white"
-                    android:padding="12sp"
-                    android:scaleType="center"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="Waterfall"
-                    android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
-
-                <SeekBar
-                    android:id="@+id/sb_water_waterfall"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="fill"
-                    android:visibility="invisible"
-                    android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></View>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:orientation="vertical">
-
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></View>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:orientation="vertical">
-
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></View>
-
-        </LinearLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"></View>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="6"
-            android:orientation="horizontal">
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></View>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:orientation="vertical">
-
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></View>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:orientation="vertical">
-
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></View>
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="4"
-                android:orientation="vertical">
-
-
-            </LinearLayout>
-
-            <View
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1"></View>
-
-
-        </LinearLayout>
-
-    </LinearLayout>
-    <!--<View-->
-    <!--android:layout_width="match_parent"-->
-    <!--android:layout_height="0dp"-->
-    <!--android:layout_weight="0.2"></View>-->
+        <!--<View-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="0dp"-->
+        <!--android:layout_weight="0.2"></View>-->
 
     </ScrollView>
 

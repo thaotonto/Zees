@@ -55,7 +55,8 @@
                     android:gravity="center"
                     android:text="Piano"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_music_piano"
@@ -64,7 +65,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -101,7 +103,8 @@
                     android:gravity="center"
                     android:text="Guitar"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_music_guitar"
@@ -110,7 +113,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -145,7 +149,8 @@
                     android:gravity="center"
                     android:text="Violin"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_music_violin"
@@ -154,7 +159,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -208,7 +214,8 @@
                     android:gravity="center"
                     android:text="Harp"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_music_harp"
@@ -217,7 +224,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -252,7 +260,8 @@
                     android:gravity="center"
                     android:text="Flute"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_music_flute"
@@ -261,7 +270,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 

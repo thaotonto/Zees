@@ -55,7 +55,8 @@
                     android:gravity="center"
                     android:text="Fan"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_home_fan"
@@ -64,7 +65,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -101,7 +103,8 @@
                     android:gravity="center"
                     android:text="Conditioner"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_home_air_conditioner"
@@ -110,7 +113,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -145,7 +149,8 @@
                     android:gravity="center"
                     android:text="Hairdryer"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_home_hairdryer"
@@ -154,7 +159,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -208,7 +214,8 @@
                     android:gravity="center"
                     android:text="Vacuum"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_home_vacuum_cleaner"
@@ -217,7 +224,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -252,7 +260,8 @@
                     android:gravity="center"
                     android:text="Cat purring"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_home_cat_purring"
@@ -261,7 +270,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -296,7 +306,8 @@
                     android:gravity="center"
                     android:text="Shower"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_home_shower"
@@ -305,7 +316,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -358,7 +370,8 @@
                     android:gravity="center"
                     android:text="Washer"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_home_washing_machine"
@@ -367,7 +380,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
             </LinearLayout>
 
             <View
@@ -401,7 +415,8 @@
                     android:gravity="center"
                     android:text="Jacuzzi"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_home_jacuzzi"
@@ -410,7 +425,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
             </LinearLayout>
 
             <View
@@ -444,7 +460,8 @@
                     android:gravity="center"
                     android:text="Fridge"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_home_fridge"
@@ -453,7 +470,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
 
             </LinearLayout>

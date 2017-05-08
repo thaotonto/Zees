@@ -55,7 +55,8 @@
                     android:gravity="center"
                     android:text="Bowls"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_bowls"
@@ -64,7 +65,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -101,7 +103,8 @@
                     android:gravity="center"
                     android:text="Gong"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_gong"
@@ -110,7 +113,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -145,7 +149,8 @@
                     android:gravity="center"
                     android:text="Bells"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_bells"
@@ -154,7 +159,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -208,7 +214,8 @@
                     android:gravity="center"
                     android:text="Om"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_om"
@@ -217,7 +224,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -252,7 +260,8 @@
                     android:gravity="center"
                     android:text="Flute"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_flute"
@@ -261,7 +270,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -296,7 +306,8 @@
                     android:gravity="center"
                     android:text="Didgeridoo"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_didgeridoo"
@@ -305,7 +316,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -358,7 +370,8 @@
                     android:gravity="center"
                     android:text="Chimes"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_chimes"
@@ -367,7 +380,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
             </LinearLayout>
 
             <View
@@ -401,7 +415,8 @@
                     android:gravity="center"
                     android:text="Guzheng"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_oriental_string"
@@ -410,7 +425,8 @@
                     android:layout_gravity="fill"
                     android:visibility="invisible"
                     android:thumbTint="@android:color/white"
-                    android:progressTint="@android:color/white"/>
+                    android:progressTint="@android:color/white"
+                    android:layout_marginBottom="2sp"/>
             </LinearLayout>
 
             <View

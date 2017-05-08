@@ -55,7 +55,8 @@
                     android:gravity="center"
                     android:text="Blackbirds"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_nature_day_blackbirds"
@@ -64,7 +65,8 @@
                     android:layout_gravity="fill"
                     android:progressTint="@android:color/white"
                     android:thumbTint="@android:color/white"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -101,7 +103,8 @@
                     android:gravity="center"
                     android:text="Crows"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_nature_day_crows"
@@ -110,7 +113,8 @@
                     android:layout_gravity="fill"
                     android:progressTint="@android:color/white"
                     android:thumbTint="@android:color/white"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -145,7 +149,8 @@
                     android:gravity="center"
                     android:text="Farm"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_nature_day_farm"
@@ -154,7 +159,8 @@
                     android:layout_gravity="fill"
                     android:progressTint="@android:color/white"
                     android:thumbTint="@android:color/white"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -208,7 +214,8 @@
                     android:gravity="center"
                     android:text="Cowbells"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_nature_day_cowbells"
@@ -217,7 +224,8 @@
                     android:layout_gravity="fill"
                     android:progressTint="@android:color/white"
                     android:thumbTint="@android:color/white"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -252,7 +260,8 @@
                     android:gravity="center"
                     android:text="Sheep"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_nature_day_sheep"
@@ -261,7 +270,8 @@
                     android:layout_gravity="fill"
                     android:progressTint="@android:color/white"
                     android:thumbTint="@android:color/white"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -296,7 +306,8 @@
                     android:gravity="center"
                     android:text="Horse"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_nature_day_horse"
@@ -305,7 +316,8 @@
                     android:layout_gravity="fill"
                     android:progressTint="@android:color/white"
                     android:thumbTint="@android:color/white"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 
@@ -358,7 +370,8 @@
                     android:gravity="center"
                     android:text="Eagle"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_nature_day_eagle"
@@ -367,7 +380,8 @@
                     android:layout_gravity="fill"
                     android:progressTint="@android:color/white"
                     android:thumbTint="@android:color/white"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:layout_marginBottom="2sp"/>
             </LinearLayout>
 
             <View
@@ -401,7 +415,8 @@
                     android:gravity="center"
                     android:text="Turtledove"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_nature_day_turtledove"
@@ -410,7 +425,8 @@
                     android:layout_gravity="fill"
                     android:progressTint="@android:color/white"
                     android:thumbTint="@android:color/white"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:layout_marginBottom="2sp"/>
             </LinearLayout>
 
             <View
@@ -444,7 +460,8 @@
                     android:gravity="center"
                     android:text="Cicadas"
                     android:textColor="@android:color/white"
-                    android:layout_marginTop="2sp"/>
+                    android:layout_marginTop="2sp"
+                    android:textSize="13sp"/>
 
                 <SeekBar
                     android:id="@+id/sb_nature_day_cicadas"
@@ -453,7 +470,8 @@
                     android:layout_gravity="fill"
                     android:progressTint="@android:color/white"
                     android:thumbTint="@android:color/white"
-                    android:visibility="invisible" />
+                    android:visibility="invisible"
+                    android:layout_marginBottom="2sp"/>
 
             </LinearLayout>
 

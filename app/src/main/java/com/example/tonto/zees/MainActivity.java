@@ -676,7 +676,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             LayoutInflater inflater = MainActivity.this.getLayoutInflater();
             View layout = inflater.inflate(R.layout.dialog_about, null);
             builderSingle.setView(layout);
-            builderSingle.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
+            builderSingle.setNegativeButton("Back", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
