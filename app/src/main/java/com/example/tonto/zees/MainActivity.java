@@ -14,6 +14,7 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
@@ -28,6 +29,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.app.NotificationCompat;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -186,7 +188,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
         notificationService = new NotificationService();
 
-        Intent notiIntent = new Intent(this,NotificationService.class);
+        Intent notiIntent = new Intent(this, NotificationService.class);
         startService(notiIntent);
 
         //TODO
@@ -639,6 +641,44 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                     }
                 }
             });
+        } else if (id == R.id.nav_send) {
+            AlertDialog.Builder builderSingle = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
+            builderSingle.setTitle("Contact the developer");
+            builderSingle.setMessage("Do you have any problem or suggestion?\n\nSend us a e-mail we will answer as soon as possible");
+            builderSingle.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            builderSingle.setPositiveButton("Send email", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Intent send = new Intent(Intent.ACTION_SENDTO);
+                    String uriText = "mailto:" + Uri.encode("email@gmail.com") +
+                            "?subject=" + Uri.encode("Contact from Zees") +
+                            "&body=" + Uri.encode(String.format("API: %s\nDevice: %s\nMessage to developers: ",
+                            Build.VERSION.SDK_INT, Build.MODEL));
+                    Uri uri = Uri.parse(uriText);
+
+                    send.setData(uri);
+                    startActivity(Intent.createChooser(send, "Send mail..."));
+                }
+            });
+            builderSingle.show();
+        } else if (id == R.id.nav_about) {
+            AlertDialog.Builder builderSingle = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
+            builderSingle.setTitle("About this app");
+            LayoutInflater inflater = MainActivity.this.getLayoutInflater();
+            View layout = inflater.inflate(R.layout.dialog_about, null);
+            builderSingle.setView(layout);
+            builderSingle.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.cancel();
+                }
+            });
+            builderSingle.show();
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
