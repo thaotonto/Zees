@@ -8,7 +8,9 @@
         android:layout_height="match_parent"
         android:layout_marginTop="10dp"
         android:layout_marginLeft="22dp"
+        android:layout_marginRight="22dp"
+        android:layout_marginBottom="10dp"
         android:textSize="14sp"
-        android:text="This app was stolen from Ambience\nPls do not report us"
+        android:text="This application was made as a group project in Techkids' Android Gen 8 course. It was largely based on Ambience(mikdroid) and Best Night Light(Warriors of the Cucumber). We really recommend that you guys give these applications a look and support these developers. Without them, we wouldn't have been able to make Zees, which we think is much more inferior to the originals. However, for academic purposes, we have decided to put Zees on Play Store to get users feedback as a way to strengthen our development skills. If you have any problems, please don't hesitate to contact us at the 'Send e-mail' section. Thank you for using our application and taking the time to read this."
         android:textAppearance="?android:attr/text"/>
 </LinearLayout>

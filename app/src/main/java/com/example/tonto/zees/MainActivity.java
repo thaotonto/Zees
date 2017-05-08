@@ -414,7 +414,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 }
             }
                     , 0, 0, true);
-            timePickerDialog.setTitle("Choose time left until shutdown (hh:mm)");
+            timePickerDialog.setTitle("Set time left until app shutdown (hh:mm)");
             timePickerDialog.show();
             return true;
         }
@@ -487,7 +487,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 arrayAdapter.add(preset);
             }
 
-            builderSingle.setNegativeButton("cancel", new DialogInterface.OnClickListener() {
+            builderSingle.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
@@ -655,7 +655,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Intent send = new Intent(Intent.ACTION_SENDTO);
-                    String uriText = "mailto:" + Uri.encode("email@gmail.com") +
+                    String uriText = "mailto:" + Uri.encode("zees.feedback@gmail.com") +
                             "?subject=" + Uri.encode("Contact from Zees") +
                             "&body=" + Uri.encode(String.format("API: %s\nDevice: %s\nMessage to developers: ",
                             Build.VERSION.SDK_INT, Build.MODEL));
