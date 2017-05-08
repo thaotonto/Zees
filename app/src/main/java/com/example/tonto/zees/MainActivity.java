@@ -645,7 +645,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             AlertDialog.Builder builderSingle = new AlertDialog.Builder(this, android.R.style.Theme_Material_Light_Dialog_Alert);
             builderSingle.setTitle("Contact the developer");
             builderSingle.setMessage("Do you have any problem or suggestion?\n\nSend us a e-mail we will answer as soon as possible");
-            builderSingle.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+            builderSingle.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
@@ -676,7 +676,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             LayoutInflater inflater = MainActivity.this.getLayoutInflater();
             View layout = inflater.inflate(R.layout.dialog_about, null);
             builderSingle.setView(layout);
-            builderSingle.setNegativeButton("Cancle", new DialogInterface.OnClickListener() {
+            builderSingle.setNegativeButton("Cancel", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.cancel();
