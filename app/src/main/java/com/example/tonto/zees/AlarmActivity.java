@@ -263,7 +263,7 @@ public class AlarmActivity extends AppCompatActivity {
                     }
                 }
                         , new Time(System.currentTimeMillis()).getHours(), new Time(System.currentTimeMillis()).getMinutes(), true);
-                timePickerDialog.setTitle("Choose alarm time (hh:mm)");
+                timePickerDialog.setTitle("Set alarm time (hh:mm)");
                 timePickerDialog.show();
             }
         });
@@ -286,7 +286,7 @@ public class AlarmActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id = item.getItemId();
         if (id == R.id.action_alarm_volume) {
-            AlertDialog.Builder alarmVolDialogBuilder = new AlertDialog.Builder(this);
+            AlertDialog.Builder alarmVolDialogBuilder = new AlertDialog.Builder(this, R.style.ThemeDialogAlarm);
             LayoutInflater layoutInflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View dialogView = layoutInflater.inflate(R.layout.alarm_vol_dialog, null);
 
@@ -327,14 +327,14 @@ public class AlarmActivity extends AppCompatActivity {
                 }
             });
 
-            alarmVolDialogBuilder.setNegativeButton("BACK", new DialogInterface.OnClickListener() {
+            alarmVolDialogBuilder.setNegativeButton("Back", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     dialog.dismiss();
                 }
             });
             alarmVolDialogBuilder.setView(dialogView);
-            alarmVolDialogBuilder.setTitle("Change alarm volume");
+            alarmVolDialogBuilder.setTitle("      Set alarm volume      ");
             alarmVolDialogBuilder.create();
             alarmVolDialogBuilder.show();
         }
