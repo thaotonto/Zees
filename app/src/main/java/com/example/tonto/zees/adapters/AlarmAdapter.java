@@ -196,7 +196,7 @@ public class AlarmAdapter extends ArrayAdapter {
                         Toast.makeText(context, "Alarm set for 24 hours from now.", Toast.LENGTH_SHORT).show();
                     }
                     SimpleDateFormat formatter = new SimpleDateFormat("HH:mm dd/MM/yyyy");
-                    alarmNotiBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(context).setSmallIcon(R.drawable.ic_snooze_white_48dp).setContentTitle("Alarm set at " + formatter.format(calendar.getTime())).setContentText("Touch for more");
+                    alarmNotiBuilder = (NotificationCompat.Builder) new NotificationCompat.Builder(context).setSmallIcon(R.drawable.icon_notification_alarm).setContentTitle("Alarm set at " + formatter.format(calendar.getTime())).setContentText("Touch for more");
                     Intent intentAlarm = new Intent(context, AlarmActivity.class);
                     PendingIntent returnIntent = PendingIntent.getActivity(context, Integer.parseInt(alarm.getPendingId()), intentAlarm, PendingIntent.FLAG_UPDATE_CURRENT);
                     alarmNotiBuilder.setContentIntent(returnIntent);
